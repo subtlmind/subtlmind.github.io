@@ -1,0 +1,253 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bgGradVision" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070B14"/>
+      <stop offset="50%" stop-color="#09101E"/>
+      <stop offset="100%" stop-color="#06090F"/>
+    </linearGradient>
+
+    <!-- Card Fill -->
+    <linearGradient id="cardGradVision" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10182B"/>
+      <stop offset="100%" stop-color="#0B111F"/>
+    </linearGradient>
+
+    <!-- Teal Gradient -->
+    <linearGradient id="tealGradV" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2DD4BF"/>
+      <stop offset="100%" stop-color="#0D9488"/>
+    </linearGradient>
+
+    <!-- Amber / Thermal Gradient -->
+    <linearGradient id="thermalGradV" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="50%" stop-color="#EF4444"/>
+      <stop offset="100%" stop-color="#A855F7"/>
+    </linearGradient>
+
+    <!-- Grid Pattern -->
+    <pattern id="techGridV" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="rgba(255, 255, 255, 0.03)" stroke-width="1"/>
+    </pattern>
+
+    <!-- Glow Filter -->
+    <filter id="tealGlowV" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <filter id="amberGlowV" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="800" height="480" fill="url(#bgGradVision)"/>
+  <rect width="800" height="480" fill="url(#techGridV)"/>
+
+  <!-- Top Technical Header -->
+  <rect x="0" y="0" width="800" height="42" fill="rgba(10, 16, 28, 0.9)" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
+  <circle cx="24" cy="21" r="4" fill="#2DD4BF" filter="url(#tealGlowV)"/>
+  <text x="36" y="25" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" letter-spacing="1.5">SUBTLMIND</text>
+  <text x="124" y="25" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="11" letter-spacing="1">// PILLAR 02: REAL-TIME VIDEO INFERENCE &amp; COMPUTER VISION</text>
+  
+  <rect x="640" y="11" width="138" height="20" rx="4" fill="rgba(45, 212, 191, 0.12)" stroke="rgba(45, 212, 191, 0.3)" stroke-width="1"/>
+  <text x="709" y="25" fill="#2DD4BF" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" text-anchor="middle">&lt; 20ms // 60 FPS INFERENCE</text>
+
+  <!-- STAGE 1: CAMERA STREAM INGESTION -->
+  <rect x="20" y="58" width="175" height="365" rx="10" fill="url(#cardGradVision)" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
+  <text x="32" y="80" fill="#2DD4BF" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" letter-spacing="1">01 / OPTICAL INGEST</text>
+  <text x="32" y="98" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700">Multi-Camera Streams</text>
+
+  <!-- Camera 1: IP Cameras -->
+  <g transform="translate(30, 110)">
+    <rect width="155" height="66" rx="6" fill="#0C1424" stroke="rgba(45, 212, 191, 0.3)" stroke-width="1"/>
+    <!-- Camera Icon -->
+    <circle cx="16" cy="18" r="5" fill="#2DD4BF"/>
+    <text x="28" y="21" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600">IP Cameras (CCTV)</text>
+    <text x="12" y="38" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="8.5">RTSP / ONVIF / WebRTC</text>
+    <text x="12" y="52" fill="#2DD4BF" font-family="'JetBrains Mono', monospace" font-size="8.5">4K / 1080p H.264 / H.265</text>
+  </g>
+
+  <!-- Camera 2: Machine Vision -->
+  <g transform="translate(30, 186)">
+    <rect width="155" height="66" rx="6" fill="#0C1424" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
+    <circle cx="16" cy="18" r="5" fill="#38BDF8"/>
+    <text x="28" y="21" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600">Machine Vision</text>
+    <text x="12" y="38" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="8.5">GigE Vision / USB3 Vision</text>
+    <text x="12" y="52" fill="#38BDF8" font-family="'JetBrains Mono', monospace" font-size="8.5">120+ FPS High-Speed Shutter</text>
+  </g>
+
+  <!-- Camera 3: Radiometric Thermal Cameras -->
+  <g transform="translate(30, 262)">
+    <rect width="155" height="66" rx="6" fill="#0C1424" stroke="rgba(245, 158, 11, 0.3)" stroke-width="1"/>
+    <circle cx="16" cy="18" r="5" fill="#F59E0B"/>
+    <text x="28" y="21" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600">Thermal Cameras</text>
+    <text x="12" y="38" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="8.5">LWIR Radiometric Infrared</text>
+    <text x="12" y="52" fill="#F59E0B" font-family="'JetBrains Mono', monospace" font-size="8.5">±0.5°C Heat Gradient Map</text>
+  </g>
+
+  <!-- Camera 4: Depth & Optical -->
+  <g transform="translate(30, 338)">
+    <rect width="155" height="66" rx="6" fill="#0C1424" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
+    <circle cx="16" cy="18" r="5" fill="#A78BFA"/>
+    <text x="28" y="21" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600">Depth &amp; Optical</text>
+    <text x="12" y="38" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="8.5">RGB-D / Time-of-Flight</text>
+    <text x="12" y="52" fill="#A78BFA" font-family="'JetBrains Mono', monospace" font-size="8.5">Volumetric Spatial Cloud</text>
+  </g>
+
+  <!-- CONNECTORS: CAMERA TO EDGE ACCELERATOR -->
+  <path d="M 185 143 L 210 143 L 210 240 L 220 240" fill="none" stroke="#2DD4BF" stroke-width="1.5"/>
+  <path d="M 185 219 L 220 219" fill="none" stroke="#38BDF8" stroke-width="1.5"/>
+  <path d="M 185 295 L 210 295 L 210 240 L 220 240" fill="none" stroke="#F59E0B" stroke-width="1.5"/>
+  <path d="M 185 371 L 220 371" fill="none" stroke="#A78BFA" stroke-width="1.5" stroke-dasharray="3,3"/>
+
+  <!-- STAGE 2: EDGE HARDWARE ACCELERATION -->
+  <rect x="220" y="58" width="165" height="365" rx="10" fill="url(#cardGradVision)" stroke="rgba(45, 212, 191, 0.25)" stroke-width="1"/>
+  <text x="232" y="80" fill="#2DD4BF" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" letter-spacing="1">02 / HARDWARE EDGE</text>
+  <text x="232" y="98" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700">TensorRT Acceleration</text>
+
+  <!-- Hardware Chip Box -->
+  <g transform="translate(230, 110)">
+    <rect width="145" height="88" rx="6" fill="#080D18" stroke="rgba(45, 212, 191, 0.4)" stroke-width="1"/>
+    <text x="10" y="20" fill="#2DD4BF" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700">EDGE ACCELERATION</text>
+    <text x="10" y="38" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700">NVIDIA Jetson Orin</text>
+    <text x="10" y="54" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="8.5">TensorRT FP16 / INT8</text>
+    <text x="10" y="68" fill="#2DD4BF" font-family="'JetBrains Mono', monospace" font-size="8.5">Zero-Copy GPU Ingest</text>
+    <text x="10" y="80" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="8">275 TOPS Neural Compute</text>
+  </g>
+
+  <!-- NVDEC Stream Decoder -->
+  <g transform="translate(230, 210)">
+    <rect width="145" height="66" rx="6" fill="#0C1424" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
+    <text x="10" y="18" fill="#38BDF8" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700">ZERO-LATENCY DECODE</text>
+    <text x="10" y="34" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="600">NVDEC Video Demux</text>
+    <text x="10" y="48" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="8">Direct V4L2 Ring Buffer</text>
+    <text x="10" y="60" fill="#2DD4BF" font-family="'JetBrains Mono', monospace" font-size="8">&lt; 3.2ms Decoding Latency</text>
+  </g>
+
+  <!-- Edge Privacy Sanitizer -->
+  <g transform="translate(230, 288)">
+    <rect width="145" height="66" rx="6" fill="#0C1424" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
+    <text x="10" y="18" fill="#10B981" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700">ON-DEVICE PRIVACY</text>
+    <text x="10" y="34" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="600">Edge Sanitization</text>
+    <text x="10" y="48" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="8">Local Face &amp; PII Blur</text>
+    <text x="10" y="60" fill="#10B981" font-family="'JetBrains Mono', monospace" font-size="8">Zero Raw Footage Upload</text>
+  </g>
+
+  <!-- Local Pipeline Store -->
+  <g transform="translate(230, 366)">
+    <rect width="145" height="42" rx="6" fill="#0C1424" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1"/>
+    <text x="10" y="16" fill="#A78BFA" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700">STORE &amp; FORWARD</text>
+    <text x="10" y="32" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="8">Local NVMe Circular Buffer</text>
+  </g>
+
+  <!-- CONNECTORS: ACCELERATOR TO NEURAL METHODS -->
+  <path d="M 385 154 L 415 154" fill="none" stroke="#2DD4BF" stroke-width="2"/>
+  <path d="M 385 243 L 415 243" fill="none" stroke="#2DD4BF" stroke-width="1.5"/>
+  <path d="M 385 321 L 415 321" fill="none" stroke="#F59E0B" stroke-width="1.5"/>
+
+  <!-- STAGE 3: REAL-TIME INFERENCE METHODS (DETECTION, SEGMENTATION, CLASSIFICATION) -->
+  <rect x="415" y="58" width="185" height="365" rx="10" fill="url(#cardGradVision)" stroke="rgba(245, 158, 11, 0.25)" stroke-width="1"/>
+  <text x="427" y="80" fill="#F59E0B" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" letter-spacing="1">03 / REAL-TIME INFERENCE</text>
+  <text x="427" y="98" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700">Neural Methods</text>
+
+  <!-- Method 1: Object Detection -->
+  <g transform="translate(425, 110)">
+    <rect width="165" height="92" rx="6" fill="#080D18" stroke="rgba(45, 212, 191, 0.35)" stroke-width="1"/>
+    <text x="10" y="18" fill="#2DD4BF" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700">METHOD 01</text>
+    <text x="10" y="34" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700">Object Detection</text>
+    <!-- Visual Bounding Box Schematic -->
+    <rect x="10" y="42" width="60" height="28" rx="2" fill="none" stroke="#2DD4BF" stroke-width="1.2" stroke-dasharray="2 1"/>
+    <text x="13" y="52" fill="#2DD4BF" font-family="'JetBrains Mono', monospace" font-size="7">PERSON 99%</text>
+    <text x="13" y="64" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="6.5">[x:140, y:82]</text>
+
+    <rect x="76" y="42" width="78" height="28" rx="2" fill="none" stroke="#F59E0B" stroke-width="1.2" stroke-dasharray="2 1"/>
+    <text x="79" y="52" fill="#F59E0B" font-family="'JetBrains Mono', monospace" font-size="7">FORKLIFT 98%</text>
+    <text x="79" y="64" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="6.5">[Zone: Dock 3]</text>
+
+    <text x="10" y="84" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="8">YOLO / RT-DETR Backbone</text>
+  </g>
+
+  <!-- Method 2: Instance & Semantic Segmentation -->
+  <g transform="translate(425, 212)">
+    <rect width="165" height="96" rx="6" fill="#080D18" stroke="rgba(245, 158, 11, 0.35)" stroke-width="1"/>
+    <text x="10" y="18" fill="#F59E0B" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700">METHOD 02</text>
+    <text x="10" y="34" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700">Segmentation</text>
+    <!-- Visual Polygon / Thermal Mask Schematic -->
+    <polygon points="12,56 36,46 64,52 58,74 24,78" fill="rgba(245, 158, 11, 0.25)" stroke="#F59E0B" stroke-width="1.2"/>
+    <text x="72" y="54" fill="#F59E0B" font-family="'JetBrains Mono', monospace" font-size="7.5">HOTSPOT MASK</text>
+    <text x="72" y="66" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="7">Pixel Area: 412 px</text>
+    <text x="72" y="78" fill="#EF4444" font-family="'JetBrains Mono', monospace" font-size="7">Delta T: +18.4°C</text>
+
+    <text x="10" y="88" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="8">FastSAM / DeepLabV3+ Runtimes</text>
+  </g>
+
+  <!-- Method 3: Multi-Class Classification -->
+  <g transform="translate(425, 318)">
+    <rect width="165" height="92" rx="6" fill="#080D18" stroke="rgba(168, 85, 247, 0.35)" stroke-width="1"/>
+    <text x="10" y="18" fill="#A855F7" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700">METHOD 03</text>
+    <text x="10" y="34" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700">Classification</text>
+    
+    <rect x="10" y="44" width="70" height="20" rx="3" fill="rgba(16, 185, 129, 0.15)" stroke="#10B981" stroke-width="0.8"/>
+    <text x="14" y="57" fill="#10B981" font-family="'JetBrains Mono', monospace" font-size="7.5">PPE: COMPLIANT</text>
+
+    <rect x="85" y="44" width="70" height="20" rx="3" fill="rgba(239, 68, 68, 0.15)" stroke="#EF4444" stroke-width="0.8"/>
+    <text x="89" y="57" fill="#EF4444" font-family="'JetBrains Mono', monospace" font-size="7.5">FLAW: CRACK 0.2mm</text>
+
+    <text x="10" y="80" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="8">State &amp; Quality Conditioning</text>
+  </g>
+
+  <!-- CONNECTORS: INFERENCE TO ACTION OUTPUT -->
+  <path d="M 600 156 L 630 156" fill="none" stroke="#2DD4BF" stroke-width="2"/>
+  <path d="M 600 260 L 630 260" fill="none" stroke="#F59E0B" stroke-width="1.8"/>
+  <path d="M 600 364 L 630 364" fill="none" stroke="#A855F7" stroke-width="1.5"/>
+
+  <!-- STAGE 4: ACTION & SPATIAL TELEMETRY -->
+  <rect x="630" y="58" width="150" height="365" rx="10" fill="url(#cardGradVision)" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
+  <text x="642" y="80" fill="#2DD4BF" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" letter-spacing="1">04 / ACTIONS</text>
+  <text x="642" y="98" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700">Automated Dispatch</text>
+
+  <!-- Output 1: Sub-Second Alerts -->
+  <g transform="translate(638, 110)">
+    <rect width="134" height="66" rx="6" fill="#0C1424" stroke="rgba(45, 212, 191, 0.25)" stroke-width="1"/>
+    <text x="10" y="18" fill="#2DD4BF" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700">REAL-TIME WEBHOOK</text>
+    <text x="10" y="34" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600">Perimeter &amp; Hazard</text>
+    <text x="10" y="48" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="8">SLA &lt; 200ms Dispatch</text>
+    <text x="10" y="60" fill="#2DD4BF" font-family="'JetBrains Mono', monospace" font-size="8">Telegram / Ops Webhook</text>
+  </g>
+
+  <!-- Output 2: Thermal Safety Interlock -->
+  <g transform="translate(638, 186)">
+    <rect width="134" height="66" rx="6" fill="#0C1424" stroke="rgba(245, 158, 11, 0.25)" stroke-width="1"/>
+    <text x="10" y="18" fill="#F59E0B" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700">PLC SAFETY INTERLOCK</text>
+    <text x="10" y="34" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600">Thermal Shutdown</text>
+    <text x="10" y="48" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="8">Direct Modbus / Relay</text>
+    <text x="10" y="60" fill="#F59E0B" font-family="'JetBrains Mono', monospace" font-size="8">Prevents Line Breakdown</text>
+  </g>
+
+  <!-- Output 3: Spatial Vector Telemetry -->
+  <g transform="translate(638, 262)">
+    <rect width="134" height="66" rx="6" fill="#0C1424" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
+    <text x="10" y="18" fill="#38BDF8" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700">SPATIAL VECTORS</text>
+    <text x="10" y="34" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600">Digital Twin Sync</text>
+    <text x="10" y="48" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="8">MQTT Telemetry Payloads</text>
+    <text x="10" y="60" fill="#38BDF8" font-family="'JetBrains Mono', monospace" font-size="8">Occupancy Heatmaps</text>
+  </g>
+
+  <!-- Output 4: Copilot Dialogue Grounding -->
+  <g transform="translate(638, 338)">
+    <rect width="134" height="66" rx="6" fill="#0C1424" stroke="rgba(168, 85, 247, 0.25)" stroke-width="1"/>
+    <text x="10" y="18" fill="#A855F7" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700">COPILOT CONTEXT</text>
+    <text x="10" y="34" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600">Visual RAG Feed</text>
+    <text x="10" y="48" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="8">Natural Dialogue QA</text>
+    <text x="10" y="60" fill="#A855F7" font-family="'JetBrains Mono', monospace" font-size="8">"Zone 3 forklift near rack"</text>
+  </g>
+
+  <!-- BOTTOM TELEMETRY STATUS BAR -->
+  <rect x="0" y="440" width="800" height="40" fill="rgba(8, 12, 22, 0.95)" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
+  <text x="24" y="464" fill="#2DD4BF" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">EDGE VISION RUNTIME ACTIVE</text>
+  <text x="220" y="464" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="9.5">FPS: 60 | INFERENCE: 18.2ms | PRECISION: 99.2% mAP | DETECTIONS: 42/SEC | ON-DEVICE PRIVACY: 100%</text>
+</svg>
