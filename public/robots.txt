@@ -1,0 +1,7 @@
+# Subtlmind Technologies — Robots Configuration
+User-agent: *
+Allow: /
+
+# Canonical Sitemaps
+Sitemap: https://subtlmind.in/sitemap.xml
+Host: https://subtlmind.in

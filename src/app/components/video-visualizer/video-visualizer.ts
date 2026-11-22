@@ -42,8 +42,8 @@ export type VisualizerMode = 'multimodal' | 'digital-twin' | 'robotics' | 'cloud
 
         <!-- Watermark / Overlay Brand -->
         <div class="brand-watermark">
-          <span class="watermark-logo">INXENUITY</span>
-          <span class="watermark-sub">MULTIMODAL AI RUNTIME</span>
+          <span class="watermark-logo">SUBTLMIND</span>
+          <span class="watermark-sub">AMBIENT AI &amp; IOT RUNTIME</span>
         </div>
 
         <!-- Mode Overlay Badge -->

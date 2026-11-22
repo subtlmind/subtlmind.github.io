@@ -1,0 +1,202 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bgGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070B14"/>
+      <stop offset="50%" stop-color="#0E1222"/>
+      <stop offset="100%" stop-color="#06090F"/>
+    </linearGradient>
+
+    <linearGradient id="cardGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10182B"/>
+      <stop offset="100%" stop-color="#0B111F"/>
+    </linearGradient>
+
+    <!-- Waveform Gradients -->
+    <linearGradient id="waveNormalGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2DD4BF" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#14B8A6" stop-opacity="0.2"/>
+    </linearGradient>
+
+    <linearGradient id="waveAnomalyGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#EF4444" stop-opacity="0.4"/>
+    </linearGradient>
+
+    <!-- Grid Pattern -->
+    <pattern id="techGrid2" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="rgba(255, 255, 255, 0.03)" stroke-width="1"/>
+    </pattern>
+
+    <filter id="tealGlow2" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <filter id="amberGlow2" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="800" height="480" fill="url(#bgGrad2)"/>
+  <rect width="800" height="480" fill="url(#techGrid2)"/>
+
+  <!-- Top Technical Header -->
+  <rect x="0" y="0" width="800" height="42" fill="rgba(10, 16, 28, 0.9)" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
+  <circle cx="24" cy="21" r="4" fill="#F59E0B" filter="url(#amberGlow2)"/>
+  <text x="36" y="25" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" letter-spacing="1.5">SUBTLMIND</text>
+  <text x="124" y="25" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="11" letter-spacing="1">// PILLAR 03: DEEP LEARNING &amp; PREDICTIVE MAINTENANCE</text>
+  
+  <rect x="650" y="11" width="128" height="20" rx="4" fill="rgba(245, 158, 11, 0.12)" stroke="rgba(245, 158, 11, 0.3)" stroke-width="1"/>
+  <text x="714" y="25" fill="#F59E0B" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" text-anchor="middle">240H LEAD WARNING</text>
+
+  <!-- SECTION 1: MULTI-MODAL RAW SENSORY STREAMS -->
+  <rect x="24" y="62" width="220" height="355" rx="10" fill="url(#cardGrad2)" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
+  <text x="40" y="86" fill="#F59E0B" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" letter-spacing="1">01 / MULTI-MODAL INGEST</text>
+  <text x="40" y="104" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700">Sensory Waveforms</text>
+
+  <!-- Waveform 1: Vibration Spectrum FFT -->
+  <g transform="translate(36, 120)">
+    <rect width="196" height="74" rx="6" fill="#090E1A" stroke="rgba(45, 212, 191, 0.2)"/>
+    <text x="10" y="18" fill="#2DD4BF" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600">Vibration FFT Spectrum (10 kHz)</text>
+    <!-- Wave curve baseline -->
+    <path d="M 12 55 Q 30 52 45 35 T 75 50 T 105 22 T 135 48 T 165 40 T 185 54" fill="none" stroke="#2DD4BF" stroke-width="1.8"/>
+    <!-- Subtle Harmonic Peak -->
+    <circle cx="105" cy="22" r="3.5" fill="#F59E0B" filter="url(#amberGlow2)"/>
+    <text x="114" y="24" fill="#F59E0B" font-family="'JetBrains Mono', monospace" font-size="8">+14% @ 120Hz</text>
+    <text x="10" y="68" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="8">Bearing outer race harmonics</text>
+  </g>
+
+  <!-- Waveform 2: Thermal Infrared Delta -->
+  <g transform="translate(36, 204)">
+    <rect width="196" height="74" rx="6" fill="#090E1A" stroke="rgba(255, 255, 255, 0.08)"/>
+    <text x="10" y="18" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600">Thermal Infrared Gradient (ΔT)</text>
+    <path d="M 12 52 Q 40 50 70 48 T 120 42 T 150 32 T 185 26" fill="none" stroke="#F59E0B" stroke-width="1.8"/>
+    <text x="135" y="24" fill="#F59E0B" font-family="'JetBrains Mono', monospace" font-size="8">+3.2°C</text>
+    <text x="10" y="68" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="8">Stator surface heat delta</text>
+  </g>
+
+  <!-- Waveform 3: Acoustic Micro-Doppler -->
+  <g transform="translate(36, 288)">
+    <rect width="196" height="74" rx="6" fill="#090E1A" stroke="rgba(255, 255, 255, 0.08)"/>
+    <text x="10" y="18" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600">Acoustic Resonance Spike</text>
+    <path d="M 12 54 Q 35 53 60 52 T 85 53 T 100 24 T 115 54 T 150 53 T 185 52" fill="none" stroke="#A78BFA" stroke-width="1.8"/>
+    <text x="120" y="26" fill="#A78BFA" font-family="'JetBrains Mono', monospace" font-size="8">24 kHz</text>
+    <text x="10" y="68" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="8">Ultrasonic cavitation resonance</text>
+  </g>
+
+  <!-- Status pill -->
+  <g transform="translate(36, 372)">
+    <rect width="196" height="32" rx="6" fill="rgba(45, 212, 191, 0.08)" stroke="rgba(45, 212, 191, 0.25)"/>
+    <text x="12" y="20" fill="#2DD4BF" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700">MULTI-MODAL SYNC: 100%</text>
+  </g>
+
+  <!-- CONNECTOR: INGEST TO MODEL PIPELINE -->
+  <line x1="244" y1="240" x2="274" y2="240" stroke="#F59E0B" stroke-width="2" filter="url(#amberGlow2)"/>
+  <polygon points="274,240 266,236 266,244" fill="#F59E0B"/>
+
+  <!-- SECTION 2: TEMPORAL FUSION TRANSFORMER (DL MODEL) -->
+  <rect x="274" y="62" width="240" height="355" rx="10" fill="url(#cardGrad2)" stroke="rgba(245, 158, 11, 0.35)" stroke-width="1.5"/>
+  <rect x="286" y="74" width="82" height="18" rx="4" fill="#F59E0B"/>
+  <text x="327" y="87" fill="#06090F" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="800" text-anchor="middle">DL RUNTIME</text>
+  <text x="286" y="112" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="700">Neural Forecasting Core</text>
+  <text x="286" y="128" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="9">Temporal Fusion Autoencoder</text>
+
+  <!-- DL Architecture Stage 1: Feature Extraction -->
+  <g transform="translate(286, 142)">
+    <rect width="216" height="54" rx="6" fill="#0A101E" stroke="rgba(255, 255, 255, 0.08)"/>
+    <text x="12" y="20" fill="#2DD4BF" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600">Spatial-Temporal Attention</text>
+    <text x="12" y="34" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="9">Multi-head temporal self-attention</text>
+    <text x="12" y="46" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="8">Extracts subtle mechanical signatures</text>
+  </g>
+
+  <!-- DL Architecture Stage 2: Latent Reconstruction -->
+  <g transform="translate(286, 204)">
+    <rect width="216" height="54" rx="6" fill="#0A101E" stroke="rgba(255, 255, 255, 0.08)"/>
+    <text x="12" y="20" fill="#F59E0B" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600">Self-Calibrating Baseline</text>
+    <text x="12" y="34" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="9">Learns seasonal &amp; load dynamics</text>
+    <text x="12" y="46" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="8">Prevents false trips &amp; alarm fatigue</text>
+  </g>
+
+  <!-- DL Architecture Stage 3: Anomaly Scoring -->
+  <g transform="translate(286, 266)">
+    <rect width="216" height="54" rx="6" fill="#0A101E" stroke="rgba(255, 255, 255, 0.08)"/>
+    <text x="12" y="20" fill="#EF4444" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600">Reconstruction Error Drift</text>
+    <text x="12" y="34" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="9">Mahalanobis distance &gt; 3.8σ</text>
+    <text x="12" y="46" fill="#F59E0B" font-family="'JetBrains Mono', monospace" font-size="8">Anomaly confirmed: Bearing Race</text>
+  </g>
+
+  <!-- Quantized Edge Info -->
+  <g transform="translate(286, 328)">
+    <rect width="216" height="66" rx="6" fill="rgba(245, 158, 11, 0.08)" stroke="rgba(245, 158, 11, 0.25)"/>
+    <text x="12" y="20" fill="#F59E0B" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600">Edge Quantization</text>
+    <text x="12" y="34" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="9">INT8 Quantized runtime (TDP 8W)</text>
+    <text x="12" y="48" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="8">Deploys directly on NPU gateways</text>
+  </g>
+
+  <!-- CONNECTOR: DL TO FORECAST OUTCOME -->
+  <line x1="514" y1="240" x2="544" y2="240" stroke="#F59E0B" stroke-width="2" stroke-dasharray="4,3"/>
+  <polygon points="544,240 536,236 536,244" fill="#F59E0B"/>
+
+  <!-- SECTION 3: PREDICTION TIMELINE & MITIGATION -->
+  <rect x="544" y="62" width="232" height="355" rx="10" fill="url(#cardGrad2)" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
+  <text x="558" y="86" fill="#2DD4BF" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" letter-spacing="1">03 / ACTIONABLE HORIZON</text>
+  <text x="558" y="104" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700">Predictive Lead Time</text>
+
+  <!-- 240H Timeline Graphic -->
+  <g transform="translate(558, 126)">
+    <rect width="204" height="110" rx="6" fill="#090E1A" stroke="rgba(255, 255, 255, 0.08)"/>
+    <text x="10" y="18" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="9">WEAR EVOLUTION CURVE</text>
+    
+    <!-- Threshold line -->
+    <line x1="12" y1="46" x2="192" y2="46" stroke="rgba(239, 68, 68, 0.4)" stroke-dasharray="3,3" stroke-width="1"/>
+    <text x="135" y="42" fill="#EF4444" font-family="'JetBrains Mono', monospace" font-size="8">FAILURE LIMIT</text>
+
+    <!-- Progression curve -->
+    <path d="M 14 85 Q 50 83 90 78 T 130 65 T 165 48 T 190 32" fill="none" stroke="#F59E0B" stroke-width="2.2"/>
+    
+    <!-- Detection Point Marker -->
+    <circle cx="130" cy="65" r="4.5" fill="#2DD4BF" filter="url(#tealGlow2)"/>
+    <line x1="130" y1="65" x2="130" y2="98" stroke="#2DD4BF" stroke-width="1" stroke-dasharray="2,2"/>
+    <text x="96" y="104" fill="#2DD4BF" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="700">DETECTED (DAY 0)</text>
+
+    <!-- Lead Window bracket -->
+    <rect x="132" y="82" width="60" height="14" rx="2" fill="rgba(245, 158, 11, 0.2)"/>
+    <text x="162" y="92" fill="#F59E0B" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="700" text-anchor="middle">240H LEAD</text>
+  </g>
+
+  <!-- Action 1: Precision Stat -->
+  <g transform="translate(558, 246)">
+    <rect width="204" height="48" rx="6" fill="#0C1424" stroke="rgba(45, 212, 191, 0.25)"/>
+    <text x="12" y="20" fill="#2DD4BF" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="800">99.4%</text>
+    <text x="12" y="36" fill="#CBD5E1" font-family="'Plus Jakarta Sans', sans-serif" font-size="9">Anomaly Precision (Zero false trips)</text>
+  </g>
+
+  <!-- Action 2: Downtime Stat -->
+  <g transform="translate(558, 302)">
+    <rect width="204" height="48" rx="6" fill="#0C1424" stroke="rgba(245, 158, 11, 0.25)"/>
+    <text x="12" y="20" fill="#F59E0B" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="800">-40%</text>
+    <text x="12" y="36" fill="#CBD5E1" font-family="'Plus Jakarta Sans', sans-serif" font-size="9">Unplanned Mechanical Downtime</text>
+  </g>
+
+  <!-- Action 3: Autonomous Mitigation -->
+  <g transform="translate(558, 358)">
+    <rect width="204" height="46" rx="6" fill="rgba(16, 185, 129, 0.08)" stroke="rgba(16, 185, 129, 0.3)"/>
+    <circle cx="18" cy="23" r="3.5" fill="#10B981"/>
+    <text x="28" y="18" fill="#10B981" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="700">WORK ORDER #4092</text>
+    <text x="28" y="32" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="8">Auto-dispatched for weekend window</text>
+  </g>
+
+  <!-- BOTTOM STATUS & TELEMETRY STRIP -->
+  <rect x="0" y="440" width="800" height="40" fill="rgba(6, 9, 15, 0.95)" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1"/>
+  <text x="24" y="464" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="10">RUNTIME: </text>
+  <text x="85" y="464" fill="#2DD4BF" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">TFT-INT8 QUANTIZED</text>
+  <text x="250" y="464" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="10">INFERENCE: </text>
+  <text x="325" y="464" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="10">12ms ON-GATEWAY</text>
+  <text x="470" y="464" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="10">PRECISION: </text>
+  <text x="548" y="464" fill="#10B981" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">99.4% VERIFIED</text>
+  <text x="680" y="464" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="10">LEAD: </text>
+  <text x="725" y="464" fill="#F59E0B" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">240 HOURS</text>
+</svg>

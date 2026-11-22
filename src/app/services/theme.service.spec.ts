@@ -33,13 +33,13 @@ describe('ThemeService', () => {
     expect(service.isLight()).toBe(true);
     expect(document.documentElement.getAttribute('data-theme')).toBe('light');
     expect(document.documentElement.classList.contains('light-theme')).toBe(true);
-    expect(localStorage.getItem('inx_theme')).toBe('light');
+    expect(localStorage.getItem('subtlmind_theme')).toBe('light');
 
     service.toggleTheme();
     expect(service.currentTheme()).toBe('dark');
     expect(service.isLight()).toBe(false);
     expect(document.documentElement.getAttribute('data-theme')).toBe('dark');
     expect(document.documentElement.classList.contains('light-theme')).toBe(false);
-    expect(localStorage.getItem('inx_theme')).toBe('dark');
+    expect(localStorage.getItem('subtlmind_theme')).toBe('dark');
   });
 });

@@ -20,9 +20,9 @@ export interface TechItem {
         <!-- Section Header if grid mode -->
         <div class="ecosystem-header" *ngIf="mode === 'grid'">
           <div class="tag-eyebrow no-dot">— CERTIFIED RUNTIMES &amp; INFRASTRUCTURE</div>
-          <h2 class="section-title">Engineered for the Enterprise Ecosystem</h2>
+          <h2 class="section-title">Engineered for Connected Ecosystems</h2>
           <p class="section-subtitle">
-            INXENUITY deploys natively across leading cloud hyperscalers, container orchestration engines, GPU runtimes, and industrial edge operating systems.
+            Subtlmind deploys natively across leading IoT sensor networks, industrial edge runtimes, MQTT telemetry brokers, and cloud AI infrastructure.
           </p>
         </div>
 
@@ -320,8 +320,8 @@ export interface TechItem {
 
     .tech-badge:hover {
       transform: translateY(-2px);
-      border-color: var(--color-cyan);
-      box-shadow: 0 8px 24px rgba(0, 194, 255, 0.12);
+      border-color: var(--color-teal);
+      box-shadow: 0 8px 24px rgba(45, 212, 191, 0.15);
       background: var(--color-surface-hover);
     }
 
@@ -389,8 +389,8 @@ export interface TechItem {
     [data-theme="light"] .tech-badge:hover,
     .light-theme .tech-badge:hover {
       background: #f8fafc;
-      border-color: #0284c7;
-      box-shadow: 0 8px 24px rgba(2, 132, 199, 0.1);
+      border-color: var(--color-teal);
+      box-shadow: 0 8px 24px rgba(15, 118, 110, 0.1);
     }
 
     :host-context([data-theme="light"]) .icon-wrap,

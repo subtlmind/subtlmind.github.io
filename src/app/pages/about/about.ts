@@ -12,13 +12,13 @@ import { BriefingService } from '../../services/briefing.service';
       <section class="hero-section">
         <div class="container">
           <div class="hero-content">
-            <div class="tag-eyebrow">ABOUT</div>
+            <div class="tag-eyebrow">ABOUT SUBTLMIND</div>
             <h1 class="hero-title">
-              Built by Engineers Who've<br />
-              Shipped AI at Scale
+              Pioneering Ambient Intelligence<br />
+              <span class="text-gradient">For Intuitive Modern Living</span>
             </h1>
             <p class="hero-subtitle">
-              INXENUITY was founded to close the gap between AI research and production reality — delivering multimodal intelligence that operates reliably in the environments that matter most.
+              We believe the most powerful technology is the kind that works quietly in the background—anticipating needs, preventing disruptions, and optimizing environments without demanding constant human intervention.
             </p>
           </div>
         </div>
@@ -30,82 +30,118 @@ import { BriefingService } from '../../services/briefing.service';
           <div class="story-grid">
             <!-- Left: Our Story Text -->
             <div class="story-text-col">
-              <div class="tag-eyebrow no-dot">— OUR STORY</div>
-              <h2 class="story-title">From Research Lab to Production Floor</h2>
+              <div class="tag-eyebrow no-dot">— WHO WE ARE</div>
+              <h2 class="story-title">Technology that Works Quietly in the Background</h2>
               <p class="story-para">
-                INXENUITY was founded in 2026 by a team of systems engineers and AI researchers with a clear mission: closing the gap between artificial intelligence research and reliable, real-world production systems.
+                Subtlmind is a technology-first company pioneering the convergence of the Internet of Things (IoT), Deep Learning, and Large Language Models (LLMs). We believe the future of smart spaces shouldn't be defined by complex menus, blinking alert sirens, or constant smartphone notifications.
               </p>
               <p class="story-para">
-                We built INXENUITY to solve the core infrastructure challenges of deploying AI across physical and digital frontiers. Developing high-precision sensor fusion, acoustic reasoning, and low-latency inference orchestration primitives, we engineered a platform that operates seamlessly across constrained edge hardware and high-throughput cloud clusters.
+                By bridging the physical and digital worlds, we capture continuous real-time sensory data from connected environments and translate it into actionable, human-centric intelligence. Whether for modern residential ecosystems or complex industrial operations, Subtlmind builds resilient architectures designed for effortless modern living.
               </p>
               <p class="story-para">
-                Today, INXENUITY empowers modern enterprises with real-time digital twins, autonomous robotics perception, and industrial intelligence. Every capability we build is engineered for determinism, resilience, and scale.
+                From micro-zone circadian lighting to sub-second chiller vibration diagnostics, every solution we engineer is designed to dissolve into the background—lowering cognitive load and elevating everyday living.
               </p>
             </div>
 
             <!-- Right: 2x2 Stats Grid -->
             <div class="stats-grid">
-              <div class="stat-card hud-card">
-                <div class="stat-number">2026</div>
+              <div class="stat-card glass-card">
+                <div class="stat-number text-teal">2026</div>
                 <div class="stat-label">Founded</div>
               </div>
 
-              <div class="stat-card hud-card">
-                <div class="stat-number">4B+</div>
-                <div class="stat-label">Monthly inferences</div>
+              <div class="stat-card glass-card">
+                <div class="stat-number text-heading">&lt; 15ms</div>
+                <div class="stat-label">Edge Telemetry Inference</div>
               </div>
 
-              <div class="stat-card hud-card">
-                <div class="stat-number">38</div>
-                <div class="stat-label">Enterprise deployments</div>
+              <div class="stat-card glass-card">
+                <div class="stat-number text-amber">99.4%</div>
+                <div class="stat-label">Anomaly Detection Precision</div>
               </div>
 
-              <div class="stat-card hud-card">
-                <div class="stat-number">99.99%</div>
-                <div class="stat-label">Platform uptime SLA</div>
+              <div class="stat-card glass-card">
+                <div class="stat-number text-teal">-32%</div>
+                <div class="stat-label">Downtime &amp; Energy Waste</div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- MISSION & PRINCIPLES SECTION -->
-      <section class="section-padding">
+      <!-- VISION & MISSION SECTION -->
+      <section class="section-padding bg-alt-subtle">
+        <div class="container">
+          <div class="section-header text-center">
+            <div class="tag-eyebrow no-dot">— GUIDING NORTH STAR</div>
+            <h2 class="section-title">Our Vision &amp; Mission</h2>
+          </div>
+
+          <div class="grid-2 vm-grid">
+            <!-- Vision -->
+            <div class="glass-card vm-box">
+              <div class="vm-icon-wrap icon-teal">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                </svg>
+              </div>
+              <h3 class="vm-title">Our Vision</h3>
+              <p class="vm-desc">
+                To create a world where physical spaces and connected systems think, adapt, and respond naturally—making modern living and operations seamless, sustainable, and intuitive.
+              </p>
+            </div>
+
+            <!-- Mission -->
+            <div class="glass-card vm-box">
+              <div class="vm-icon-wrap icon-amber">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                </svg>
+              </div>
+              <h3 class="vm-title">Our Mission</h3>
+              <p class="vm-desc">
+                To engineer innovative, reliable AI and IoT architectures that turn continuous sensory streams into clear, predictive, and conversational intelligence.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CORE PRINCIPLES / THE SUBTLMIND ADVANTAGE -->
+      <section id="principles" class="section-padding">
         <div class="container">
           <div class="section-header">
-            <div class="tag-eyebrow no-dot">— MISSION</div>
-            <h2 class="section-title">Intelligence That Works in the Real World</h2>
-            <p class="mission-subtitle">
-              We believe the most important AI problems are not solved in benchmarks — they are solved on factory floors, in autonomous vehicles, and at the edge of industrial networks. Our mission is to make production-grade multimodal AI accessible to every engineering team that needs it.
-            </p>
+            <div class="tag-eyebrow no-dot">— CORE PRINCIPLES</div>
+            <h2 class="section-title">The Subtlmind Advantage</h2>
           </div>
 
           <div class="grid-2 principles-grid">
-            <div class="hud-card hud-bracket-tl-br">
-              <h3 class="principle-title">Production First</h3>
+            <div class="glass-card principle-card">
+              <h3 class="principle-title">Tech-First Engineering</h3>
               <p class="principle-text">
-                Every feature is validated in a live deployment before it ships. We do not release capabilities that only work in controlled conditions.
+                Built from the ground up on modern AI/ML and scalable IoT frameworks rather than legacy retrofits. Every telemetry pipeline, model inference runtime, and control loop is engineered for determinism and speed.
               </p>
             </div>
 
-            <div class="hud-card hud-bracket-tl-br">
-              <h3 class="principle-title">Deterministic by Design</h3>
+            <div class="glass-card principle-card">
+              <h3 class="principle-title">Subtle by Design</h3>
               <p class="principle-text">
-                Enterprise systems require predictable behaviour. We engineer for deterministic latency, reproducible outputs, and auditable inference pipelines.
+                Technology that reduces cognitive load—delivering calm, proactive outcomes instead of noisy alarm fatigue. We believe the best interface is an environment that adapts before you have to ask.
               </p>
             </div>
 
-            <div class="hud-card hud-bracket-tl-br">
-              <h3 class="principle-title">Hardware Honest</h3>
+            <div class="glass-card principle-card">
+              <h3 class="principle-title">Full-Stack Intelligence</h3>
               <p class="principle-text">
-                We optimise for the hardware our customers actually run — not the latest cloud GPU. That means ARM edge devices, embedded controllers, and constrained industrial hardware.
+                Unified expertise spanning hardware-level sensor integration (MQTT, Modbus, BLE), deep learning time-series pipelines, and natural-language AI agent interfaces that communicate in plain English.
               </p>
             </div>
 
-            <div class="hud-card hud-bracket-tl-br">
-              <h3 class="principle-title">Open Interfaces</h3>
+            <div class="glass-card principle-card">
+              <h3 class="principle-title">Built to Scale</h3>
               <p class="principle-text">
-                We integrate with the tools your team already uses — ROS 2, Kubernetes, OpenTelemetry, ONNX — rather than locking you into a proprietary ecosystem.
+                Modular microservices and edge orchestration engineered to grow effortlessly from a single smart room to enterprise-wide multi-property deployments with zero architectural lock-in.
               </p>
             </div>
           </div>
@@ -113,46 +149,46 @@ import { BriefingService } from '../../services/briefing.service';
       </section>
 
       <!-- LEADERSHIP / TEAM SECTION -->
-      <section class="section-padding team-section">
+      <section id="team" class="section-padding team-section bg-alt-subtle">
         <div class="container">
           <div class="section-header">
             <div class="tag-eyebrow no-dot">— LEADERSHIP</div>
-            <h2 class="section-title">The Team</h2>
+            <h2 class="section-title">Leadership Team</h2>
           </div>
 
           <div class="grid-2 team-grid">
-            <!-- 1. SHIVA KARANTOTHU -->
-            <div class="team-card hud-card">
+            <!-- 1. SHIVA KUMAR K -->
+            <div class="team-card glass-card">
               <div class="team-card-header">
                 <div class="avatar-badge">SK</div>
                 <div class="team-title-wrap">
-                  <h3 class="member-name">SHIVA KARANTOTHU</h3>
+                  <h3 class="member-name">Shiva Kumar K</h3>
                   <div class="member-role">Founder and CEO</div>
                 </div>
               </div>
               <p class="member-bio">
-                Founder and Chief Executive Officer driving INXENUITY's vision to pioneer multimodal AI systems and real-time intelligence. Leads strategic direction, core technology roadmap, and deployment of resilient AI solutions across enterprise operations.
+                Founder and Chief Executive Officer driving Subtlmind's vision to pioneer ambient AI, IoT sensory architectures, and predictive intelligence. Leads strategic direction, core technology roadmap, and deployment of resilient AI solutions across modern living and industrial environments.
               </p>
             </div>
 
-            <!-- 2. VINOD KARANTOTHU -->
-            <div class="team-card hud-card">
+            <!-- 2. VINOD KUMAR K -->
+            <div class="team-card glass-card">
               <div class="team-card-header">
                 <div class="avatar-badge">VK</div>
                 <div class="team-title-wrap">
-                  <h3 class="member-name">VINOD KARANTOTHU</h3>
-                  <div class="member-role">Technology Consultant</div>
+                  <h3 class="member-name">Vinod Kumar K</h3>
+                  <div class="member-role">Co-Founder and FDE</div>
                 </div>
               </div>
               <p class="member-bio">
-                Technology Consultant advising on scalable cloud platforms, distributed model inference pipelines, and enterprise systems engineering. Guides architecture implementation for high-throughput multimodal workloads and edge deployments.
+                Co-Founder and Forward Deployed Engineer (FDE) leading hands-on engineering deployments, scalable cloud platforms, distributed model inference pipelines, and edge-to-cloud telemetry systems. Drives direct architecture implementation for high-throughput sensor fusion, real-time computer vision, domain language models, and edge deployments.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ENGINEERING PHILOSOPHY SECTION -->
+      <!-- HOW WE BUILD / ENGINEERING PHILOSOPHY -->
       <section class="section-padding philosophy-section">
         <div class="container">
           <div class="section-header">
@@ -161,43 +197,43 @@ import { BriefingService } from '../../services/briefing.service';
           </div>
 
           <div class="grid-2 philosophy-grid">
-            <div class="hud-card">
+            <div class="glass-card ph-card">
               <div class="philosophy-header">
-                <span class="step-num">01</span>
+                <span class="step-num text-teal">01</span>
                 <h3 class="philosophy-title">Measure Everything</h3>
               </div>
               <p class="philosophy-text">
-                Every layer of the stack emits structured telemetry. We do not ship a feature without a latency budget, a drift detector, and a rollback path.
+                Every layer of the stack emits structured sensory telemetry. We do not deploy a model without strict latency benchmarks, anomaly drift detectors, and automated failover paths.
               </p>
             </div>
 
-            <div class="hud-card">
+            <div class="glass-card ph-card">
               <div class="philosophy-header">
-                <span class="step-num">02</span>
+                <span class="step-num text-amber">02</span>
                 <h3 class="philosophy-title">Fail Gracefully</h3>
               </div>
               <p class="philosophy-text">
-                Production AI systems encounter distribution shift, hardware faults, and network partitions. We design for degraded-mode operation, not just the happy path.
+                Real-world IoT networks face WAN outages and packet drops. Our edge gateways employ store-and-forward buffers and local decision autonomy to ensure spaces never stop functioning.
               </p>
             </div>
 
-            <div class="hud-card">
+            <div class="glass-card ph-card">
               <div class="philosophy-header">
-                <span class="step-num">03</span>
+                <span class="step-num text-teal">03</span>
                 <h3 class="philosophy-title">Compose, Don't Monolith</h3>
               </div>
               <p class="philosophy-text">
-                The platform is a set of independently deployable, observable services. Customers adopt the layers they need without taking on the layers they don't.
+                The Subtlmind architecture is a set of modular, observable primitives. Clients adopt the layers they need—whether edge sensor networks, predictive models, or conversational agents—without vendor lock-in.
               </p>
             </div>
 
-            <div class="hud-card">
+            <div class="glass-card ph-card">
               <div class="philosophy-header">
-                <span class="step-num">04</span>
-                <h3 class="philosophy-title">Security is Not a Layer</h3>
+                <span class="step-num text-amber">04</span>
+                <h3 class="philosophy-title">Privacy is Fundamental</h3>
               </div>
               <p class="philosophy-text">
-                mTLS, RBAC, encrypted artefacts, and audit trails are built into the core runtime — not bolted on after the fact. Air-gapped deployment is a first-class target.
+                Ambient spaces require absolute occupant trust. We emphasize radar and non-invasive sensors over invasive cameras, sanitize telemetry on-edge, and enforce hardware-backed mTLS encryption.
               </p>
             </div>
           </div>
@@ -207,20 +243,25 @@ import { BriefingService } from '../../services/briefing.service';
       <!-- CTA BANNER -->
       <section class="section-padding">
         <div class="container">
-          <div class="cta-banner hud-bracket-tl-br">
-            <div class="cta-content">
-              <h2 class="cta-title">Work With the Team</h2>
-              <p class="cta-desc">
-                Whether you're evaluating the platform or exploring a partnership, our engineering team is the right starting point.
-              </p>
-            </div>
-            <div class="cta-actions">
-              <a routerLink="/contact" class="btn-primary">
-                Contact Engineering
-              </a>
-              <button (click)="briefingService.open()" class="btn-secondary">
-                Direct Connect Hub
-              </button>
+          <div class="glass-card cta-banner-card">
+            <div class="cta-inner-grid">
+              <div class="cta-text-col">
+                <h2 class="cta-banner-title">Collaborate with Our Architecture Team</h2>
+                <p class="cta-banner-desc">
+                  Whether exploring an ambient living ecosystem or upgrading an industrial facility with predictive intelligence, our engineering team is ready to assist.
+                </p>
+              </div>
+              <div class="cta-action-col">
+                <button (click)="briefingService.open()" class="btn-primary w-full">
+                  <span>Schedule a Consultation</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </button>
+                <a routerLink="/contact" class="btn-secondary w-full">
+                  <span>Contact Solutions Desk</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -231,6 +272,7 @@ import { BriefingService } from '../../services/briefing.service';
     .hero-section {
       padding-top: 150px;
       padding-bottom: 70px;
+      background: radial-gradient(circle at 50% 0%, rgba(45, 212, 191, 0.08) 0%, transparent 70%);
     }
 
     .hero-title {
@@ -279,90 +321,152 @@ import { BriefingService } from '../../services/briefing.service';
       display: flex;
       flex-direction: column;
       justify-content: center;
+      text-align: center;
     }
 
     .stat-number {
-      font-size: 2.8rem;
+      font-family: var(--font-mono);
+      font-size: 2.4rem;
       font-weight: 800;
-      color: var(--color-cyan);
-      letter-spacing: -0.03em;
       margin-bottom: 8px;
       line-height: 1;
     }
 
     .stat-label {
-      font-family: var(--font-sans);
-      font-size: 0.88rem;
-      color: var(--color-text-secondary);
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
     }
 
-    /* Mission */
-    .mission-subtitle {
-      font-size: 1.05rem;
+    .text-teal { color: var(--color-teal); }
+    .text-teal-light { color: var(--color-teal); }
+    .text-amber { color: var(--color-amber); }
+    .text-heading { color: var(--color-text-heading); }
+
+    /* Vision Mission */
+    .bg-alt-subtle {
+      background: var(--color-bg-alt);
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .vm-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .vm-box {
+      padding: 36px;
+    }
+
+    .vm-icon-wrap {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .icon-teal {
+      background: rgba(45, 212, 191, 0.12);
+      border: 1px solid rgba(45, 212, 191, 0.3);
+      color: var(--color-teal);
+    }
+
+    .icon-amber {
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      color: var(--color-amber);
+    }
+
+    .vm-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--color-text-heading);
+      margin-bottom: 12px;
+    }
+
+    .vm-desc {
+      font-size: 0.96rem;
       color: var(--color-text-secondary);
-      max-width: 760px;
       line-height: 1.65;
-      margin-top: 12px;
+    }
+
+    /* Principles */
+    .principles-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .principle-card {
+      padding: 32px;
     }
 
     .principle-title {
       font-size: 1.25rem;
-      margin-bottom: 12px;
+      font-weight: 700;
       color: var(--color-text-heading);
+      margin-bottom: 12px;
     }
 
     .principle-text {
       font-size: 0.92rem;
       color: var(--color-text-secondary);
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
     /* Team */
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
     .team-card {
-      padding: 32px 28px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      border-radius: 12px;
+      padding: 32px;
     }
 
     .team-card-header {
       display: flex;
       align-items: center;
       gap: 16px;
+      margin-bottom: 20px;
     }
 
     .avatar-badge {
-      width: 48px;
-      height: 48px;
-      background: rgba(0, 194, 255, 0.12);
-      border: 1px solid var(--color-cyan);
-      border-radius: 8px;
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: rgba(45, 212, 191, 0.12);
+      border: 1px solid rgba(45, 212, 191, 0.35);
+      color: var(--color-teal);
       display: flex;
       align-items: center;
       justify-content: center;
       font-family: var(--font-mono);
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--color-cyan);
-      flex-shrink: 0;
+      font-size: 1.1rem;
+      font-weight: 800;
     }
 
     .member-name {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       font-weight: 700;
       color: var(--color-text-heading);
-      letter-spacing: -0.01em;
+      margin-bottom: 4px;
     }
 
     .member-role {
       font-family: var(--font-mono);
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--color-cyan);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      margin-top: 4px;
+      font-size: 0.78rem;
+      color: var(--color-teal);
+      letter-spacing: 0.05em;
     }
 
     .member-bio {
@@ -371,87 +475,90 @@ import { BriefingService } from '../../services/briefing.service';
       line-height: 1.65;
     }
 
-    /* Light Theme Contrast Protections */
-    :host-context([data-theme="light"]) .member-name,
-    :host-context(.light-theme) .member-name,
-    [data-theme="light"] .member-name,
-    .light-theme .member-name {
-      color: #0f172a !important;
-    }
-
-    :host-context([data-theme="light"]) .principle-title,
-    :host-context([data-theme="light"]) .philosophy-title,
-    :host-context(.light-theme) .principle-title,
-    :host-context(.light-theme) .philosophy-title {
-      color: #0f172a !important;
-    }
-
-    :host-context([data-theme="light"]) .avatar-badge,
-    :host-context(.light-theme) .avatar-badge {
-      background: rgba(2, 132, 199, 0.08);
-      border-color: #0284c7;
-      color: #0284c7;
-    }
-
-    :host-context([data-theme="light"]) .member-role,
-    :host-context(.light-theme) .member-role {
-      color: #0284c7;
-    }
-
     /* Philosophy */
+    .philosophy-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .ph-card {
+      padding: 30px;
+    }
+
     .philosophy-header {
       display: flex;
-      align-items: baseline;
-      gap: 16px;
+      align-items: center;
+      gap: 14px;
       margin-bottom: 12px;
     }
 
     .step-num {
       font-family: var(--font-mono);
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--color-cyan);
-      background: rgba(0, 194, 255, 0.1);
-      padding: 2px 8px;
-      border-radius: 2px;
-      border: 1px solid rgba(0, 194, 255, 0.3);
+      font-size: 1.3rem;
+      font-weight: 800;
     }
 
     .philosophy-title {
-      font-size: 1.25rem;
-      font-weight: 600;
+      font-size: 1.15rem;
+      font-weight: 700;
       color: var(--color-text-heading);
     }
 
     .philosophy-text {
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       color: var(--color-text-secondary);
       line-height: 1.6;
     }
 
     /* CTA Section */
-    .cta-title {
+    .cta-banner-card {
+      padding: 48px;
+      border-color: var(--color-border);
+    }
+
+    .cta-inner-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .cta-banner-title {
       font-size: 2rem;
+      font-weight: 800;
       margin-bottom: 12px;
     }
 
-    .cta-desc {
+    .cta-banner-desc {
       font-size: 1rem;
-      max-width: 580px;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
     }
 
-    .cta-actions {
+    .cta-action-col {
       display: flex;
-      gap: 16px;
-      flex-shrink: 0;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .w-full {
+      width: 100%;
+      justify-content: center;
     }
 
     @media (max-width: 900px) {
-      .story-grid {
+      .story-grid, .vm-grid, .principles-grid, .team-grid, .philosophy-grid, .cta-inner-grid {
         grid-template-columns: 1fr;
       }
-      .cta-actions {
-        flex-direction: column;
+    }
+
+    @media (max-width: 600px) {
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+      .cta-banner-card {
+        padding: 28px;
       }
     }
   `]

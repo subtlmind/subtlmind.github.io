@@ -1,78 +1,111 @@
-# INXENUITY — Multimodal AI Architecture for Enterprise
+# Subtlmind — Ambient Intelligence for Intuitive Modern Living
 
-Official website for **INXENUITY** ([inxenuity.com](https://inxenuity.com)), engineered with modern Angular (standalone components, signals, and application builder).
+Official website and digital presence for **Subtlmind Technologies** ([subtlmind.in](https://subtlmind.in)), engineered with modern Angular (standalone components, signals, and application builder).
 
 ---
 
 ## Toolchain & Environment Versions
 
-The project is built and verified with the following toolchain versions:
+The application is built, tested, and verified with the following toolchain versions:
 
-| Tool | Version | Notes |
-| :--- | :--- | :--- |
-| **NVM** | `0.39.7` | Node Version Manager |
-| **Node.js** | `v22.23.3` | Node 22 LTS |
-| **NPM** | `10.9.9` | Package Manager |
-| **Angular CLI (`@angular/cli`)** | `22.2.3` | Angular Command Line Interface |
-| **Angular Core (`@angular/core`)** | `22.2.3` | Standalone components & Signals |
-| **TypeScript** | `6.0.3` | Type system |
-| **Vitest** | `5.0.5` | Unit testing engine |
-| **OS** | Linux x64 / macOS / Windows | Cross-platform |
+| Tool | Recommended Version | Supported Version | Notes |
+| :--- | :--- | :--- | :--- |
+| **NVM** | `0.39.7` | `^0.39.0` | Node Version Manager |
+| **Node.js** | `v24.22.0` | `v22.23.3` (LTS) | JavaScript Runtime |
+| **NPM** | `11.19.1` | `10.9.9` | Package Manager |
+| **Angular CLI (`@angular/cli`)** | `22.2.3` | `22.2.3` | Angular Command Line Interface |
+| **Angular Core (`@angular/core`)** | `22.2.3` | `22.2.3` | Standalone components & Signals |
+| **TypeScript** | `6.0.3` | `~6.0.2` | Type system |
+| **Vitest** | `5.0.5` | `^5.0.0` | Unit test engine |
+| **Operating System** | Linux x64 / macOS / Windows | Cross-platform | Verified on Linux |
 
 ---
 
 ## Repository Branch Architecture
 
-The repository uses a dual-branch workflow:
+The repository uses a dual-branch structure tailored for GitHub Pages user/organization sites:
 
-- **`dev` branch**: Active development branch containing all Angular source code (`src/`), configurations (`angular.json`, `package.json`, `tsconfig.json`), tests, and documentation. All feature work, fixes, and commits are made here.
-- **`main` branch**: GitHub Pages deployment branch. It contains exclusively the compiled static production build files (`index.html`, `404.html`, `CNAME`, `.nojekyll`, bundles, and assets) at the root level, served live by GitHub Pages at [https://inxenuity.com](https://inxenuity.com).
+- **`dev` branch**: **Source Code Branch**. Contains all Angular TypeScript source code (`src/`), styling (`src/styles.css`), configurations (`angular.json`, `package.json`, `tsconfig.json`), tests, and brand assets. All development, commits, and pull requests occur on this branch.
+- **`main` branch**: **GitHub Pages Deployment Branch**. Contains exclusively the compiled static production output files (`index.html`, `404.html`, `CNAME`, `.nojekyll`, hashed JavaScript bundles, and assets) at the root level, served live by GitHub Pages at [https://subtlmind.in](https://subtlmind.in).
 
 ---
 
-## Prerequisites & Initial Setup
+## Installation & Setup Instructions
 
-Ensure `nvm` is loaded in your shell:
+### 1. Install & Configure NVM
+
+If Node Version Manager (NVM) is not already installed on your machine:
 
 ```bash
+# Install NVM (macOS/Linux)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+
+# Load NVM into your shell
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 ```
 
-Install and use the matching Node.js version:
+Verify NVM installation:
 
 ```bash
-nvm install 22.23.3
-nvm use 22.23.3
+nvm --version   # Output: 0.39.7
 ```
 
-Verify your environment:
+---
+
+### 2. Install & Select Node.js
+
+Install and switch to the recommended Node.js version:
 
 ```bash
-node -v   # Should output v22.23.3
-npm -v    # Should output 10.9.9
+# Install recommended Node version
+nvm install 24.22.0
+nvm use 24.22.0
+
+# Verify active versions
+node -v   # Output: v24.22.0
+npm -v    # Output: 11.19.1
 ```
 
-Install project dependencies:
+*(Alternatively, Node `22.23.3` LTS is also fully supported via `nvm install 22.23.3 && nvm use 22.23.3`)*
+
+---
+
+### 3. Clone Repository & Install Dependencies
 
 ```bash
+# Clone the repository
+git clone git@github.com:INXENUITY/inxenuity.github.io.git subtlmind
+cd subtlmind
+
+# Ensure you are on the dev branch
+git checkout dev
+
+# Install npm dependencies
 npm install
 ```
 
----
-
-## Detailed Step-by-Step Instructions
-
-### 1. Serve (Local Development)
-
-Start the local Angular development server with live reload:
+Verify that Angular CLI is available:
 
 ```bash
-# Ensure NVM is active
+npx ng version
+```
+
+---
+
+## Development & Build Workflow
+
+### 1. Serve (Local Development Server)
+
+Start the Angular development server with live reload:
+
+```bash
+# Ensure NVM environment is loaded
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+nvm use 24.22.0
 
-# Launch dev server
+# Start development server
 npm start
 # or: npx ng serve --host 0.0.0.0 --port 4200
 ```
@@ -84,10 +117,10 @@ Open your browser at:
 
 ### 2. Run Tests
 
-Run unit test suites via Vitest:
+Execute unit tests via Vitest:
 
 ```bash
-# Single test run (CI / verification mode)
+# Single execution (CI mode)
 npm test -- --watch=false
 
 # Interactive watch mode
@@ -96,111 +129,151 @@ npm test
 
 ---
 
-### 3. Build (Production Bundle)
+### 3. Build (Production Artifacts)
 
-Compile the application for production:
+Compile the application with production optimizations:
 
 ```bash
-# Ensure NVM is active
+# Ensure NVM environment is loaded
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+nvm use 24.22.0
 
-# Build production bundle
+# Run production build
 npm run build
 ```
 
 This command:
-1. Runs `ng build` with production optimizations (tree-shaking, minification, hashing).
-2. Copies `public/` assets (`CNAME`, `.nojekyll`, `favicon.ico`, `assets/`) to the output folder.
-3. Automatically duplicates `index.html` as `404.html` so that GitHub Pages correctly handles client-side Angular routing for deep links (e.g. `/platform`, `/solutions`, `/about`, `/contact`).
+1. Runs `ng build` with production optimizations (AOT compilation, tree-shaking, minification, script bundling).
+2. Automatically copies static assets from `public/` (`CNAME`, `.nojekyll`, `favicon.ico`, `sitemap.xml`, `robots.txt`, `site.webmanifest`, `assets/`) into the output directory.
+3. Automatically duplicates `index.html` as `404.html` so that GitHub Pages handles client-side Angular deep links (e.g. `/solutions`, `/about`, `/contact`) without 404 errors.
 
 Output directory:
 `dist/inxenuity-site/browser/`
 
 ---
 
-### 4. Deploy to GitHub Pages (Deploy `dist` to `main`)
+## Publishing to GitHub Pages (`main` Branch)
 
-Follow these exact steps to commit source changes to `dev` and push production build files to `main`.
+Follow these exact steps to commit source changes on `dev` and publish the compiled site to `main`.
 
-#### Step 4.1: Commit & Push Source Changes to `dev`
+### Step 1: Commit and Push Source Changes to `dev`
 
 ```bash
-# 1. Switch to dev branch and check status
+# Ensure you are on the dev branch
 git checkout dev
+
+# Check working tree status
 git status
 
-# 2. Stage and commit source changes
-git add .
-git commit -m "feat/fix: describe your changes"
+# Stage all source changes
+git add -A
 
-# 3. Push source to dev branch
+# Commit changes
+git commit -m "feat: describe your updates"
+
+# Push to origin dev
 git push origin dev
 ```
 
-#### Step 4.2: Build the Production Artifacts
+---
+
+### Step 2: Build the Production Application
 
 ```bash
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+nvm use 24.22.0
 
+# Clean build
 npm run build
 ```
 
-#### Step 4.3: Deploy Build Files to `main` via Git Worktree (Recommended)
+---
 
-Using a temporary Git worktree is the cleanest and fastest deployment method because it never dirties your working tree or requires branch switching:
+### Step 3: Deploy to `main` via Git Worktree
+
+Deploying via a temporary Git worktree is fast, clean, and prevents accidentally dirtying your working tree or switching branches:
 
 ```bash
-# 1. Remove any stale temporary worktree if one exists
-git worktree remove --force /tmp/inxenuity-deploy 2>/dev/null || true
+# 1. Ensure local main branch is synchronized with remote
+git fetch origin main:main
 
-# 2. Create a clean worktree checked out to the main branch
-git worktree add /tmp/inxenuity-deploy main
+# 2. Remove any previous temporary worktree if present
+git worktree remove --force /tmp/subtlmind-deploy 2>/dev/null || true
 
-# 3. Clean existing files from the main branch (preserves .git)
-rm -rf /tmp/inxenuity-deploy/*
+# 3. Create a clean worktree checked out to the main branch
+git worktree add /tmp/subtlmind-deploy main
 
-# 4. Copy the new build files into the worktree root
-cp -r dist/inxenuity-site/browser/* /tmp/inxenuity-deploy/
+# 4. Clean existing files from the main branch (preserves .git metadata)
+rm -rf /tmp/subtlmind-deploy/*
 
-# 5. Ensure 404.html, CNAME, and .nojekyll are present at root
-cp dist/inxenuity-site/browser/index.html /tmp/inxenuity-deploy/404.html
-echo "inxenuity.com" > /tmp/inxenuity-deploy/CNAME
-touch /tmp/inxenuity-deploy/.nojekyll
+# 5. Copy the newly compiled build files to the worktree root
+cp -r dist/inxenuity-site/browser/* /tmp/subtlmind-deploy/
 
-# 6. Commit and push the build files to main
-cd /tmp/inxenuity-deploy
+# 6. Ensure required GitHub Pages files are present at the root
+cp dist/inxenuity-site/browser/index.html /tmp/subtlmind-deploy/404.html
+echo "subtlmind.in" > /tmp/subtlmind-deploy/CNAME
+touch /tmp/subtlmind-deploy/.nojekyll
+
+# 7. Commit and push the build files to main
+cd /tmp/subtlmind-deploy
 git add -A
-git commit -m "Deploy: Update site build for GitHub Pages"
+git commit -m "Deploy: Publish latest Subtlmind build to GitHub Pages"
 git push origin main
 
-# 7. Return to project directory and remove the temporary worktree
+# 8. Return to your repository and remove the temporary worktree
 cd -
-git worktree remove --force /tmp/inxenuity-deploy
+git worktree remove --force /tmp/subtlmind-deploy
 ```
 
-Your changes will be live at [https://inxenuity.com](https://inxenuity.com) within 1–2 minutes via GitHub Pages.
+Your updates will be live globally at [https://subtlmind.in](https://subtlmind.in) within 1–2 minutes via GitHub Pages.
 
 ---
 
-## Configuration & Customization Notes
+## Key Features & Capabilities
 
-### Updating the Hero Video Link
+1. **Five Architectural Pillars**:
+   - **Pillar 01 — Sensory Data & IoT Architecture** (`/solutions#iot`): Sub-15ms edge ingestion, MQTT/Modbus/BLE/Matter, store-and-forward WAN resilience.
+   - **Pillar 02 — Real-Time Video Inference & Computer Vision** (`/solutions#vision`): IP/machine/thermal camera analytics, edge detection (YOLO/RT-DETR), segmentation, and classification.
+   - **Pillar 03 — Deep Learning & Predictive Maintenance** (`/solutions#predictive`): Multi-modal cross-validation, 240-hour lead warnings, vibration/thermal harmonics.
+   - **Pillar 04 — Language Models & Conversational Control** (`/solutions#conversational`): Domain-grounded hybrid RAG copilots and natural language ambient control.
+   - **Pillar 05 — Smart Operations & Automation** (`/solutions#automation`): Real-time closed-loop actuation, BACnet/OPC-UA/REST PLC interlocks.
 
-The platform hero section features a borderless autoplay YouTube video player. To replace the video:
+2. **Search Engine Optimization (SEO)**:
+   - Dynamic per-route metadata (`title`, `description`, `keywords`, `canonical`, Open Graph, Twitter cards) via `SeoService`.
+   - Schema.org JSON-LD structured data (`Organization`, `WebSite`, `SoftwareApplication`) with verified `sameAs` social associations.
+   - Automated `sitemap.xml` and `robots.txt` generation.
 
-1. Open [`src/app/pages/platform/platform.ts`](file:///home/vinod/inxenuity.github.io/src/app/pages/platform/platform.ts).
-2. Locate the `youtubeVideoUrl` property in `PlatformComponent`:
-   ```typescript
-   // Replace this URL with your actual YouTube video link when ready:
-   youtubeVideoUrl = 'https://www.youtube.com/watch?v=YOUR_VIDEO_ID';
-   ```
-3. The component automatically extracts the video ID and configures borderless autoplay (`autoplay=1&mute=1&loop=1`).
-4. Re-run `npm run build` and deploy to `main`.
+3. **Analytics & Lead Tracking**:
+   - Google Tag (gtag.js) integration (`G-N7BBG3G3LZ`).
+   - SPA route transition tracking (`page_view`) on Angular `NavigationEnd`.
+   - Lead conversion tracking (`generate_lead`) on consultation and contact form submissions.
+
+4. **Brand & Social Presence**:
+   - **LinkedIn**: [https://www.linkedin.com/company/subtlmind](https://www.linkedin.com/company/subtlmind)
+   - **Instagram**: [https://www.instagram.com/subtlmind](https://www.instagram.com/subtlmind)
+   - **YouTube**: [https://www.youtube.com/@subtlmind](https://www.youtube.com/@subtlmind)
+   - **GitHub**: [https://github.com/subtlmind](https://github.com/subtlmind)
+   - **Direct Contact**: `subtlmind@outlook.com`
+
+---
+
+## Design System & Theme Guidelines
+
+The Subtlmind color palette, typography hierarchy, contrast accessibility rules (WCAG AA), and component standards are formally documented in [`docs/THEME_AND_DESIGN_SYSTEM.md`](file:///home/vinod/inxenuity.github.io/docs/THEME_AND_DESIGN_SYSTEM.md).
+
+All future code contributions and UI styling additions must adhere to:
+- **Primary Palette**: Obsidian Ink (`#06090F`), Slate Deep (`#0B111E`), Card Surface (`#101829`), Teal Accent (`#2DD4BF`), and Warm Amber (`#F59E0B`).
+- **Foreground Text Contrast on Dark Backgrounds**:
+  - Headings: `#FFFFFF`
+  - Body Text: `#F1F5F9`
+  - Secondary Copy: `#CBD5E1` (≥ 8.5:1 contrast)
+  - Labels & Metadata: `#94A3B8` (≥ 6.5:1 contrast)
+- **Typography**: `Plus Jakarta Sans` (Display), `Inter` (Body), and `JetBrains Mono` (Telemetry).
 
 ---
 
 ## License
 
-Copyright © 2026 INXENUITY. All rights reserved.
+Copyright © 2026 Subtlmind Technologies. All rights reserved.

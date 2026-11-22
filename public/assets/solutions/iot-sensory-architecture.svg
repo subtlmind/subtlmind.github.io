@@ -1,0 +1,226 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070B14"/>
+      <stop offset="50%" stop-color="#0A1020"/>
+      <stop offset="100%" stop-color="#06090F"/>
+    </linearGradient>
+
+    <!-- Card Fill -->
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10182B"/>
+      <stop offset="100%" stop-color="#0B111F"/>
+    </linearGradient>
+
+    <!-- Teal Glow Gradient -->
+    <linearGradient id="tealGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2DD4BF"/>
+      <stop offset="100%" stop-color="#0D9488"/>
+    </linearGradient>
+
+    <!-- Amber Glow Gradient -->
+    <linearGradient id="amberGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+
+    <!-- Subtle Grid Pattern -->
+    <pattern id="techGrid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="rgba(255, 255, 255, 0.03)" stroke-width="1"/>
+    </pattern>
+
+    <!-- Flow Line Filter (Glow) -->
+    <filter id="tealGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="800" height="480" fill="url(#bgGrad)"/>
+  <rect width="800" height="480" fill="url(#techGrid)"/>
+
+  <!-- Top Technical Header -->
+  <rect x="0" y="0" width="800" height="42" fill="rgba(10, 16, 28, 0.9)" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
+  <circle cx="24" cy="21" r="4" fill="#2DD4BF" filter="url(#tealGlow)"/>
+  <text x="36" y="25" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" letter-spacing="1.5">SUBTLMIND</text>
+  <text x="124" y="25" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="11" letter-spacing="1">// PILLAR 01: SENSORY DATA &amp; IOT ARCHITECTURE</text>
+  
+  <rect x="670" y="11" width="108" height="20" rx="4" fill="rgba(45, 212, 191, 0.12)" stroke="rgba(45, 212, 191, 0.3)" stroke-width="1"/>
+  <text x="724" y="25" fill="#2DD4BF" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" text-anchor="middle">&lt; 15ms INGESTION</text>
+
+  <!-- SECTION 1: PHYSICAL SENSORY NODES -->
+  <rect x="24" y="62" width="170" height="355" rx="10" fill="url(#cardGrad)" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
+  <text x="38" y="86" fill="#2DD4BF" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" letter-spacing="1">01 / SENSOR NODES</text>
+  <text x="38" y="104" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700">Physical Ingest</text>
+
+  <!-- Node 1: Vibration & Acoustics -->
+  <g transform="translate(36, 120)">
+    <rect width="146" height="58" rx="6" fill="#0C1424" stroke="rgba(45, 212, 191, 0.25)" stroke-width="1"/>
+    <circle cx="16" cy="18" r="5" fill="#2DD4BF"/>
+    <text x="28" y="22" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600">Vibration / FFT</text>
+    <text x="28" y="36" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="9">10 kHz Piezo Sensor</text>
+    <text x="28" y="48" fill="#F59E0B" font-family="'JetBrains Mono', monospace" font-size="9">±16g Dynamic Range</text>
+  </g>
+
+  <!-- Node 2: mmWave Occupancy -->
+  <g transform="translate(36, 188)">
+    <rect width="146" height="58" rx="6" fill="#0C1424" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
+    <circle cx="16" cy="18" r="5" fill="#F59E0B"/>
+    <text x="28" y="22" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600">mmWave Radar</text>
+    <text x="28" y="36" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="9">24 GHz Micro-Doppler</text>
+    <text x="28" y="48" fill="#2DD4BF" font-family="'JetBrains Mono', monospace" font-size="9">Zero-Camera Privacy</text>
+  </g>
+
+  <!-- Node 3: Lux & Environmental -->
+  <g transform="translate(36, 256)">
+    <rect width="146" height="58" rx="6" fill="#0C1424" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
+    <circle cx="16" cy="18" r="5" fill="#2DD4BF"/>
+    <text x="28" y="22" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600">Ambient Lux &amp; Air</text>
+    <text x="28" y="36" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="9">0.01 - 100k Lux | I2C</text>
+    <text x="28" y="48" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="9">CO2, VOC &amp; Humidity</text>
+  </g>
+
+  <!-- Node 4: Power Harmonics -->
+  <g transform="translate(36, 324)">
+    <rect width="146" height="58" rx="6" fill="#0C1424" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
+    <circle cx="16" cy="18" r="5" fill="#A78BFA"/>
+    <text x="28" y="22" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600">Power Harmonics</text>
+    <text x="28" y="36" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="9">CT Induction Clamp</text>
+    <text x="28" y="48" fill="#A78BFA" font-family="'JetBrains Mono', monospace" font-size="9">Sub-meter Wattage</text>
+  </g>
+
+  <!-- CONNECTORS: NODES TO PROTOCOL BUS -->
+  <path d="M 182 149 L 222 149 L 222 240 L 235 240" fill="none" stroke="#2DD4BF" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <path d="M 182 217 L 235 217" fill="none" stroke="#F59E0B" stroke-width="1.5"/>
+  <path d="M 182 285 L 222 285 L 222 240 L 235 240" fill="none" stroke="#2DD4BF" stroke-width="1.5"/>
+  <path d="M 182 353 L 235 353" fill="none" stroke="#A78BFA" stroke-width="1.5" stroke-dasharray="3,3"/>
+
+  <!-- SECTION 2: PROTOCOL BUS -->
+  <rect x="235" y="100" width="125" height="280" rx="8" fill="#090E1A" stroke="rgba(45, 212, 191, 0.2)" stroke-width="1"/>
+  <text x="247" y="124" fill="#2DD4BF" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700">MULTI-PROTOCOL</text>
+  <text x="247" y="139" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700">Edge Bus</text>
+
+  <!-- Protocol Pills -->
+  <g transform="translate(247, 154)">
+    <rect width="101" height="26" rx="4" fill="#10192D" stroke="rgba(255, 255, 255, 0.08)"/>
+    <text x="8" y="17" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="9">MQTT v5.0 Broker</text>
+  </g>
+  <g transform="translate(247, 188)">
+    <rect width="101" height="26" rx="4" fill="#10192D" stroke="rgba(255, 255, 255, 0.08)"/>
+    <text x="8" y="17" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="9">Modbus RTU/TCP</text>
+  </g>
+  <g transform="translate(247, 222)">
+    <rect width="101" height="26" rx="4" fill="#10192D" stroke="rgba(255, 255, 255, 0.08)"/>
+    <text x="8" y="17" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="9">BLE Mesh / Matter</text>
+  </g>
+  <g transform="translate(247, 256)">
+    <rect width="101" height="26" rx="4" fill="#10192D" stroke="rgba(255, 255, 255, 0.08)"/>
+    <text x="8" y="17" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="9">Zigbee 3.0 Cluster</text>
+  </g>
+  <g transform="translate(247, 290)">
+    <rect width="101" height="26" rx="4" fill="#10192D" stroke="rgba(255, 255, 255, 0.08)"/>
+    <text x="8" y="17" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="9">BACnet IP / MSTP</text>
+  </g>
+  <g transform="translate(247, 324)">
+    <rect width="101" height="36" rx="4" fill="rgba(45, 212, 191, 0.08)" stroke="rgba(45, 212, 191, 0.25)"/>
+    <text x="8" y="16" fill="#2DD4BF" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="700">RESILIENCE</text>
+    <text x="8" y="28" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="8">Local Store &amp; Forward</text>
+  </g>
+
+  <!-- BUS TO EDGE RUNTIME CONNECTOR -->
+  <line x1="360" y1="240" x2="395" y2="240" stroke="#2DD4BF" stroke-width="2" filter="url(#tealGlow)"/>
+  <polygon points="395,240 387,236 387,244" fill="#2DD4BF"/>
+
+  <!-- SECTION 3: SUBTLMIND EDGE RUNTIME GATEWAY -->
+  <rect x="395" y="62" width="200" height="355" rx="10" fill="url(#cardGrad)" stroke="rgba(45, 212, 191, 0.35)" stroke-width="1.5" filter="url(#tealGlow)"/>
+  <rect x="407" y="74" width="70" height="18" rx="4" fill="#2DD4BF"/>
+  <text x="442" y="87" fill="#06090F" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="800" text-anchor="middle">EDGE CORE</text>
+  <text x="407" y="112" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="700">Subtlmind Gateway</text>
+  <text x="407" y="128" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="9">NPU / ARM Embedded Runtime</text>
+
+  <!-- Sub-block 1: Kalman Filter -->
+  <g transform="translate(407, 142)">
+    <rect width="176" height="54" rx="6" fill="#0A101E" stroke="rgba(255, 255, 255, 0.08)"/>
+    <text x="12" y="20" fill="#2DD4BF" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600">On-Edge Signal Filtering</text>
+    <text x="12" y="34" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="9">Kalman noise removal</text>
+    <text x="12" y="46" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="8">Adaptive gain baseline</text>
+  </g>
+
+  <!-- Sub-block 2: Schema Normalization -->
+  <g transform="translate(407, 204)">
+    <rect width="176" height="54" rx="6" fill="#0A101E" stroke="rgba(255, 255, 255, 0.08)"/>
+    <text x="12" y="20" fill="#F59E0B" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600">Schema Normalization</text>
+    <text x="12" y="34" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="9">Heterogeneous to Avro / JSON</text>
+    <text x="12" y="46" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="8">Unified semantic tagging</text>
+  </g>
+
+  <!-- Sub-block 3: Zero-Trust Security -->
+  <g transform="translate(407, 266)">
+    <rect width="176" height="54" rx="6" fill="#0A101E" stroke="rgba(255, 255, 255, 0.08)"/>
+    <text x="12" y="20" fill="#A78BFA" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600">Hardware Root-of-Trust</text>
+    <text x="12" y="34" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="9">TPM 2.0 &amp; mTLS 1.3</text>
+    <text x="12" y="46" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="8">Local privacy anonymization</text>
+  </g>
+
+  <!-- Sub-block 4: Store & Forward -->
+  <g transform="translate(407, 328)">
+    <rect width="176" height="66" rx="6" fill="rgba(45, 212, 191, 0.06)" stroke="rgba(45, 212, 191, 0.25)"/>
+    <text x="12" y="20" fill="#2DD4BF" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600">Flash Ring-Buffer</text>
+    <text x="12" y="34" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="9">72-Hour offline memory store</text>
+    <text x="12" y="48" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="8">Zero data loss on WAN drop</text>
+  </g>
+
+  <!-- EDGE TO CLOUD CONNECTOR -->
+  <line x1="595" y1="240" x2="628" y2="240" stroke="#2DD4BF" stroke-width="2" stroke-dasharray="4,3"/>
+  <polygon points="628,240 620,236 620,244" fill="#2DD4BF"/>
+
+  <!-- SECTION 4: CLOUD TELEMETRY & AI LAKE -->
+  <rect x="628" y="62" width="148" height="355" rx="10" fill="url(#cardGrad)" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
+  <text x="640" y="86" fill="#2DD4BF" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" letter-spacing="1">03 / UPSTREAM</text>
+  <text x="640" y="104" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700">Telemetry Lake</text>
+
+  <!-- Upstream Target 1: DL Models -->
+  <g transform="translate(638, 126)">
+    <rect width="128" height="64" rx="6" fill="#0C1424" stroke="rgba(45, 212, 191, 0.2)"/>
+    <text x="10" y="20" fill="#2DD4BF" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600">Predictive DL</text>
+    <text x="10" y="35" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="8">Anomaly models</text>
+    <text x="10" y="48" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="8">Vibration harmonics</text>
+  </g>
+
+  <!-- Upstream Target 2: Conversational LLM -->
+  <g transform="translate(638, 202)">
+    <rect width="128" height="64" rx="6" fill="#0C1424" stroke="rgba(245, 158, 11, 0.2)"/>
+    <text x="10" y="20" fill="#F59E0B" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600">RAG Context</text>
+    <text x="10" y="35" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="8">Vector embeddings</text>
+    <text x="10" y="48" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="8">Facility policies</text>
+  </g>
+
+  <!-- Upstream Target 3: BMS Autonomy -->
+  <g transform="translate(638, 278)">
+    <rect width="128" height="64" rx="6" fill="#0C1424" stroke="rgba(167, 139, 250, 0.2)"/>
+    <text x="10" y="20" fill="#A78BFA" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600">BMS Loop</text>
+    <text x="10" y="35" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="8">Closed-loop control</text>
+    <text x="10" y="48" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="8">HVAC &amp; Lux tuning</text>
+  </g>
+
+  <!-- Upstream SLA Badge -->
+  <g transform="translate(638, 354)">
+    <rect width="128" height="42" rx="6" fill="rgba(16, 185, 129, 0.08)" stroke="rgba(16, 185, 129, 0.3)"/>
+    <circle cx="20" cy="21" r="4" fill="#10B981"/>
+    <text x="32" y="18" fill="#10B981" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="700">99.999% SLA</text>
+    <text x="32" y="30" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="8">Zero Ingestion Loss</text>
+  </g>
+
+  <!-- BOTTOM STATUS & TELEMETRY STRIP -->
+  <rect x="0" y="440" width="800" height="40" fill="rgba(6, 9, 15, 0.95)" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1"/>
+  <text x="24" y="464" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="10">STATUS: </text>
+  <text x="75" y="464" fill="#10B981" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">EDGE PIPELINE ACTIVE</text>
+  <text x="240" y="464" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="10">SAMPLING: </text>
+  <text x="305" y="464" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="10">10 kHz DYNAMIC</text>
+  <text x="450" y="464" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="10">ENCRYPTION: </text>
+  <text x="532" y="464" fill="#2DD4BF" font-family="'JetBrains Mono', monospace" font-size="10">mTLS 1.3 + AES-256</text>
+  <text x="680" y="464" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="10">LATENCY: </text>
+  <text x="740" y="464" fill="#2DD4BF" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">&lt; 15ms</text>
+</svg>

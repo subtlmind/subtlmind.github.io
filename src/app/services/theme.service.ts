@@ -6,7 +6,7 @@ export type Theme = 'dark' | 'light';
   providedIn: 'root'
 })
 export class ThemeService {
-  private readonly storageKey = 'inx_theme';
+  private readonly storageKey = 'subtlmind_theme';
   readonly currentTheme = signal<Theme>('dark');
   readonly isLight = computed(() => this.currentTheme() === 'light');
 
@@ -17,7 +17,7 @@ export class ThemeService {
   private initTheme(): void {
     if (typeof window === 'undefined') return;
 
-    const saved = localStorage.getItem(this.storageKey) as Theme | null;
+    const saved = (localStorage.getItem(this.storageKey) || localStorage.getItem('inx_theme')) as Theme | null;
     if (saved === 'dark' || saved === 'light') {
       this.applyTheme(saved);
     } else {

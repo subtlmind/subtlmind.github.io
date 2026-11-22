@@ -1,84 +1,128 @@
-import { Component, EventEmitter, Input, Output, signal } from '@angular/core';
+import { Component, EventEmitter, Input, Output, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { AnalyticsService } from '../../services/analytics.service';
 
 @Component({
   selector: 'app-briefing-modal',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   template: `
     <div *ngIf="isOpen" class="modal-overlay" (click)="onBackdropClick($event)">
-      <div class="modal-card hud-card hud-bracket-tl-br">
+      <div class="modal-card">
         <!-- Close Button -->
-        <button class="modal-close" (click)="close.emit()" aria-label="Close modal">
+        <button class="modal-close" (click)="closeModal()" aria-label="Close modal">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="18" y1="6" x2="6" y2="18"/>
             <line x1="6" y1="6" x2="18" y2="18"/>
           </svg>
         </button>
 
-        <div class="tag-eyebrow">DIRECT ENGINEERING ENGAGEMENT</div>
-        <h2 class="modal-title">Connect with INXENUITY</h2>
+        <div class="tag-eyebrow">SUBTLMIND SOLUTIONS DESK</div>
+        <h2 class="modal-title">Schedule an Architecture Consultation</h2>
         <p class="modal-desc">
-          No forms, no wait queues. Connect directly with our systems architects and technical leadership via your preferred channel for an immediate workload review.
+          Discuss your smart living, predictive maintenance, or conversational AI deployment directly with our solutions architects.
         </p>
 
-        <!-- Direct Channel Cards -->
-        <div class="direct-channels-grid">
-          <!-- 1. WhatsApp -->
-          <a 
-            href="https://wa.me/919848016664?text=Hello%20INXENUITY%20team,%20I%20would%20like%20to%20learn%20more%20about%20your%20multimodal%20AI%20solutions." 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            class="channel-box whatsapp-box">
-            <div class="channel-top">
-              <div class="channel-icon-wrap wa-icon-wrap">
-                <!-- WhatsApp SVG Icon -->
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2ZM12.05 20.15C10.57 20.15 9.12 19.76 7.85 19L7.55 18.82L4.43 19.64L5.26 16.6L5.06 16.29C4.24 14.97 3.8 13.46 3.8 11.91C3.8 7.37 7.5 3.67 12.05 3.67C14.25 3.67 16.32 4.53 17.87 6.08C19.42 7.63 20.28 9.7 20.27 11.9C20.27 16.45 16.58 20.15 12.05 20.15ZM16.57 14.37C16.32 14.24 15.1 13.64 14.87 13.56C14.65 13.47 14.48 13.43 14.32 13.68C14.15 13.93 13.68 14.48 13.54 14.65C13.39 14.81 13.25 14.83 13 14.71C12.75 14.58 11.94 14.32 10.99 13.47C10.25 12.81 9.74 11.99 9.6 11.74C9.46 11.49 9.58 11.36 9.71 11.23C9.82 11.12 9.96 10.94 10.08 10.8C10.21 10.65 10.25 10.55 10.33 10.38C10.42 10.21 10.38 10.07 10.31 9.94C10.25 9.82 9.76 8.61 9.55 8.12C9.35 7.63 9.15 7.7 9 7.69C8.86 7.69 8.7 7.69 8.53 7.69C8.36 7.69 8.1 7.75 7.87 8C7.65 8.25 7 8.86 7 10.08C7 11.3 7.89 12.48 8.01 12.65C8.14 12.82 9.76 15.31 12.24 16.38C12.83 16.64 13.29 16.79 13.65 16.9C14.24 17.09 14.78 17.06 15.21 17C15.69 16.93 16.68 16.4 16.89 15.81C17.1 15.22 17.1 14.71 17.04 14.61C16.97 14.51 16.82 14.49 16.57 14.37Z"/>
-                </svg>
-              </div>
-              <span class="channel-badge green-badge">INSTANT CHAT</span>
-            </div>
-            <h3 class="channel-title">Chat on WhatsApp</h3>
-            <p class="channel-detail">+91 98480 16664</p>
-            <span class="channel-action-text">Open WhatsApp Chat ↗</span>
-          </a>
-
-          <!-- 2. Phone Call -->
-          <a href="tel:+919848016664" class="channel-box phone-box">
-            <div class="channel-top">
-              <div class="channel-icon-wrap phone-icon-wrap">
-                <!-- Phone Icon -->
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                </svg>
-              </div>
-              <span class="channel-badge cyan-badge">DIRECT LINE</span>
-            </div>
-            <h3 class="channel-title">Voice Consultation</h3>
-            <p class="channel-detail">+91 98480 16664</p>
-            <span class="channel-action-text">Call Now ↗</span>
-          </a>
-
-          <!-- 3. Email -->
-          <a href="mailto:hello@inxenuity.com?subject=Briefing%20Inquiry%20-%20INXENUITY" class="channel-box email-box">
-            <div class="channel-top">
-              <div class="channel-icon-wrap email-icon-wrap">
-                <!-- Mail Icon -->
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                  <polyline points="22,6 12,13 2,6"/>
-                </svg>
-              </div>
-              <span class="channel-badge blue-badge">ENTERPRISE EMAIL</span>
-            </div>
-            <h3 class="channel-title">Official Inquiry</h3>
-            <p class="channel-detail">hello&#64;inxenuity.com</p>
-            <span class="channel-action-text">Send Email ↗</span>
-          </a>
+        <!-- Direct Email Card -->
+        <div class="direct-email-strip">
+          <div class="email-info">
+            <span class="email-badge">OFFICIAL INQUIRY DESK</span>
+            <span class="email-address">subtlmind&#64;outlook.com</span>
+          </div>
+          <div class="email-actions">
+            <a 
+              href="mailto:subtlmind@outlook.com?subject=Consultation%20Inquiry%20-%20Subtlmind" 
+              class="btn-email-direct">
+              Send Email ↗
+            </a>
+            <button (click)="copyEmail()" class="btn-copy">
+              {{ isCopied() ? 'Copied!' : 'Copy' }}
+            </button>
+          </div>
         </div>
 
-        <!-- Footer Info -->
+        <!-- Consultation Form -->
+        <div *ngIf="!isSubmitted()" class="form-wrapper">
+          <form (ngSubmit)="onSubmit()" class="consultation-form">
+            <div class="form-row-2">
+              <div class="form-field">
+                <label class="field-label">Full Name *</label>
+                <input 
+                  type="text" 
+                  name="fullName" 
+                  [(ngModel)]="formData.fullName" 
+                  required 
+                  placeholder="Alex Rivera"
+                  class="field-input" 
+                />
+              </div>
+              <div class="form-field">
+                <label class="field-label">Work Email *</label>
+                <input 
+                  type="email" 
+                  name="workEmail" 
+                  [(ngModel)]="formData.workEmail" 
+                  required 
+                  placeholder="alex@company.com"
+                  class="field-input" 
+                />
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label class="field-label">Ecosystem Segment *</label>
+              <select 
+                name="segment" 
+                [(ngModel)]="formData.segment" 
+                required 
+                class="field-select">
+                <option value="Enterprise Operations">Enterprise Operations &amp; Light Industrial</option>
+                <option value="Commercial Real Estate">Commercial Buildings &amp; Smart Workspaces</option>
+                <option value="Smart Residential">Smart Living &amp; Residential Ecosystems</option>
+                <option value="Custom AI/IoT">Custom AI / IoT Product Partnership</option>
+              </select>
+            </div>
+
+            <div class="form-field">
+              <label class="field-label">Project Brief &amp; Sensory Objectives *</label>
+              <textarea 
+                name="brief" 
+                [(ngModel)]="formData.brief" 
+                required 
+                rows="3"
+                placeholder="Tell us about the spaces, telemetry, or intelligent workflows you want to build..."
+                class="field-textarea">
+              </textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">
+              <span>Confirm Consultation Request</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </button>
+          </form>
+        </div>
+
+        <!-- Success Confirmation State -->
+        <div *ngIf="isSubmitted()" class="submission-success">
+          <div class="success-icon-wrap">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M5 13l4 4L19 7"/>
+            </svg>
+          </div>
+          <h3 class="success-title">Consultation Requested!</h3>
+          <p class="success-desc">
+            Thank you, {{ formData.fullName || 'there' }}. Our architecture team has received your brief and will email calendar availability to <strong>{{ formData.workEmail || 'your email' }}</strong> within 1 business day.
+          </p>
+          <div class="success-actions">
+            <button (click)="resetForm()" class="btn-secondary">Submit Another Brief</button>
+            <button (click)="closeModal()" class="btn-primary">Done</button>
+          </div>
+        </div>
+
+        <!-- Footer Meta Info -->
         <div class="modal-footer-info">
           <div class="footer-meta-item">
             <span class="meta-label">HEADQUARTERS</span>
@@ -103,8 +147,9 @@ import { CommonModule } from '@angular/common';
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: var(--color-modal-overlay, rgba(4, 7, 12, 0.85));
+      background: rgba(6, 9, 15, 0.85);
       backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -113,174 +158,248 @@ import { CommonModule } from '@angular/common';
       animation: fadeIn 0.2s ease-out;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
     .modal-card {
       width: 100%;
-      max-width: 680px;
-      background: var(--color-surface);
-      border: 1px solid var(--color-border);
-      border-radius: 16px;
-      padding: 40px;
+      max-width: 640px;
+      max-height: 90vh;
+      overflow-y: auto;
+      background: var(--color-surface, #101829);
+      border: 1px solid var(--color-card-border, rgba(255, 255, 255, 0.1));
+      border-radius: 20px;
+      padding: 36px;
       position: relative;
-      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5), 0 0 32px rgba(0, 194, 255, 0.15);
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 30px rgba(45, 212, 191, 0.15);
       animation: slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    @keyframes slideUp {
-      from { transform: translateY(20px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
     }
 
     .modal-close {
       position: absolute;
       top: 20px;
       right: 20px;
-      background: transparent;
-      border: none;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--color-border);
+      border-radius: 10px;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       color: var(--color-text-secondary);
       cursor: pointer;
-      padding: 6px;
-      transition: color 0.2s ease;
-      border-radius: 50%;
+      transition: all 0.2s ease;
     }
 
     .modal-close:hover {
-      color: var(--color-text-heading);
-      background: rgba(255, 255, 255, 0.05);
+      color: #ffffff;
+      border-color: var(--color-cyan);
+      background: rgba(45, 212, 191, 0.12);
     }
 
     .modal-title {
-      font-size: 1.85rem;
-      margin-bottom: 12px;
+      font-size: 1.6rem;
       font-weight: 700;
+      color: var(--color-text-heading);
+      margin-top: 4px;
+      margin-bottom: 8px;
     }
 
     .modal-desc {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       color: var(--color-text-secondary);
-      margin-bottom: 30px;
-      line-height: 1.6;
+      line-height: 1.55;
+      margin-bottom: 24px;
     }
 
-    .direct-channels-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-bottom: 32px;
-    }
-
-    .channel-box {
-      display: flex;
-      flex-direction: column;
-      padding: 22px 18px;
-      border-radius: 12px;
-      border: 1px solid var(--color-border);
-      background: var(--color-surface-hover);
-      text-decoration: none;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      position: relative;
-    }
-
-    .channel-box:hover {
-      transform: translateY(-2px);
-      border-color: var(--color-cyan);
-      box-shadow: 0 8px 24px rgba(0, 194, 255, 0.12);
-    }
-
-    .whatsapp-box:hover {
-      border-color: #25D366;
-      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.15);
-    }
-
-    .channel-top {
+    .direct-email-strip {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 16px;
+      gap: 16px;
+      padding: 14px 18px;
+      border-radius: 14px;
+      background: rgba(45, 212, 191, 0.08);
+      border: 1px solid rgba(45, 212, 191, 0.25);
+      margin-bottom: 24px;
     }
 
-    .channel-icon-wrap {
-      width: 42px;
-      height: 42px;
+    .email-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .email-badge {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--color-teal);
+      letter-spacing: 0.08em;
+    }
+
+    .email-address {
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--color-text-heading);
+    }
+
+    .email-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-email-direct {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 14px;
+      border-radius: 8px;
+      background: var(--color-btn-primary-bg);
+      color: var(--color-btn-primary-text);
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-email-direct:hover {
+      background: var(--color-btn-primary-hover);
+      box-shadow: 0 0 14px rgba(45, 212, 191, 0.4);
+    }
+
+    .btn-copy {
+      padding: 7px 12px;
+      border-radius: 8px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      color: var(--color-text-secondary);
+      font-size: 0.82rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-copy:hover {
+      color: var(--color-teal);
+      border-color: var(--color-teal);
+    }
+
+    .consultation-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .form-row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .field-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--color-text-body);
+      letter-spacing: 0.02em;
+    }
+
+    .field-input, .field-select, .field-textarea {
+      width: 100%;
+      background: var(--color-input-bg);
+      border: 1px solid var(--color-border);
       border-radius: 10px;
+      padding: 10px 14px;
+      color: var(--color-text-heading);
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .field-input::placeholder, .field-textarea::placeholder {
+      color: var(--color-text-muted);
+      opacity: 0.9;
+    }
+
+    .field-input:focus, .field-select:focus, .field-textarea:focus {
+      border-color: var(--color-teal);
+      box-shadow: 0 0 12px rgba(45, 212, 191, 0.2);
+    }
+
+    .field-textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .btn-submit {
+      margin-top: 8px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 13px 20px;
+      border-radius: 12px;
+      background: var(--color-btn-primary-bg);
+      color: var(--color-btn-primary-text);
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 0 25px rgba(45, 212, 191, 0.35);
+      transition: all 0.25s ease;
+    }
+
+    .btn-submit:hover {
+      background: var(--color-btn-primary-hover);
+      box-shadow: 0 0 35px rgba(45, 212, 191, 0.55);
+      transform: translateY(-1px);
+    }
+
+    .submission-success {
+      text-align: center;
+      padding: 28px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .success-icon-wrap {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(45, 212, 191, 0.15);
+      border: 1px solid var(--color-teal);
+      color: var(--color-teal);
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    .wa-icon-wrap {
-      background: rgba(37, 211, 102, 0.12);
-      color: #25D366;
-    }
-
-    .phone-icon-wrap {
-      background: rgba(0, 194, 255, 0.12);
-      color: var(--color-cyan);
-    }
-
-    .email-icon-wrap {
-      background: rgba(0, 128, 255, 0.12);
-      color: var(--color-blue);
-    }
-
-    .channel-badge {
-      font-family: var(--font-mono);
-      font-size: 0.62rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      padding: 2px 6px;
-      border-radius: 4px;
-    }
-
-    .green-badge {
-      background: rgba(37, 211, 102, 0.15);
-      color: #25D366;
-      border: 1px solid rgba(37, 211, 102, 0.3);
-    }
-
-    .cyan-badge {
-      background: rgba(0, 194, 255, 0.15);
-      color: var(--color-cyan);
-      border: 1px solid rgba(0, 194, 255, 0.3);
-    }
-
-    .blue-badge {
-      background: rgba(0, 128, 255, 0.15);
-      color: #60a5fa;
-      border: 1px solid rgba(0, 128, 255, 0.3);
-    }
-
-    .channel-title {
-      font-size: 1.02rem;
+    .success-title {
+      font-size: 1.4rem;
       font-weight: 700;
       color: var(--color-text-heading);
-      margin-bottom: 6px;
     }
 
-    .channel-detail {
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
+    .success-desc {
+      font-size: 0.92rem;
       color: var(--color-text-secondary);
-      margin-bottom: 16px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      max-width: 440px;
+      line-height: 1.6;
     }
 
-    .channel-action-text {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--color-cyan);
-      margin-top: auto;
-    }
-
-    .whatsapp-box .channel-action-text {
-      color: #25D366;
+    .success-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 10px;
     }
 
     .modal-footer-info {
@@ -288,42 +407,52 @@ import { CommonModule } from '@angular/common';
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
       padding-top: 20px;
+      margin-top: 24px;
       border-top: 1px solid var(--color-border);
-    }
-
-    .footer-meta-item {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
+      text-align: center;
     }
 
     .meta-label {
+      display: block;
       font-family: var(--font-mono);
-      font-size: 0.65rem;
+      font-size: 0.68rem;
       font-weight: 600;
       color: var(--color-text-muted);
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
     }
 
     .meta-value {
-      font-size: 0.82rem;
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
       font-weight: 600;
-      color: var(--color-text-heading);
+      color: var(--color-cyan);
     }
 
-    @media (max-width: 768px) {
-      .direct-channels-grid {
-        grid-template-columns: 1fr;
-        gap: 12px;
-      }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
 
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
       .modal-card {
-        padding: 28px 20px;
+        padding: 24px;
       }
-
+      .form-row-2 {
+        grid-template-columns: 1fr;
+      }
+      .direct-email-strip {
+        flex-direction: column;
+        align-items: flex-start;
+      }
       .modal-footer-info {
         grid-template-columns: 1fr;
-        gap: 12px;
+        gap: 10px;
       }
     }
   `]
@@ -332,9 +461,54 @@ export class BriefingModalComponent {
   @Input() isOpen = false;
   @Output() close = new EventEmitter<void>();
 
+  isSubmitted = signal(false);
+  isCopied = signal(false);
+
+  formData = {
+    fullName: '',
+    workEmail: '',
+    segment: 'Enterprise Operations',
+    brief: ''
+  };
+
   onBackdropClick(event: MouseEvent): void {
     if ((event.target as HTMLElement).classList.contains('modal-overlay')) {
-      this.close.emit();
+      this.closeModal();
+    }
+  }
+
+  closeModal(): void {
+    this.close.emit();
+  }
+
+  private readonly analyticsService = inject(AnalyticsService);
+
+  onSubmit(): void {
+    if (this.formData.fullName && this.formData.workEmail && this.formData.brief) {
+      this.isSubmitted.set(true);
+      this.analyticsService.trackEvent('generate_lead', {
+        event_category: 'consultation',
+        event_label: this.formData.segment,
+        value: 1
+      });
+    }
+  }
+
+  resetForm(): void {
+    this.formData = {
+      fullName: '',
+      workEmail: '',
+      segment: 'Enterprise Operations',
+      brief: ''
+    };
+    this.isSubmitted.set(false);
+  }
+
+  copyEmail(): void {
+    if (typeof navigator !== 'undefined' && navigator.clipboard) {
+      navigator.clipboard.writeText('subtlmind@outlook.com');
+      this.isCopied.set(true);
+      setTimeout(() => this.isCopied.set(false), 2000);
     }
   }
 }

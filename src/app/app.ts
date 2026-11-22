@@ -1,9 +1,11 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar';
 import { FooterComponent } from './components/footer/footer';
 import { BriefingModalComponent } from './components/briefing-modal/briefing-modal';
 import { BriefingService } from './services/briefing.service';
+import { SeoService } from './services/seo.service';
+import { AnalyticsService } from './services/analytics.service';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +14,13 @@ import { BriefingService } from './services/briefing.service';
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {
+export class App implements OnInit {
   readonly briefingService = inject(BriefingService);
+  private readonly seoService = inject(SeoService);
+  private readonly analyticsService = inject(AnalyticsService);
+
+  ngOnInit(): void {
+    this.seoService.init();
+    this.analyticsService.init();
+  }
 }

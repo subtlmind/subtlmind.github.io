@@ -11,31 +11,13 @@ import { ThemeService } from '../../services/theme.service';
   template: `
     <header class="navbar-wrapper">
       <div class="container navbar-container">
-        <!-- Logo -->
-        <a routerLink="/" class="navbar-brand" aria-label="INXENUITY Home">
-          <!-- Full Text INXENUITY Vector Logo -->
-          <svg class="brand-full-logo" viewBox="0 0 855 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g class="brand-letters" fill="var(--color-logo-white, #F5F7FA)">
-              <!-- I -->
-              <polygon points="10,18 30,10 30,90 10,90" />
-              <!-- N -->
-              <polygon points="56,10 75,10 116,60 116,10 136,10 136,90 117,90 76,40 76,90 56,90" />
-              <!-- X -->
-              <polygon points="158,10 181,10 203,39 225,10 248,10 215,50 250,90 227,90 203,59 179,90 156,90 191,50" />
-              <!-- E -->
-              <polygon points="272,10 344,10 344,27 292,27 292,41 338,41 338,58 292,58 292,73 346,73 346,90 272,90" />
-              <!-- N -->
-              <polygon points="372,10 391,10 432,60 432,10 452,10 452,90 433,90 392,40 392,90 372,90" />
-              <!-- U -->
-              <path d="M480,10 H500 V56 C500,68 508,74 521,74 C534,74 542,68 542,56 V10 H562 V57 C562,79 546,91 521,91 C496,91 480,79 480,57 Z" />
-              <!-- I -->
-              <polygon points="590,18 610,10 610,90 590,90" />
-              <!-- T -->
-              <polygon points="632,10 714,10 714,28 683,28 683,90 663,90 663,28 632,28" />
-              <!-- Y -->
-              <polygon points="730,10 753,10 781,46 809,10 832,10 791,62 791,90 771,90 771,62" />
-            </g>
-          </svg>
+        <!-- Brand Logo -->
+        <a routerLink="/" class="navbar-brand" aria-label="Subtlmind Home">
+          <img 
+            [src]="themeService.isLight() ? '/assets/subtlmind-logo-primary.svg' : '/assets/subtlmind-logo-white.svg'" 
+            alt="Subtlmind" 
+            class="brand-full-logo" 
+          />
         </a>
 
         <!-- Desktop Navigation Links -->
@@ -73,7 +55,7 @@ import { ThemeService } from '../../services/theme.service';
             </svg>
           </button>
 
-          <button (click)="briefingService.open()" class="btn-nav-briefing">Request a Briefing</button>
+          <button (click)="briefingService.open()" class="btn-nav-briefing">Schedule Consultation</button>
 
           <!-- Mobile Hamburger -->
           <button (click)="toggleMobileMenu()" class="mobile-toggle" aria-label="Toggle menu">
@@ -110,7 +92,7 @@ import { ThemeService } from '../../services/theme.service';
             {{ themeService.isLight() ? 'LIGHT' : 'DARK' }}
           </span>
         </button>
-        <button (click)="onMobileBriefing()" class="btn-nav-briefing w-full" style="justify-content: center; margin-top: 12px;">Request a Briefing</button>
+        <button (click)="onMobileBriefing()" class="btn-nav-briefing w-full" style="justify-content: center; margin-top: 12px;">Schedule Consultation</button>
       </div>
     </header>
   `,
@@ -120,9 +102,10 @@ import { ThemeService } from '../../services/theme.service';
       top: 0;
       left: 0;
       width: 100%;
-      height: 72px;
-      background: var(--color-nav-bg, rgba(7, 9, 14, 0.85));
+      height: 76px;
+      background: var(--color-nav-bg, rgba(6, 9, 15, 0.82));
       backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--color-border);
       z-index: 100;
       transition: background-color 0.25s ease, border-color 0.25s ease;
@@ -139,23 +122,20 @@ import { ThemeService } from '../../services/theme.service';
       display: inline-flex;
       align-items: center;
       text-decoration: none;
+      padding: 4px 0;
     }
 
     .brand-full-logo {
-      height: 24px;
+      height: 32px;
       width: auto;
-      max-width: 205px;
+      max-width: 175px;
       transition: opacity 0.2s ease, transform 0.2s ease;
       flex-shrink: 0;
-    }
-
-    .brand-letters {
-      fill: var(--color-logo-white);
-      transition: fill 0.25s ease;
+      display: block;
     }
 
     .navbar-brand:hover .brand-full-logo {
-      opacity: 0.9;
+      opacity: 0.92;
       transform: translateY(-1px);
     }
 
@@ -166,7 +146,7 @@ import { ThemeService } from '../../services/theme.service';
     }
 
     .nav-link {
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       font-weight: 500;
       color: var(--color-text-secondary);
       text-decoration: none;
@@ -205,11 +185,11 @@ import { ThemeService } from '../../services/theme.service';
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 36px;
-      height: 36px;
+      width: 38px;
+      height: 38px;
       background: transparent;
       border: 1px solid var(--color-border);
-      border-radius: 4px;
+      border-radius: 10px;
       color: var(--color-text-secondary);
       cursor: pointer;
       transition: all 0.2s ease;
@@ -219,7 +199,7 @@ import { ThemeService } from '../../services/theme.service';
     .btn-theme-toggle:hover {
       color: var(--color-cyan);
       border-color: var(--color-cyan);
-      background: rgba(0, 194, 255, 0.08);
+      background: rgba(45, 212, 191, 0.08);
       box-shadow: 0 0 10px var(--color-border-glow);
     }
 
@@ -239,7 +219,7 @@ import { ThemeService } from '../../services/theme.service';
       padding: 24px;
       background: var(--color-surface);
       border-bottom: 1px solid var(--color-border);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
     }
 
     .mobile-link {
@@ -262,7 +242,7 @@ import { ThemeService } from '../../services/theme.service';
       padding: 12px 14px;
       margin-top: 6px;
       border: 1px solid var(--color-border);
-      border-radius: 4px;
+      border-radius: 10px;
       background: var(--color-surface-hover);
       color: var(--color-text-body);
       font-family: var(--font-mono);
@@ -299,11 +279,11 @@ import { ThemeService } from '../../services/theme.service';
 
     @media (max-width: 600px) {
       .brand-full-logo {
-        height: 20px;
-        max-width: 160px;
+        height: 26px;
+        max-width: 140px;
       }
       .navbar-wrapper {
-        height: 64px;
+        height: 68px;
       }
     }
   `]
