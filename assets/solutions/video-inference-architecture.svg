@@ -249,5 +249,5 @@
   <!-- BOTTOM TELEMETRY STATUS BAR -->
   <rect x="0" y="440" width="800" height="40" fill="rgba(8, 12, 22, 0.95)" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
   <text x="24" y="464" fill="#2DD4BF" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">EDGE VISION RUNTIME ACTIVE</text>
-  <text x="220" y="464" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="9.5">FPS: 60 | INFERENCE: 18.2ms | PRECISION: 99.2% mAP | DETECTIONS: 42/SEC | ON-DEVICE PRIVACY: 100%</text>
+  <text x="220" y="464" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="9.5">TARGETS: 60 FPS | &lt; 20ms INFERENCE | ≥ 99% PRECISION | ON-DEVICE FACE BLUR</text>
 </svg>

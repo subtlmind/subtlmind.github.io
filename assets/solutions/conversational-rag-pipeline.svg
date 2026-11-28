@@ -112,7 +112,7 @@
     <rect width="232" height="66" rx="6" fill="rgba(45, 212, 191, 0.08)" stroke="rgba(45, 212, 191, 0.3)"/>
     <text x="12" y="20" fill="#2DD4BF" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700">Private On-Premise LLM</text>
     <text x="12" y="34" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="9">Local GPU / NPU inference core</text>
-    <text x="12" y="48" fill="#10B981" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="700">100% PRIVATE // ZERO WAN LEAK</text>
+    <text x="12" y="48" fill="#10B981" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="700">ON-PREM OPTION // DATA STAYS LOCAL</text>
   </g>
 
   <!-- CONNECTOR 2 -->
@@ -163,6 +163,6 @@
   <text x="280" y="464" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="10">GROUNDING: </text>
   <text x="365" y="464" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="10">OEM MANUALS + TELEMETRY</text>
   <text x="560" y="464" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="10">PRIVACY: </text>
-  <text x="625" y="464" fill="#10B981" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">100% AIR-GAPPED</text>
+  <text x="625" y="464" fill="#10B981" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">AIR-GAP CAPABLE</text>
   <text x="735" y="464" fill="#F59E0B" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">780ms</text>
 </svg>
