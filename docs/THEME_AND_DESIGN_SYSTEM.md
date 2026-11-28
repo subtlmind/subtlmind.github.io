@@ -4,6 +4,8 @@ This document specifies the official design system, typography, color palette, f
 
 > [!IMPORTANT]
 > Any future feature, page, component, or theme change MUST comply with the rules outlined in this document to preserve visual consistency, brand integrity, and WCAG AA accessibility.
+>
+> **Source of truth:** the tokens and global classes in `src/styles.css`. If this document and `styles.css` ever disagree, `styles.css` wins and this document should be updated. The condensed, enforceable rules for contributors (and Claude Code) live in `.claude/rules/design-system.md`.
 
 ---
 
@@ -24,19 +26,20 @@ The visual identity embodies:
 
 | Token | CSS Variable | Hex / RGBA | Usage |
 | :--- | :--- | :--- | :--- |
-| **Obsidian Ink** | `--color-bg` | `#06090F` | Global canvas background |
-| **Slate Deep** | `--color-bg-alt` | `#0B111E` | Section alternating backgrounds, footer |
-| **Card Surface** | `--color-surface` / `--color-card` | `#101829` | Glass card and container fill |
-| **Surface Hover** | `--color-surface-hover` | `#151F33` | Interactive card hover state |
-| **Surface Translucent** | `--color-surface-translucent` | `rgba(16, 24, 41, 0.88)` | Floating menus, modal overlays |
+| **Obsidian Ink** | `--color-bg` | `#070B14` | Global canvas background |
+| **Slate Deep** | `--color-bg-alt` | `#0C1220` | Section alternating backgrounds, footer |
+| **Surface** | `--color-surface` | `#10192D` | Secondary buttons, containers |
+| **Card Surface** | `--color-card` | `#0F172A` | Glass card fill |
+| **Surface Hover** | `--color-surface-hover` | `#16223D` | Interactive card hover state |
+| **Surface Translucent** | `--color-surface-translucent` | `#10192D` | Floating menus, modal overlays |
 | **Teal Accent** | `--color-teal` / `--color-cyan` | `#2DD4BF` | Primary brand accent, primary CTA button, active telemetry |
-| **Teal Hover** | — | `#14B8A6` | Button hover, active focus ring |
+| **Teal Hover** | `--color-btn-primary-hover` | `#14B8A6` | Button hover, active focus ring |
 | **Teal Light / Mint** | — | `#99F6E4` | Text gradient stops, telemetry data values |
 | **Warm Amber** | `--color-amber` | `#F59E0B` | Circadian lighting, secondary metrics, early warnings |
 | **Amber Light** | — | `#FDE68A` | Text gradient terminal stop, highlight badges |
 | **Emerald Status** | — | `#10B981` | Online status pulse, verified SLA beacons |
 | **Subtlmind Slate** | `--color-slate-brand` | `#3E404B` | Secondary corporate branding elements |
-| **Card Border** | `--color-border` | `rgba(255, 255, 255, 0.08)` | Default glass card borders |
+| **Card Border** | `--color-border` / `--color-card-border` | `#1E293B` | Default card, input and section borders |
 | **Teal Border Glow** | `--color-border-glow` | `rgba(45, 212, 191, 0.35)` | Interactive hover & focus glow |
 
 ---
@@ -53,6 +56,8 @@ The visual identity embodies:
 | **Amber Dark** | `--color-amber` | `#B45309` | High-contrast amber (5.0:1 on white, WCAG AA) |
 | **Button Primary Bg** | `--color-btn-primary-bg` | `#0F766E` | Primary button fill in light mode |
 | **Button Primary Text** | `--color-btn-primary-text` | `#FFFFFF` | High-contrast text on primary button |
+| **Button Primary Hover** | `--color-btn-primary-hover` | `#115E59` | Primary button hover in light mode |
+| **Teal Border Glow** | `--color-border-glow` | `rgba(15, 118, 110, 0.25)` | Interactive hover & focus glow |
 
 ---
 
@@ -89,11 +94,12 @@ The visual identity embodies:
 ```
 
 ### 3.3 Form Inputs & Placeholders
-- **Background**: `var(--color-input-bg)` (`#0A0F1C` in dark mode, `#FFFFFF` in light mode).
-- **Text Color**: `var(--color-text-heading)` (`#FFFFFF` in dark mode, `#0F172A` in light mode).
-- **Border**: `1px solid var(--color-border)` (`#1E293B` in dark mode, `#E2E8F0` in light mode).
-- **Placeholder Text**: Must use `var(--color-text-muted)` (never low-contrast or hardcoded dark values).
-- **Focus Ring**: `border-color: var(--color-teal); box-shadow: 0 0 12px rgba(45, 212, 191, 0.2);`.
+Use the global `.form-group`, `.form-label`, `.form-input`, `.form-select` and `.form-textarea` classes.
+- **Background**: `rgba(8, 12, 19, 0.95)` in dark mode, `#FFFFFF` in light mode (`--color-input-bg` holds the equivalent token for custom inputs).
+- **Text Color**: `#FFFFFF` in dark mode, `#0F172A` in light mode (matches `var(--color-text-heading)`).
+- **Border**: `1px solid var(--color-border)` (`#1E293B`) in dark mode, `#CBD5E1` in light mode. Radius `3px`.
+- **Placeholder Text**: `#94A3B8` (matches `var(--color-text-muted)`); never use lower-contrast values.
+- **Focus Ring**: `border-color: var(--color-cyan); box-shadow: 0 0 10px rgba(0, 194, 255, 0.2);`.
 
 ---
 
@@ -164,12 +170,14 @@ html.light-theme .glass-card {
 
 ### 5.3 Buttons
 - **Primary CTA (`.btn-primary`)**:
-  - Dark Mode: Background `#2DD4BF`, text `#06090F` (font-weight: 600, contrast 11.2:1)
-  - Light Mode: Background `#0F766E`, text `#FFFFFF` (font-weight: 600, contrast 6.5:1)
+  - Dark Mode: Background `#2DD4BF`, text `#06090F` (font-weight: 600, contrast 11.2:1), hover `#14B8A6`
+  - Light Mode: Background `#0F766E`, text `#FFFFFF` (font-weight: 600, contrast 6.5:1), hover `#115E59`
+  - Radius `12px`, padding `12px 24px`, font-size `0.9rem`.
 - **Secondary Action (`.btn-secondary`)**:
   - Uses `var(--color-surface)`, `var(--color-text-heading)`, and `var(--color-border)`.
   - Dark Mode: Background `#10192D`, text `#FFFFFF`, border `#1E293B`.
-  - Light Mode: Background `#FFFFFF`, text `#0F172A`, border `#E2E8F0`.
+  - Light Mode: Background `#FFFFFF`, text `#0F172A`, border `#CBD5E1`; hover turns border and text teal (`#0F766E`).
+  - Radius `12px`, padding `12px 22px`.
 
 ---
 
