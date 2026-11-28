@@ -51,7 +51,7 @@ export interface TeamMember {
                 Subtlmind is a Hyderabad engineering company that combines IoT sensors, deep learning and language models. We think running a plant or a building shouldn't mean watching complicated dashboards, chasing alarms or clicking through endless menus.
               </p>
               <p class="story-para">
-                We connect equipment, cameras and building systems, and turn their data into early warnings, clear answers and automatic adjustments. Most of our work is for factories, warehouses and commercial buildings, and we also take on premium residential projects.
+                We connect equipment, cameras and building systems, and turn their data into early warnings, clear answers and automatic adjustments. Most of our work is for factories, warehouses, commercial buildings and farms, and we also take on premium residential projects. We run the intelligence where it fits best: on edge hardware at the site, in a central cloud platform with shared dashboards, or both.
               </p>
               <p class="story-para">
                 Whether it is a chiller vibration alert or lighting that adjusts to the time of day, we design every system to work in the background and to need as little attention from your team as possible.

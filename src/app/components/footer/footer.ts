@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { ThemeService } from '../../services/theme.service';
 import { ScrollService } from '../../services/scroll.service';
+import { ConsentService } from '../../services/consent.service';
 import { COMPANY, CONTACT_EMAIL, mailtoHref } from '../../content/site';
 import { SOLUTIONS } from '../../content/solutions';
 
@@ -23,7 +24,7 @@ import { SOLUTIONS } from '../../content/solutions';
             />
           </a>
           <p class="footer-desc">
-            Predictive maintenance, computer vision and building automation for factories, warehouses and commercial buildings, running on your own edge hardware.
+            Predictive maintenance, computer vision, cloud IoT dashboards and automation for factories, buildings and farms, running at the edge, in the cloud, or both.
           </p>
 
           <!-- Social Media Links (username: subtlmind) -->
@@ -144,6 +145,7 @@ import { SOLUTIONS } from '../../content/solutions';
           <div class="legal-links">
             <a routerLink="/privacy" (click)="onNavClick('/privacy', undefined, undefined, $event)">Privacy Policy</a>
             <a routerLink="/terms" (click)="onNavClick('/terms', undefined, undefined, $event)">Terms of Use</a>
+            <button type="button" class="cookie-settings-btn" (click)="consent.openSettings()">Cookie Settings</button>
           </div>
         </div>
       </div>
@@ -358,6 +360,21 @@ import { SOLUTIONS } from '../../content/solutions';
       gap: 24px;
     }
 
+    .cookie-settings-btn {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      color: var(--color-text-muted);
+      transition: color 0.2s ease;
+    }
+
+    .cookie-settings-btn:hover {
+      color: var(--color-cyan);
+    }
+
     .legal-links a {
       font-size: 0.82rem;
       color: var(--color-text-muted);
@@ -414,6 +431,7 @@ import { SOLUTIONS } from '../../content/solutions';
 export class FooterComponent {
   readonly themeService = inject(ThemeService);
   readonly scrollService = inject(ScrollService);
+  readonly consent = inject(ConsentService);
   readonly company = COMPANY;
   readonly email = CONTACT_EMAIL;
   readonly emailHref = mailtoHref('Enquiry');

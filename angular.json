@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "inxenuity-site": {
+    "subtlmind-site": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -66,10 +66,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "inxenuity-site:build:production"
+              "buildTarget": "subtlmind-site:build:production"
             },
             "development": {
-              "buildTarget": "inxenuity-site:build:development"
+              "buildTarget": "subtlmind-site:build:development"
             }
           },
           "defaultConfiguration": "development"

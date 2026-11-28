@@ -3,7 +3,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs';
 import { BriefingService } from '../../services/briefing.service';
-import { SOLUTIONS, findSolution } from '../../content/solutions';
+import { SOLUTIONS, findSolution, hasFigures } from '../../content/solutions';
 import { TARGETS_FOOTNOTE } from '../../content/site';
 import { SOLUTION_BLOCK_STYLES } from '../solutions/solution-block.styles';
 
@@ -57,7 +57,9 @@ import { SOLUTION_BLOCK_STYLES } from '../solutions/solution-block.styles';
                     </div>
                   }
                 </div>
-                <p class="targets-note">{{ targetsFootnote }}</p>
+                @if (hasFigures(s)) {
+                  <p class="targets-note">{{ targetsFootnote }}</p>
+                }
               </div>
 
               <div class="blueprint-card-wrap">
@@ -333,6 +335,7 @@ export class SolutionDetailComponent {
   readonly briefingService = inject(BriefingService);
   private readonly route = inject(ActivatedRoute);
   readonly targetsFootnote = TARGETS_FOOTNOTE;
+  readonly hasFigures = hasFigures;
 
   private readonly slug = toSignal(this.route.paramMap.pipe(map((p) => p.get('slug'))), {
     initialValue: this.route.snapshot.paramMap.get('slug')

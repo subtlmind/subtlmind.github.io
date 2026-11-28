@@ -36,13 +36,13 @@ import { COMPANY, CONTACT_EMAIL, mailtoHref } from '../../content/site';
                 your message.
               </li>
               <li>
-                <strong>Usage data.</strong> We use Google Analytics 4 to understand which pages are visited. It collects
-                pseudonymous data such as pages viewed, approximate location, device and browser type, and referring site,
-                using cookies.
+                <strong>Usage data, only if you accept analytics cookies.</strong> We use Google Analytics 4 to understand
+                which pages are visited. It collects pseudonymous data such as pages viewed, approximate location, device
+                and browser type, and referring site.
               </li>
               <li>
-                <strong>Preferences.</strong> Your light/dark theme choice is stored in your browser's local storage and
-                never sent to us.
+                <strong>Preferences.</strong> Your light/dark theme and cookie choices are stored in your browser's local
+                storage and never sent to us.
               </li>
             </ul>
             <p>We do not sell personal data and we do not use it for automated decision-making about you.</p>
@@ -66,8 +66,9 @@ import { COMPANY, CONTACT_EMAIL, mailtoHref } from '../../content/site';
             <p>
               When we deploy systems for a client, sensor, video and operational data are processed under a separate
               written agreement with that client, which sets out what is collected, where it is stored and how long it
-              is kept. Our default design keeps such data on the client's own premises, removes personal identifiers at
-              the edge (for example by blurring faces), and favours non-camera sensing such as mmWave radar for occupancy.
+              is kept. Depending on that agreement, data is processed on the client's own premises, in the client's cloud
+              account, or in our managed cloud platform. We remove personal identifiers at the edge where possible (for
+              example by blurring faces) and favour non-camera sensing such as mmWave radar for occupancy.
             </p>
           </section>
 
@@ -108,11 +109,16 @@ import { COMPANY, CONTACT_EMAIL, mailtoHref } from '../../content/site';
             </p>
           </section>
 
-          <section>
+          <section id="cookies">
             <h2>8. Cookies</h2>
             <p>
-              Google Analytics sets cookies named <code>_ga</code> and <code>_ga_*</code>. You can block or delete them in
-              your browser settings, or use Google's opt-out add-on. The site works without them.
+              We only use analytics cookies, and only if you agree. When you first visit, a banner asks whether you
+              accept Google Analytics. Until you accept, Google Analytics is not loaded and sets no cookies. If you
+              accept, it sets cookies named <code>_ga</code> and <code>_ga_*</code>. We do not use advertising cookies.
+            </p>
+            <p>
+              You can change your choice at any time with the "Cookie Settings" link at the bottom of every page.
+              Declining removes the analytics cookies. The site works fully either way.
             </p>
           </section>
 

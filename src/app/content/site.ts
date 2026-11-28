@@ -51,7 +51,8 @@ export const TARGETS = {
   leadTime: { value: 'Up to 240 h', label: 'Early warning before failure' },
   commercialEnergy: { value: 'Up to 30%', label: 'Lower HVAC & lighting energy' },
   residentialEnergy: { value: 'Up to 25%', label: 'Lower household energy use' },
-  queryLatency: { value: '< 1 s', label: 'Answer time for plain-English questions' }
+  queryLatency: { value: '< 1 s', label: 'Answer time for plain-English questions' },
+  irrigationWater: { value: 'Up to 30%', label: 'Less irrigation water' }
 } as const;
 
 export const TARGETS_FOOTNOTE =
@@ -67,6 +68,7 @@ export interface Enquiry {
 export const ENQUIRY_SEGMENTS = [
   'Manufacturing & warehousing',
   'Commercial buildings',
+  'Agriculture & farming',
   'Premium residential',
   'Product partnership / other'
 ] as const;

@@ -6,7 +6,7 @@ import { copyFileSync, existsSync, readdirSync, readFileSync, statSync, writeFil
 import { join, relative, sep } from 'node:path';
 
 const SITE_URL = 'https://subtlmind.in';
-const OUT = 'dist/inxenuity-site/browser';
+const OUT = 'dist/subtlmind-site/browser';
 
 if (!existsSync(OUT)) {
   console.error(`postbuild: ${OUT} not found. Run ng build first.`);

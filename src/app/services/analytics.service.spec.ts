@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { AnalyticsService } from './analytics.service';
+import { ConsentService } from './consent.service';
 import { vi } from 'vitest';
 
 describe('AnalyticsService', () => {
@@ -11,6 +12,7 @@ describe('AnalyticsService', () => {
       providers: [provideRouter([])]
     });
     service = TestBed.inject(AnalyticsService);
+    TestBed.inject(ConsentService).status.set('granted');
     window.gtag = vi.fn();
   });
 
@@ -28,6 +30,13 @@ describe('AnalyticsService', () => {
     expect(window.gtag).toHaveBeenCalledWith('config', 'G-N7BBG3G3LZ', expect.objectContaining({
       page_path: '/solutions'
     }));
+  });
+
+  it('should not track anything without consent', () => {
+    TestBed.inject(ConsentService).status.set('denied');
+    service.trackPageView('/solutions');
+    service.trackEvent('generate_lead');
+    expect(window.gtag).not.toHaveBeenCalled();
   });
 
   it('should call gtag event on trackEvent', () => {

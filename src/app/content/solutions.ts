@@ -254,8 +254,106 @@ export const SOLUTIONS: Solution[] = [
       'Occupancy-driven HVAC, lighting and load control that integrates with your BMS to cut energy use without hurting comfort.',
     keywords:
       'building automation, smart building, HVAC optimisation, energy management, BACnet integration, occupancy sensing, demand response'
+  },
+  {
+    slug: 'cloud-iot-platform',
+    anchor: 'cloud',
+    pillar: '06',
+    eyebrow: 'Cloud platform & dashboards',
+    title: 'Cloud IoT Platform & Dashboards',
+    summary:
+      'One cloud platform for all your devices and sites: data processing, alarms, and dashboards your team can build and change themselves.',
+    desc:
+      'Not every project needs AI at the edge. Our cloud platform brings data from every device, site and existing system into one place. It registers and manages devices, stores time-series data, runs rules and alarms, and gives each team dashboards they can build with drag and drop. Run it as a managed service, in your own AWS, Azure or Google Cloud account, or on your own servers.',
+    bullets: [
+      'Device management: secure provisioning, grouping, remote configuration and health monitoring for thousands of devices',
+      'Takes data over MQTT, HTTP, CoAP, LoRaWAN and OPC UA, from our gateways or from devices you already own',
+      'No-code rule engine for thresholds, alarms, escalations and automatic actions, with alerts by email, SMS, WhatsApp or Teams',
+      'Drag-and-drop dashboards with trends, gauges, maps and floor plans, plus scheduled PDF and CSV reports',
+      'Multi-tenant by design: separate customers, sites and user roles, with white-label branding for equipment makers and service providers',
+      'REST, WebSocket and MQTT APIs, and data export to your data warehouse, BI tools or machine-learning pipelines'
+    ],
+    stats: [
+      { value: 'No-code', label: 'Dashboards & alarm rules' },
+      { value: 'Multi-tenant', label: 'Customers, sites & roles' },
+      { value: 'Your choice', label: 'Managed, your cloud or on-prem' }
+    ],
+    useCases: [
+      {
+        title: 'Remote asset monitoring',
+        desc: 'Track generators, pumps, transformers or chillers spread across many sites from one screen.'
+      },
+      {
+        title: 'Multi-site energy & utilities',
+        desc: 'Compare energy, water and gas use across plants, buildings or stores, with alerts on waste.'
+      },
+      {
+        title: 'Connected products for OEMs',
+        desc: 'A white-label portal and app so equipment makers can offer monitoring to their own customers.'
+      }
+    ],
+    integrations: ['MQTT', 'HTTP / REST', 'CoAP', 'LoRaWAN', 'OPC UA', 'AWS / Azure / GCP', 'Kafka', 'Power BI / Grafana'],
+    image: '/assets/solutions/cloud-platform-dashboards.svg',
+    imageAlt: 'Architecture diagram: devices and existing systems feed a central cloud platform with rules, alarms and dashboards',
+    blueprintLabel: 'Cloud platform & dashboards',
+    seoTitle: 'Cloud IoT Platform & Dashboards | Subtlmind',
+    seoDescription:
+      'A cloud IoT platform for device management, time-series data, no-code alarms and customisable multi-tenant dashboards. Managed, in your cloud, or on-premise.',
+    keywords:
+      'IoT platform, IoT dashboard, cloud IoT, device management, multi-tenant IoT platform, white-label IoT, MQTT, LoRaWAN, remote monitoring India'
+  },
+  {
+    slug: 'precision-farming',
+    anchor: 'farming',
+    pillar: '07',
+    eyebrow: 'Agriculture',
+    title: 'Precision Farming',
+    summary:
+      'Soil, weather and crop sensing with automatic irrigation and crop-health imaging, so farms use less water and fertiliser and catch problems early.',
+    desc:
+      'We connect fields, orchards and greenhouses so growers can see conditions block by block and act on them. Low-power wireless sensors measure soil and microclimate, drone and satellite imagery flags stressed crops, and irrigation and fertigation run on what the crop actually needs instead of a fixed timetable.',
+    bullets: [
+      'Soil moisture, temperature, EC and NPK probes and on-farm weather stations, solar-powered on long-range LoRaWAN or NB-IoT networks',
+      'Automatic drip irrigation and fertigation, scheduled from soil moisture, evapotranspiration, the weather forecast and crop stage',
+      'Crop-health maps from drone or satellite multispectral imagery (NDVI), plus AI detection of pests, disease and nutrient deficiency',
+      'Greenhouse and polyhouse climate control for temperature, humidity, CO₂ and shading',
+      'Mobile dashboards and SMS or WhatsApp alerts in local languages for farm managers and field staff'
+    ],
+    stats: [
+      { value: TARGETS.irrigationWater.value, label: TARGETS.irrigationWater.label },
+      { value: 'LoRaWAN', label: 'Solar, km-range sensors' },
+      { value: 'NDVI', label: 'Crop-health maps' }
+    ],
+    useCases: [
+      {
+        title: 'Orchards & plantations',
+        desc: 'Block-level irrigation and early warning of frost, heat stress and disease.'
+      },
+      {
+        title: 'Greenhouses & polyhouses',
+        desc: 'Keep temperature, humidity and CO₂ in band automatically, with fertigation to match.'
+      },
+      {
+        title: 'Agri-businesses & FPOs',
+        desc: 'Monitor many smallholder plots from one dashboard and send advisories to farmers.'
+      }
+    ],
+    integrations: ['LoRaWAN', 'NB-IoT', 'Drip & fertigation controllers', 'Multispectral drones', 'Satellite imagery', 'Weather APIs'],
+    image: '/assets/solutions/precision-farming.svg',
+    imageAlt: 'Architecture diagram: soil, weather and imagery data drive irrigation, greenhouse control and field alerts',
+    blueprintLabel: 'Precision farming',
+    seoTitle: 'Precision Farming & Smart Irrigation | Subtlmind',
+    seoDescription:
+      'Precision agriculture with soil and weather sensors, automatic drip irrigation and fertigation, NDVI crop-health maps and greenhouse climate control.',
+    keywords:
+      'precision farming, smart irrigation, precision agriculture India, soil moisture sensor, fertigation automation, NDVI crop monitoring, greenhouse automation, LoRaWAN agriculture'
   }
 ];
+
+/** True when a solution quotes numeric figures, which must carry the design-targets footnote. */
+export function hasFigures(s: Solution): boolean {
+  return s.stats.some((st) => /\d/.test(st.value));
+}
 
 export function findSolution(slug: string | null | undefined): Solution | undefined {
   return SOLUTIONS.find((s) => s.slug === slug);

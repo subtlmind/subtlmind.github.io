@@ -21,7 +21,7 @@ import { SOLUTION_BLOCK_STYLES } from './solution-block.styles';
               <span class="text-gradient">to automatic action</span>
             </h1>
             <p class="hero-subtitle">
-              Five building blocks for factories, warehouses and commercial buildings. Use one on its own or combine them into a complete system that runs on your own edge hardware.
+              Seven building blocks for factories, buildings and farms. Use one on its own or combine them into a complete system that runs on edge hardware at your site, in a central cloud platform, or both.
             </p>
           </div>
         </div>

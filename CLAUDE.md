@@ -1,4 +1,4 @@
-# Subtlmind website (inxenuity.github.io)
+# Subtlmind website (subtlmind.in)
 
 Angular 22 standalone-component marketing site, deployed to GitHub Pages.
 

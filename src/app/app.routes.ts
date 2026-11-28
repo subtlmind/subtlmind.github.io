@@ -60,9 +60,9 @@ export const routes: Routes = [
     title: 'Subtlmind | Predictive Maintenance & Vision AI for Factories and Buildings',
     data: {
       description:
-        'Subtlmind builds predictive maintenance, computer vision and building automation systems for factories, warehouses and commercial buildings, running on your own edge hardware.',
+        'Subtlmind builds predictive maintenance, computer vision, cloud IoT dashboards and automation for factories, buildings and farms, running at the edge, in the cloud, or both.',
       keywords:
-        'predictive maintenance, computer vision, industrial IoT, edge AI, building automation, video analytics, Hyderabad AI company, Subtlmind',
+        'predictive maintenance, computer vision, IoT platform, IoT dashboards, industrial IoT, edge AI, building automation, precision farming, Hyderabad AI company, Subtlmind',
       path: '/'
     }
   },
@@ -77,9 +77,9 @@ export const routes: Routes = [
     title: 'Solutions | Predictive Maintenance, Computer Vision & Building Automation | Subtlmind',
     data: {
       description:
-        'IoT sensor networks, computer vision, predictive maintenance, an AI operations assistant and smart building automation, deployed on edge hardware at your site.',
+        'IoT sensor networks, computer vision, predictive maintenance, an AI operations assistant, building automation, a cloud IoT platform with dashboards, and precision farming.',
       keywords:
-        'industrial IoT, computer vision, predictive maintenance, building automation, AI operations assistant, edge AI, Subtlmind',
+        'industrial IoT, computer vision, predictive maintenance, building automation, IoT platform, IoT dashboards, precision farming, edge AI, Subtlmind',
       path: '/solutions'
     }
   },

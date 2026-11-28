@@ -46,7 +46,7 @@ export interface IndustryInfo {
             <!-- Eyebrow Pill -->
             <div class="hero-pill">
               <span class="live-pulse-dot"></span>
-              <span>Industrial IoT &bull; Computer Vision &bull; Edge AI</span>
+              <span>Industrial IoT &bull; Edge &amp; Cloud AI &bull; Dashboards</span>
             </div>
 
             <h1 class="hero-title">
@@ -55,7 +55,7 @@ export interface IndustryInfo {
             </h1>
 
             <p class="hero-subtitle">
-              We connect your machines, cameras and building systems, then run AI on your own edge hardware to warn you before equipment fails, spot safety and quality issues on camera, and cut energy waste.
+              We connect your machines, cameras, buildings and fields, process the data on your edge hardware or in our cloud platform, and give your team clear dashboards and alerts: warning before equipment fails, safety and quality issues spotted on camera, and less energy and water wasted.
             </p>
 
             <div class="hero-cta-group">
@@ -88,8 +88,8 @@ export interface IndustryInfo {
                 <div class="metric-lbl">{{ targets.downtime.label }}</div>
               </div>
               <div class="metric-card">
-                <div class="metric-val text-teal">On-site</div>
-                <div class="metric-lbl">Your data stays on your premises</div>
+                <div class="metric-val text-teal">Edge + Cloud</div>
+                <div class="metric-lbl">Deploy on-site, in the cloud, or both</div>
               </div>
             </div>
             <p class="targets-footnote">{{ targetsFootnote }}</p>
@@ -109,7 +109,7 @@ export interface IndustryInfo {
                 <strong class="text-heading">Subtlmind</strong> is an engineering company that brings together IoT sensors, deep learning and language models. We believe the best technology works quietly in the background: it warns you before something breaks and handles routine adjustments, so your team doesn't have to watch screens all day.
               </p>
               <p class="story-body">
-                We collect data from your equipment, cameras and building systems and turn it into clear alerts, answers and automatic actions. Our main focus is factories, warehouses and commercial buildings, and we also work on premium residential projects.
+                We collect data from your equipment, cameras and building systems and turn it into clear alerts, answers and automatic actions. We work mainly with factories, warehouses, commercial buildings and farms, and also on premium residential projects.
               </p>
 
               <!-- Philosophy Pill Tags -->
@@ -160,7 +160,7 @@ export interface IndustryInfo {
             <div class="tag-eyebrow no-dot">— CORE CAPABILITIES</div>
             <h2 class="section-title">What We Build</h2>
             <p class="section-subtitle">
-              Everything from the sensors on your machines to the AI that explains what they are telling you. <a routerLink="/solutions" class="inline-link">See all solutions &rarr;</a>
+              Everything from the sensors in the field to cloud dashboards and the AI that explains what the data is telling you. <a routerLink="/solutions" class="inline-link">See all solutions &rarr;</a>
             </p>
           </div>
 
@@ -246,6 +246,48 @@ export interface IndustryInfo {
                 <span class="tech-tag">Autonomous Decision Engines</span>
                 <span class="tech-tag">Digital Twins</span>
                 <span class="tech-tag">Cloud-Native APIs</span>
+              </div>
+            </div>
+
+            <!-- Pillar 5 -->
+            <div class="glass-card pillar-card">
+              <div class="pillar-header">
+                <div class="pillar-icon icon-teal">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
+                  </svg>
+                </div>
+                <span class="pillar-step-badge">05 / CLOUD &amp; DASHBOARDS</span>
+              </div>
+              <h3 class="pillar-title"><a routerLink="/solutions/cloud-iot-platform">Cloud IoT Platform &amp; Dashboards</a></h3>
+              <p class="pillar-desc">
+                One central platform for all your devices and sites: data processing, alarms, and drag-and-drop dashboards your team can change themselves.
+              </p>
+              <div class="pillar-tags">
+                <span class="tech-tag">Device Management</span>
+                <span class="tech-tag">No-Code Rules &amp; Alarms</span>
+                <span class="tech-tag">Multi-Tenant Dashboards</span>
+              </div>
+            </div>
+
+            <!-- Pillar 6 -->
+            <div class="glass-card pillar-card">
+              <div class="pillar-header">
+                <div class="pillar-icon icon-amber">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 22V12m0 0c0-4 3-7 8-7 0 5-3 7-8 7zm0 0c0-3-2.5-6-7-6 0 4 2.5 6 7 6z"/>
+                  </svg>
+                </div>
+                <span class="pillar-step-badge">06 / AGRICULTURE</span>
+              </div>
+              <h3 class="pillar-title"><a routerLink="/solutions/precision-farming">Precision Farming</a></h3>
+              <p class="pillar-desc">
+                Soil, weather and crop sensing with automatic irrigation and crop-health imaging, so farms use less water and fertiliser.
+              </p>
+              <div class="pillar-tags">
+                <span class="tech-tag">Smart Irrigation</span>
+                <span class="tech-tag">NDVI Crop Health</span>
+                <span class="tech-tag">Greenhouse Control</span>
               </div>
             </div>
           </div>
@@ -456,6 +498,13 @@ export interface IndustryInfo {
                 [class.tab-active]="activeIndustryKey() === 'commercial'"
                 class="ind-tab-btn">
                 Commercial Buildings
+              </button>
+              <button 
+                type="button" 
+                (click)="activeIndustryKey.set('agriculture')"
+                [class.tab-active]="activeIndustryKey() === 'agriculture'"
+                class="ind-tab-btn">
+                Agriculture
               </button>
               <button 
                 type="button" 
@@ -1771,7 +1820,7 @@ export class PlatformComponent {
   ];
 
   // Industry Showcase Data
-  activeIndustryKey = signal<'residential' | 'commercial' | 'industrial'>('industrial');
+  activeIndustryKey = signal<'residential' | 'commercial' | 'industrial' | 'agriculture'>('industrial');
   industryData: Record<string, IndustryInfo> = {
     residential: {
       tag: 'Premium Residential',
@@ -1805,6 +1854,17 @@ export class PlatformComponent {
         'Unified API integration with existing ERP, CMMS, and SCADA infrastructure'
       ],
       metric: `${TARGETS.downtime.value} ${TARGETS.downtime.label.toLowerCase()}`
+    },
+    agriculture: {
+      tag: 'Agriculture & Farming',
+      title: 'Water, Inputs and Crop Health Under Control',
+      desc: 'Give growers block-by-block visibility of soil, weather and crop condition, and let irrigation and fertigation follow what the crop actually needs.',
+      highlights: [
+        'Solar-powered soil and weather sensors on long-range LoRaWAN, no field wiring needed',
+        'Automatic drip irrigation and fertigation driven by soil moisture and the weather forecast',
+        'NDVI crop-health maps from drone or satellite imagery, with alerts in local languages'
+      ],
+      metric: `${TARGETS.irrigationWater.value} ${TARGETS.irrigationWater.label.toLowerCase()}`
     }
   };
 

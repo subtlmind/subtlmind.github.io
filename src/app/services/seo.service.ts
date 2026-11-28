@@ -26,7 +26,7 @@ export class SeoService {
 
   private readonly siteBaseUrl = 'https://subtlmind.in';
   private readonly defaultTitle = 'Subtlmind | Predictive Maintenance & Vision AI for Factories and Buildings';
-  private readonly defaultDescription = 'Subtlmind builds predictive maintenance, computer vision and building automation systems for factories, warehouses and commercial buildings, running on your own edge hardware.';
+  private readonly defaultDescription = 'Subtlmind builds predictive maintenance, computer vision, cloud IoT dashboards and automation for factories, buildings and farms, running at the edge, in the cloud, or both.';
   private readonly defaultKeywords = 'predictive maintenance, computer vision, industrial IoT, edge AI, building automation, video analytics, NVIDIA Jetson, Hyderabad AI company';
   private readonly defaultOgImage = 'https://subtlmind.in/assets/og-image-dark-1200x630.png';
 

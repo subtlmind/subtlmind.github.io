@@ -197,6 +197,8 @@ All static architectural schematics in `/public/assets/solutions/` follow these 
 - `predictive-maintenance-dl.svg`: Pillar 03 — Deep Learning & Predictive Anomaly Forecasting
 - `conversational-rag-pipeline.svg`: Pillar 04 — Language Models & Conversational RAG Copilot
 - `smart-operations-loop.svg`: Pillar 05 — Closed-Loop Autonomy & Smart Operations
+- `cloud-platform-dashboards.svg`: Pillar 06 — Cloud IoT Platform & Dashboards (central processing, alarms, multi-tenant dashboards)
+- `precision-farming.svg`: Pillar 07 — Precision Farming (soil/weather sensing, irrigation, NDVI crop health)
 
 ---
 

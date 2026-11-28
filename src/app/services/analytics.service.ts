@@ -1,6 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs';
+import { ConsentService, GA_TRACKING_ID } from './consent.service';
 
 declare global {
   interface Window {
@@ -14,7 +15,8 @@ declare global {
 })
 export class AnalyticsService {
   private readonly router = inject(Router);
-  readonly trackingId = 'G-N7BBG3G3LZ';
+  private readonly consent = inject(ConsentService);
+  readonly trackingId = GA_TRACKING_ID;
   private isInitialized = false;
 
   init(): void {
@@ -31,8 +33,9 @@ export class AnalyticsService {
     });
   }
 
+  /** No-op unless the visitor has accepted analytics cookies. */
   trackPageView(url: string): void {
-    if (typeof window === 'undefined') return;
+    if (typeof window === 'undefined' || !this.consent.granted) return;
 
     if (typeof window.gtag === 'function') {
       window.gtag('config', this.trackingId, {
@@ -44,7 +47,7 @@ export class AnalyticsService {
   }
 
   trackEvent(eventName: string, params: Record<string, any> = {}): void {
-    if (typeof window === 'undefined') return;
+    if (typeof window === 'undefined' || !this.consent.granted) return;
 
     if (typeof window.gtag === 'function') {
       window.gtag('event', eventName, params);
