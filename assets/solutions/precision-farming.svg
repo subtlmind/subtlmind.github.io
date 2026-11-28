@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#070B14"/><stop offset="50%" stop-color="#0A1020"/><stop offset="100%" stop-color="#06090F"/></linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#10182B"/><stop offset="100%" stop-color="#0B111F"/></linearGradient>
+    <linearGradient id="chartFill" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="rgba(45, 212, 191, 0.35)"/><stop offset="100%" stop-color="rgba(45, 212, 191, 0)"/></linearGradient>
+    <pattern id="techGrid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M 24 0 L 0 0 0 24" fill="none" stroke="rgba(255, 255, 255, 0.03)" stroke-width="1"/></pattern>
+    <filter id="tealGlow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="3" result="blur"/><feComposite in="SourceGraphic" in2="blur" operator="over"/></filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2DD4BF"/></marker>
+  </defs>
+  <rect width="800" height="480" fill="url(#bgGrad)"/>
+  <rect width="800" height="480" fill="url(#techGrid)"/>
+  <rect x="0" y="0" width="800" height="42" fill="rgba(10, 16, 28, 0.9)" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
+  <circle cx="24" cy="21" r="4" fill="#2DD4BF" filter="url(#tealGlow)"/>
+  <text x="36" y="25" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" letter-spacing="1.5">SUBTLMIND</text>
+  <text x="124" y="25" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="11" letter-spacing="1">// PILLAR 07: PRECISION FARMING</text>
+  <rect x="648" y="11" width="130" height="20" rx="4" fill="rgba(45, 212, 191, 0.12)" stroke="rgba(45, 212, 191, 0.3)" stroke-width="1"/>
+  <text x="713.0" y="25" fill="#2DD4BF" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" text-anchor="middle">TARGET ≤30% WATER</text>
+  <rect x="24" y="62" width="170" height="355" rx="10" fill="url(#cardGrad)" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
+  <text x="38" y="86" fill="#2DD4BF" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" letter-spacing="1">01 / SENSE</text>
+  <text x="38" y="104" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700">Field &amp; Crop Data</text>
+  <g transform="translate(36, 120)">
+    <rect width="146" height="58" rx="6" fill="#0C1424" stroke="rgba(45, 212, 191, 0.25)" stroke-width="1"/><circle cx="14" cy="16" r="3.5" fill="#2DD4BF"/>
+    <text x="24" y="20" fill="#2DD4BF" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600">Soil Probes</text>
+    <text x="10" y="35" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="8">Moisture, temp, EC</text>
+    <text x="10" y="48" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="8">NPK at root depth</text>
+  </g>
+  <g transform="translate(36, 186)">
+    <rect width="146" height="58" rx="6" fill="#0C1424" stroke="rgba(45, 212, 191, 0.25)" stroke-width="1"/><circle cx="14" cy="16" r="3.5" fill="#F59E0B"/>
+    <text x="24" y="20" fill="#2DD4BF" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600">Weather Station</text>
+    <text x="10" y="35" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="8">Rain, wind, humidity</text>
+    <text x="10" y="48" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="8">Solar radiation, ET</text>
+  </g>
+  <g transform="translate(36, 252)">
+    <rect width="146" height="58" rx="6" fill="#0C1424" stroke="rgba(45, 212, 191, 0.25)" stroke-width="1"/><circle cx="14" cy="16" r="3.5" fill="#10B981"/>
+    <text x="24" y="20" fill="#2DD4BF" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600">Drone &amp; Satellite</text>
+    <text x="10" y="35" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="8">Multispectral imagery</text>
+    <text x="10" y="48" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="8">NDVI crop vigour</text>
+  </g>
+  <g transform="translate(36, 318)">
+    <rect width="146" height="58" rx="6" fill="#0C1424" stroke="rgba(45, 212, 191, 0.25)" stroke-width="1"/><circle cx="14" cy="16" r="3.5" fill="#A78BFA"/>
+    <text x="24" y="20" fill="#2DD4BF" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600">Greenhouse Climate</text>
+    <text x="10" y="35" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="8">Temp, RH, CO2, lux</text>
+    <text x="10" y="48" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="8">Polyhouse zones</text>
+  </g>
+  <path d="M194,240 L236,240" stroke="#2DD4BF" stroke-width="1.5" fill="none" stroke-dasharray="4 4" marker-end="url(#arrow)"/>
+  <rect x="240" y="62" width="300" height="355" rx="10" fill="url(#cardGrad)" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
+  <text x="254" y="86" fill="#F59E0B" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" letter-spacing="1">02 / DECIDE</text>
+  <text x="254" y="104" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700">Farm Intelligence</text>
+  <g transform="translate(254, 120)">
+    <rect width="274" height="50" rx="6" fill="#0C1424" stroke="rgba(245, 158, 11, 0.25)"/>
+    <text x="10" y="20" fill="#F59E0B" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600">Solar LoRaWAN Gateway</text>
+    <text x="10" y="36" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="8">Km-range field coverage, works offline, syncs to cloud</text>
+  </g>
+  <g transform="translate(254, 178)">
+    <rect width="134" height="58" rx="6" fill="#0C1424" stroke="rgba(45, 212, 191, 0.25)" stroke-width="1"/>
+    <text x="10" y="20" fill="#2DD4BF" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600">Irrigation Scheduler</text>
+    <text x="10" y="35" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="8">Soil moisture + ET</text>
+    <text x="10" y="48" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="8">Weather forecast</text>
+  </g>
+  <g transform="translate(394, 178)">
+    <rect width="134" height="58" rx="6" fill="#0C1424" stroke="rgba(45, 212, 191, 0.25)" stroke-width="1"/>
+    <text x="10" y="20" fill="#2DD4BF" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600">Crop Health AI</text>
+    <text x="10" y="35" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="8">NDVI stress maps</text>
+    <text x="10" y="48" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="8">Pest &amp; disease ID</text>
+  </g>
+  <g transform="translate(254, 244)">
+    <rect width="134" height="58" rx="6" fill="#0C1424" stroke="rgba(45, 212, 191, 0.25)" stroke-width="1"/>
+    <text x="10" y="20" fill="#2DD4BF" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600">Fertigation Plan</text>
+    <text x="10" y="35" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="8">EC &amp; NPK targets</text>
+    <text x="10" y="48" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="8">By crop stage</text>
+  </g>
+  <g transform="translate(394, 244)">
+    <rect width="134" height="58" rx="6" fill="#0C1424" stroke="rgba(45, 212, 191, 0.25)" stroke-width="1"/>
+    <text x="10" y="20" fill="#2DD4BF" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600">Yield &amp; Risk</text>
+    <text x="10" y="35" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="8">Frost, heat, disease</text>
+    <text x="10" y="48" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="8">Harvest forecast</text>
+  </g>
+  <g transform="translate(254, 310)">
+    <rect width="274" height="66" rx="6" fill="rgba(16, 185, 129, 0.08)" stroke="rgba(16, 185, 129, 0.3)"/>
+    <text x="10" y="16" fill="#10B981" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="700">NDVI FIELD MAP // BLOCK C</text>
+    <rect x="10" y="24" width="12" height="11" rx="2" fill="#16A34A" opacity="0.85"/>
+    <rect x="24" y="24" width="12" height="11" rx="2" fill="#16A34A" opacity="0.85"/>
+    <rect x="38" y="24" width="12" height="11" rx="2" fill="#22C55E" opacity="0.85"/>
+    <rect x="52" y="24" width="12" height="11" rx="2" fill="#15803D" opacity="0.85"/>
+    <rect x="66" y="24" width="12" height="11" rx="2" fill="#16A34A" opacity="0.85"/>
+    <rect x="80" y="24" width="12" height="11" rx="2" fill="#22C55E" opacity="0.85"/>
+    <rect x="94" y="24" width="12" height="11" rx="2" fill="#4ADE80" opacity="0.85"/>
+    <rect x="108" y="24" width="12" height="11" rx="2" fill="#16A34A" opacity="0.85"/>
+    <rect x="122" y="24" width="12" height="11" rx="2" fill="#15803D" opacity="0.85"/>
+    <rect x="136" y="24" width="12" height="11" rx="2" fill="#16A34A" opacity="0.85"/>
+    <rect x="10" y="37" width="12" height="11" rx="2" fill="#22C55E" opacity="0.85"/>
+    <rect x="24" y="37" width="12" height="11" rx="2" fill="#16A34A" opacity="0.85"/>
+    <rect x="38" y="37" width="12" height="11" rx="2" fill="#15803D" opacity="0.85"/>
+    <rect x="52" y="37" width="12" height="11" rx="2" fill="#16A34A" opacity="0.85"/>
+    <rect x="66" y="37" width="12" height="11" rx="2" fill="#A3E635" opacity="0.85"/>
+    <rect x="80" y="37" width="12" height="11" rx="2" fill="#FACC15" opacity="0.85"/>
+    <rect x="94" y="37" width="12" height="11" rx="2" fill="#22C55E" opacity="0.85"/>
+    <rect x="108" y="37" width="12" height="11" rx="2" fill="#16A34A" opacity="0.85"/>
+    <rect x="122" y="37" width="12" height="11" rx="2" fill="#16A34A" opacity="0.85"/>
+    <rect x="136" y="37" width="12" height="11" rx="2" fill="#15803D" opacity="0.85"/>
+    <rect x="10" y="50" width="12" height="11" rx="2" fill="#16A34A" opacity="0.85"/>
+    <rect x="24" y="50" width="12" height="11" rx="2" fill="#15803D" opacity="0.85"/>
+    <rect x="38" y="50" width="12" height="11" rx="2" fill="#16A34A" opacity="0.85"/>
+    <rect x="52" y="50" width="12" height="11" rx="2" fill="#22C55E" opacity="0.85"/>
+    <rect x="66" y="50" width="12" height="11" rx="2" fill="#FACC15" opacity="0.85"/>
+    <rect x="80" y="50" width="12" height="11" rx="2" fill="#F59E0B" opacity="0.85"/>
+    <rect x="94" y="50" width="12" height="11" rx="2" fill="#4ADE80" opacity="0.85"/>
+    <rect x="108" y="50" width="12" height="11" rx="2" fill="#16A34A" opacity="0.85"/>
+    <rect x="122" y="50" width="12" height="11" rx="2" fill="#15803D" opacity="0.85"/>
+    <rect x="136" y="50" width="12" height="11" rx="2" fill="#16A34A" opacity="0.85"/>
+    <text x="156" y="38" fill="#F59E0B" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="700">Stress patch</text>
+    <text x="156" y="52" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="8">Scout rows 14-18</text>
+  </g>
+  <path d="M540,240 L580,240" stroke="#2DD4BF" stroke-width="1.5" fill="none" stroke-dasharray="4 4" marker-end="url(#arrow)"/>
+  <rect x="584" y="62" width="192" height="355" rx="10" fill="url(#cardGrad)" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
+  <text x="598" y="86" fill="#10B981" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" letter-spacing="1">03 / ACT</text>
+  <text x="598" y="104" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700">Automated Response</text>
+  <g transform="translate(596, 120)">
+    <rect width="168" height="58" rx="6" fill="#0C1424" stroke="rgba(45, 212, 191, 0.25)" stroke-width="1"/><circle cx="14" cy="16" r="3.5" fill="#2DD4BF"/>
+    <text x="24" y="20" fill="#2DD4BF" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600">Drip &amp; Fertigation</text>
+    <text x="10" y="35" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="8">Valves by zone</text>
+    <text x="10" y="48" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="8">Runs on soil need</text>
+  </g>
+  <g transform="translate(596, 186)">
+    <rect width="168" height="58" rx="6" fill="#0C1424" stroke="rgba(45, 212, 191, 0.25)" stroke-width="1"/><circle cx="14" cy="16" r="3.5" fill="#F59E0B"/>
+    <text x="24" y="20" fill="#2DD4BF" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600">Greenhouse Control</text>
+    <text x="10" y="35" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="8">Vents, fogging, shade</text>
+    <text x="10" y="48" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="8">Holds climate band</text>
+  </g>
+  <g transform="translate(596, 252)">
+    <rect width="168" height="58" rx="6" fill="#0C1424" stroke="rgba(45, 212, 191, 0.25)" stroke-width="1"/><circle cx="14" cy="16" r="3.5" fill="#10B981"/>
+    <text x="24" y="20" fill="#2DD4BF" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600">Field Alerts</text>
+    <text x="10" y="35" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="8">SMS / WhatsApp</text>
+    <text x="10" y="48" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="8">Local languages</text>
+  </g>
+  <g transform="translate(596, 318)">
+    <rect width="168" height="58" rx="6" fill="#0C1424" stroke="rgba(45, 212, 191, 0.25)" stroke-width="1"/><circle cx="14" cy="16" r="3.5" fill="#A78BFA"/>
+    <text x="24" y="20" fill="#2DD4BF" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600">Farm Dashboard</text>
+    <text x="10" y="35" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="8">Mobile &amp; web</text>
+    <text x="10" y="48" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="8">Water, inputs, yield</text>
+  </g>
+  <rect x="0" y="440" width="800" height="40" fill="rgba(6, 9, 15, 0.95)" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1"/>
+  <text x="24" y="464" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="10">NETWORK: </text>
+  <text x="78.9" y="464" fill="#2DD4BF" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">LORAWAN / NB-IOT</text>
+  <text x="256" y="464" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="10">IMAGERY: </text>
+  <text x="310.9" y="464" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">DRONE + SATELLITE NDVI</text>
+  <text x="540" y="464" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="10">POWER: </text>
+  <text x="582.7" y="464" fill="#10B981" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">SOLAR, OFF-GRID</text>
+</svg>

@@ -5,23 +5,37 @@
   <title>Subtlmind | Predictive Maintenance &amp; Vision AI for Factories and Buildings</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Subtlmind builds predictive maintenance, computer vision and building automation systems for factories, warehouses and commercial buildings, running on your own edge hardware.">
-  <meta name="keywords" content="predictive maintenance, computer vision, industrial IoT, edge AI, building automation, video analytics, NVIDIA Jetson, Hyderabad AI company">
+  <meta name="description" content="Subtlmind builds predictive maintenance, computer vision, cloud IoT dashboards and automation for factories, buildings and farms, running at the edge, in the cloud, or both.">
+  <meta name="keywords" content="predictive maintenance, computer vision, IoT platform, IoT dashboards, industrial IoT, edge AI, building automation, precision farming, smart irrigation, Hyderabad AI company">
   <meta name="author" content="Subtlmind">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large">
   <meta name="theme-color" content="#3E404B">
   <link rel="canonical" href="https://subtlmind.in/">
 
-  <!-- Google tag (gtag.js) - Analytics -->
-  <link rel="preconnect" href="https://www.googletagmanager.com">
-  <link rel="preconnect" href="https://www.google-analytics.com">
-  <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-N7BBG3G3LZ"></script>
+  <!-- Google Analytics with consent: gtag.js loads only after the visitor accepts analytics
+       cookies (choice stored by ConsentService under 'subtlmind_consent'). -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
+    });
     gtag('js', new Date());
-    gtag('config', 'G-N7BBG3G3LZ');
+    gtag('config', 'G-N7BBG3G3LZ', { send_page_view: false });
+    try {
+      if (localStorage.getItem('subtlmind_consent') === 'granted') {
+        gtag('consent', 'update', { analytics_storage: 'granted' });
+        var gs = document.createElement('script');
+        gs.id = 'gtag-js';
+        gs.async = true;
+        gs.src = 'https://www.googletagmanager.com/gtag/js?id=G-N7BBG3G3LZ';
+        document.head.appendChild(gs);
+      }
+    } catch (e) {}
   </script>
 
   <!-- Favicon Suite -->
@@ -35,7 +49,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://subtlmind.in/">
   <meta property="og:title" content="Subtlmind | Predictive Maintenance &amp; Vision AI for Factories and Buildings">
-  <meta property="og:description" content="Subtlmind builds predictive maintenance, computer vision and building automation systems for factories, warehouses and commercial buildings, running on your own edge hardware.">
+  <meta property="og:description" content="Subtlmind builds predictive maintenance, computer vision, cloud IoT dashboards and automation for factories, buildings and farms, running at the edge, in the cloud, or both.">
   <meta property="og:image" content="https://subtlmind.in/assets/og-image-dark-1200x630.png">
   <meta property="og:image:secure_url" content="https://subtlmind.in/assets/og-image-dark-1200x630.png">
   <meta property="og:image:type" content="image/png">
@@ -49,7 +63,7 @@
   <meta name="twitter:site" content="@subtlmind">
   <meta name="twitter:creator" content="@subtlmind">
   <meta name="twitter:title" content="Subtlmind | Predictive Maintenance &amp; Vision AI for Factories and Buildings">
-  <meta name="twitter:description" content="Predictive maintenance, computer vision and building automation for factories and buildings, running on your edge hardware.">
+  <meta name="twitter:description" content="Predictive maintenance, computer vision, cloud IoT dashboards and automation for factories, buildings and farms.">
   <meta name="twitter:image" content="https://subtlmind.in/assets/og-image-dark-1200x630.png">
   <meta name="twitter:image:alt" content="Subtlmind: predictive maintenance and vision AI">
 
@@ -70,7 +84,7 @@
         "height": 512
       },
       "image": "https://subtlmind.in/assets/og-image-dark-1200x630.png",
-      "description": "Subtlmind builds predictive maintenance, computer vision and building automation systems for factories, warehouses and commercial buildings, running on your own edge hardware.",
+      "description": "Subtlmind builds predictive maintenance, computer vision, cloud IoT dashboards and automation for factories, buildings and farms, running at the edge, in the cloud, or both.",
       "foundingDate": "2026",
       "email": "hello@subtlmind.in",
       "address": {
@@ -97,6 +111,8 @@
         "Predictive Maintenance",
         "Computer Vision",
         "Industrial IoT",
+      "IoT Platforms & Dashboards",
+      "Precision Agriculture",
         "Edge AI",
         "Building Automation",
         "Large Language Models"
@@ -144,6 +160,22 @@
               "name": "Smart Building & Energy Automation",
               "url": "https://subtlmind.in/solutions/building-automation"
             }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Cloud IoT Platform & Dashboards",
+              "url": "https://subtlmind.in/solutions/cloud-iot-platform"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Precision Farming",
+              "url": "https://subtlmind.in/solutions/precision-farming"
+            }
           }
         ]
       }
@@ -171,7 +203,7 @@
   <script>
     (function() {
       try {
-        var saved = localStorage.getItem('subtlmind_theme') || localStorage.getItem('inx_theme');
+        var saved = localStorage.getItem('subtlmind_theme');
         var prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
         var theme = (saved === 'dark' || saved === 'light') ? saved : (prefersLight ? 'light' : 'dark');
         if (theme === 'light') {
@@ -184,5 +216,5 @@
 <link rel="stylesheet" href="styles-5KX47REN.css"></head>
 <body class="bg-primary text-primary antialiased selection:bg-teal-500/30 selection:text-teal-200" ngcm="">
   <app-root></app-root>
-<script src="main-2Y5GJDIC.js" type="module"></script></body>
+<script src="main-2NM3GR24.js" type="module"></script></body>
 </html>
