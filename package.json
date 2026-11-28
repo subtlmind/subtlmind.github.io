@@ -4,19 +4,21 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build && cp dist/inxenuity-site/browser/index.html dist/inxenuity-site/browser/404.html",
+    "build": "ng build && node scripts/postbuild.mjs",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
   "private": true,
   "packageManager": "npm@10.9.9",
   "dependencies": {
-    "@angular/common": "^22.2.0",
-    "@angular/compiler": "^22.2.0",
-    "@angular/core": "^22.2.0",
-    "@angular/forms": "^22.2.0",
-    "@angular/platform-browser": "^22.2.0",
-    "@angular/router": "^22.2.0",
+    "@angular/common": "^22.2.3",
+    "@angular/compiler": "^22.2.3",
+    "@angular/core": "^22.2.3",
+    "@angular/forms": "^22.2.3",
+    "@angular/platform-browser": "^22.2.3",
+    "@angular/platform-server": "^22.2.3",
+    "@angular/router": "^22.2.3",
+    "@angular/ssr": "^22.2.3",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },

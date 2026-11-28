@@ -170,15 +170,15 @@
   <!-- Action 1: Precision Stat -->
   <g transform="translate(558, 246)">
     <rect width="204" height="48" rx="6" fill="#0C1424" stroke="rgba(45, 212, 191, 0.25)"/>
-    <text x="12" y="20" fill="#2DD4BF" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="800">99.4%</text>
-    <text x="12" y="36" fill="#CBD5E1" font-family="'Plus Jakarta Sans', sans-serif" font-size="9">Anomaly Precision (Zero false trips)</text>
+    <text x="12" y="20" fill="#2DD4BF" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="800">≥ 99%</text>
+    <text x="12" y="36" fill="#CBD5E1" font-family="'Plus Jakarta Sans', sans-serif" font-size="9">Precision target (fewer false trips)</text>
   </g>
 
   <!-- Action 2: Downtime Stat -->
   <g transform="translate(558, 302)">
     <rect width="204" height="48" rx="6" fill="#0C1424" stroke="rgba(245, 158, 11, 0.25)"/>
-    <text x="12" y="20" fill="#F59E0B" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="800">-40%</text>
-    <text x="12" y="36" fill="#CBD5E1" font-family="'Plus Jakarta Sans', sans-serif" font-size="9">Unplanned Mechanical Downtime</text>
+    <text x="12" y="20" fill="#F59E0B" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="800">Up to 30%</text>
+    <text x="12" y="36" fill="#CBD5E1" font-family="'Plus Jakarta Sans', sans-serif" font-size="9">Less unplanned downtime (target)</text>
   </g>
 
   <!-- Action 3: Autonomous Mitigation -->
@@ -196,7 +196,7 @@
   <text x="250" y="464" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="10">INFERENCE: </text>
   <text x="325" y="464" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="10">12ms ON-GATEWAY</text>
   <text x="470" y="464" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="10">PRECISION: </text>
-  <text x="548" y="464" fill="#10B981" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">99.4% VERIFIED</text>
+  <text x="548" y="464" fill="#10B981" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">≥ 99% TARGET</text>
   <text x="680" y="464" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="10">LEAD: </text>
   <text x="725" y="464" fill="#F59E0B" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">240 HOURS</text>
 </svg>

@@ -2,6 +2,7 @@ import { Component, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AnalyticsService } from '../../services/analytics.service';
+import { CONTACT_EMAIL, ENQUIRY_SEGMENTS, enquiryEmail, mailtoHref } from '../../content/site';
 
 @Component({
   selector: 'app-contact',
@@ -13,12 +14,12 @@ import { AnalyticsService } from '../../services/analytics.service';
       <section class="hero-section">
         <div class="container">
           <div class="hero-content">
-            <div class="tag-eyebrow">DIRECT ARCHITECT ACCESS</div>
+            <div class="tag-eyebrow">CONTACT</div>
             <h1 class="hero-title">
-              Connect with Our Solutions Architects
+              Talk to Our Engineers
             </h1>
             <p class="hero-subtitle">
-              Reach our systems engineering team directly at <strong>subtlmind&#64;outlook.com</strong> or submit an architecture discovery brief below for immediate technical scoping and ambient AI/IoT deployment.
+              Email us at <strong>{{ email }}</strong> or use the form below to tell us about your site and what you want to achieve. We reply within one business day.
             </p>
           </div>
         </div>
@@ -38,16 +39,16 @@ import { AnalyticsService } from '../../services/analytics.service';
                     <polyline points="22,6 12,13 2,6"/>
                   </svg>
                 </div>
-                <span class="status-pill teal-pill">SLA &lt; 24H</span>
+                <span class="status-pill teal-pill">REPLY &lt; 1 BUSINESS DAY</span>
               </div>
-              <h3 class="card-title">Solutions Desk Email</h3>
+              <h3 class="card-title">Email Us</h3>
               <p class="card-desc">
-                Send technical briefs, space requirements, telemetry specifications, or partnership inquiries directly to our architects.
+                Send project details, equipment lists, drawings or partnership enquiries straight to our engineering team.
               </p>
-              <div class="card-val">subtlmind&#64;outlook.com</div>
+              <div class="card-val">{{ email }}</div>
               <div class="card-actions">
                 <a 
-                  href="mailto:subtlmind@outlook.com?subject=Architecture%20Inquiry%20-%20Subtlmind" 
+                  [href]="emailHref" 
                   class="btn-primary" 
                   style="flex: 1; justify-content: center;">
                   <span>Send Direct Email</span>
@@ -55,7 +56,7 @@ import { AnalyticsService } from '../../services/analytics.service';
                     <path d="M5 12h14M12 5l7 7-7 7"/>
                   </svg>
                 </a>
-                <button (click)="copyText('subtlmind@outlook.com', 'email')" class="btn-copy">
+                <button (click)="copyText(email, 'email')" class="btn-copy">
                   {{ copiedField() === 'email' ? 'Copied!' : 'Copy' }}
                 </button>
               </div>
@@ -70,16 +71,16 @@ import { AnalyticsService } from '../../services/analytics.service';
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                   </svg>
                 </div>
-                <span class="status-pill amber-pill">COMPLIMENTARY REVIEW</span>
+                <span class="status-pill amber-pill">FREE</span>
               </div>
-              <h3 class="card-title">Architecture Discovery</h3>
+              <h3 class="card-title">45-Minute Site Review</h3>
               <p class="card-desc">
-                Complimentary 45-minute IoT telemetry &amp; AI inference review with a Principal Solution Architect under standard mutual NDA.
+                A free call with one of our founding engineers to review your equipment, data and goals. We can sign a mutual NDA first.
               </p>
-              <div class="card-val">45-Min Discovery Session</div>
+              <div class="card-val">45-Minute Call</div>
               <div class="card-actions">
                 <a href="#discovery-form" class="btn-secondary" style="flex: 1; justify-content: center;">
-                  <span>Submit Discovery Brief &darr;</span>
+                  <span>Request a Consultation &darr;</span>
                 </a>
               </div>
             </div>
@@ -94,15 +95,15 @@ import { AnalyticsService } from '../../services/analytics.service';
                     <circle cx="12" cy="10" r="3"/>
                   </svg>
                 </div>
-                <span class="status-pill purple-pill">R&amp;D CENTER</span>
+                <span class="status-pill teal-pill">ON-SITE WORK</span>
               </div>
-              <h3 class="card-title">Global Engineering Center</h3>
+              <h3 class="card-title">Based in Hyderabad</h3>
               <p class="card-desc">
-                Primary engineering facility for edge IoT gateways, deep learning anomaly detection, and natural language copilot research.
+                Our engineering team is based in Hyderabad and works on site with clients across India. Remote engagements are available elsewhere.
               </p>
               <div class="card-val">HYDERABAD, IN</div>
               <div class="card-actions">
-                <span class="hq-badge">Connected Systems &amp; Ambient AI Operations</span>
+                <span class="hq-badge">Telangana, India</span>
               </div>
             </div>
           </div>
@@ -114,30 +115,30 @@ import { AnalyticsService } from '../../services/analytics.service';
         <div class="container">
           <div class="form-layout-grid">
             <div class="form-pitch-col">
-              <div class="tag-eyebrow no-dot">— START AN ARCHITECTURE DISCOVERY</div>
+              <div class="tag-eyebrow no-dot">— REQUEST A CONSULTATION</div>
               <h2 class="form-section-title">
-                Ready to make your spaces and operations truly intelligent?
+                Tell us about your project
               </h2>
               <p class="form-section-desc">
-                Partner with Subtlmind to design, build, and deploy custom AI and IoT solutions tailored to your physical ecosystem.
+                A few lines is enough: what site or equipment, and what you want to monitor, inspect or automate.
               </p>
 
               <div class="benefits-stack">
                 <div class="benefit-item">
                   <span class="benefit-check">&#10003;</span>
-                  <span>Complimentary 45-minute IoT &amp; AI Architecture Review</span>
+                  <span>Free 45-minute review of your site and goals</span>
                 </div>
                 <div class="benefit-item">
                   <span class="benefit-check">&#10003;</span>
-                  <span>Custom Sensor-to-LLM Proof-of-Concept Roadmap</span>
+                  <span>A written pilot plan with scope, timeline and success metrics</span>
                 </div>
                 <div class="benefit-item">
                   <span class="benefit-check">&#10003;</span>
-                  <span>Direct access to Principal Solution Architects</span>
+                  <span>You talk directly to the engineers who will build it</span>
                 </div>
                 <div class="benefit-item">
                   <span class="benefit-check">&#10003;</span>
-                  <span>Mutual NDA executed prior to reviewing proprietary telemetry</span>
+                  <span>Mutual NDA signed before we look at your data</span>
                 </div>
               </div>
             </div>
@@ -148,22 +149,22 @@ import { AnalyticsService } from '../../services/analytics.service';
                 <form *ngIf="!isFormSubmitted()" (ngSubmit)="submitForm()" class="consult-form">
                   <div class="form-grid-2">
                     <div class="field-wrap">
-                      <label class="input-lbl">Full Name *</label>
+                      <label class="input-lbl" for="cf-name">Full Name *</label>
                       <input 
                         type="text" 
                         [(ngModel)]="formData.name" 
-                        name="name" 
+                        name="name" id="cf-name" 
                         required 
                         placeholder="Alex Rivera"
                         class="text-input" 
                       />
                     </div>
                     <div class="field-wrap">
-                      <label class="input-lbl">Work Email *</label>
+                      <label class="input-lbl" for="cf-email">Work Email *</label>
                       <input 
                         type="email" 
                         [(ngModel)]="formData.email" 
-                        name="email" 
+                        name="email" id="cf-email" 
                         required 
                         placeholder="alex@company.com"
                         class="text-input" 
@@ -172,33 +173,34 @@ import { AnalyticsService } from '../../services/analytics.service';
                   </div>
 
                   <div class="field-wrap">
-                    <label class="input-lbl">Organization / Ecosystem Segment *</label>
+                    <label class="input-lbl" for="cf-segment">Industry *</label>
                     <select 
+                      id="cf-segment"
                       [(ngModel)]="formData.segment" 
                       name="segment" 
                       required 
                       class="text-select">
-                      <option value="Enterprise Operations">Enterprise Operations &amp; Light Industrial</option>
-                      <option value="Commercial Real Estate">Commercial Buildings &amp; Smart Workspaces</option>
-                      <option value="Smart Residential">Smart Living &amp; Residential Ecosystems</option>
-                      <option value="Other">Custom AI / IoT Product Partnership</option>
+                      @for (seg of segments; track seg) {
+                        <option [value]="seg">{{ seg }}</option>
+                      }
                     </select>
                   </div>
 
                   <div class="field-wrap">
-                    <label class="input-lbl">Project Brief &amp; Sensory Objectives *</label>
+                    <label class="input-lbl" for="cf-brief">What would you like to achieve? *</label>
                     <textarea 
                       [(ngModel)]="formData.brief" 
-                      name="brief" 
+                      name="brief" id="cf-brief" 
                       required 
                       rows="4"
-                      placeholder="Tell us about the spaces, equipment, or intelligent workflows you want to build..."
+                      placeholder="E.g. we run 40 compressors across two plants and want warning before they fail..."
                       class="text-area">
                     </textarea>
                   </div>
 
+                  <p class="form-note">Sending opens your email app with this message ready to go, addressed to {{ email }}.</p>
                   <button type="submit" class="btn-primary w-full">
-                    <span>Get in Touch with Our Architects</span>
+                    <span>Write Email</span>
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
                       <path d="M5 12h14M12 5l7 7-7 7"/>
                     </svg>
@@ -212,13 +214,21 @@ import { AnalyticsService } from '../../services/analytics.service';
                       <path d="M5 13l4 4L19 7"/>
                     </svg>
                   </div>
-                  <h3 class="success-header">Architecture Brief Received</h3>
+                  <h3 class="success-header">Almost there: press Send in your email app</h3>
                   <p class="success-message">
-                    Thank you, {{ formData.name }}. One of our Principal AI &amp; IoT Architects will review your ecosystem goals and contact you at <strong>{{ formData.email }}</strong> within 1 business day.
+                    Thanks, {{ formData.name }}. We opened a draft addressed to <strong>{{ email }}</strong> in your email app. Once you send it, we will reply to <strong>{{ formData.email }}</strong> within one business day.
                   </p>
-                  <button (click)="resetForm()" class="btn-secondary">
-                    Submit Another Inquiry
-                  </button>
+                  <p class="success-message">
+                    Email app didn't open? Copy your message and send it to {{ email }} from any email account.
+                  </p>
+                  <div class="success-actions">
+                    <button (click)="copyText(draftText, 'message')" class="btn-primary">
+                      {{ copiedField() === 'message' ? 'Copied!' : 'Copy Message' }}
+                    </button>
+                    <button (click)="resetForm()" class="btn-secondary">
+                      Start Over
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -231,42 +241,42 @@ import { AnalyticsService } from '../../services/analytics.service';
         <div class="container">
           <div class="section-header text-center">
             <div class="tag-eyebrow no-dot">— HOW WE WORK</div>
-            <h2 class="section-title">The Subtlmind Technical Engagement Model</h2>
+            <h2 class="section-title">How a Project Runs</h2>
             <p class="section-subtitle max-w-2xl mx-auto">
-              Engineered for organizations requiring deterministic edge performance, zero data leakage, and high operational uptime.
+              Four steps, each with a clear deliverable, so you can stop after any of them.
             </p>
           </div>
 
           <div class="commitments-grid">
             <div class="commit-card glass-card">
               <div class="commit-num text-teal">01</div>
-              <h4 class="commit-title">Sensory &amp; Telemetry Audit</h4>
+              <h4 class="commit-title">Site &amp; Data Review</h4>
               <p class="commit-desc">
-                We review your existing equipment, sensor inputs, and network environment to map high-value telemetry signals and anomalies.
+                We look at your equipment, existing sensors, cameras and network, and identify where data can save you money or risk.
               </p>
             </div>
 
             <div class="commit-card glass-card">
               <div class="commit-num text-amber">02</div>
-              <h4 class="commit-title">Edge-to-Cloud Blueprint</h4>
+              <h4 class="commit-title">System Design</h4>
               <p class="commit-desc">
-                We design the complete pipeline: hardware-level sensor ingestion, edge filtering, deep learning forecasting, and LLM reasoning.
+                We design the full system, from sensors and edge hardware to models and the alerts or dashboards your team will use.
               </p>
             </div>
 
             <div class="commit-card glass-card">
               <div class="commit-num text-teal">03</div>
-              <h4 class="commit-title">Proof-of-Concept &amp; Pilot</h4>
+              <h4 class="commit-title">Pilot</h4>
               <p class="commit-desc">
-                Rapid validation on live assets with measurable benchmarks—proving anomaly precision, latency budgets, and comfort scores.
+                A small deployment on real assets, measured against success metrics we agree with you up front.
               </p>
             </div>
 
             <div class="commit-card glass-card">
               <div class="commit-num text-amber">04</div>
-              <h4 class="commit-title">Production Autonomy</h4>
+              <h4 class="commit-title">Rollout &amp; Support</h4>
               <p class="commit-desc">
-                Deployment across your entire facility or portfolio with self-calibrating baselines, OTA updates, and 24/7 ambient intelligence.
+                Scale to the rest of the site or portfolio, with monitoring, remote updates and ongoing support.
               </p>
             </div>
           </div>
@@ -365,11 +375,6 @@ import { AnalyticsService } from '../../services/analytics.service';
       border: 1px solid rgba(245, 158, 11, 0.3);
     }
 
-    .purple-pill {
-      background: rgba(168, 85, 247, 0.12);
-      color: #A855F7;
-      border: 1px solid rgba(168, 85, 247, 0.3);
-    }
 
     .card-title {
       font-size: 1.25rem;
@@ -555,6 +560,19 @@ import { AnalyticsService } from '../../services/analytics.service';
       justify-content: center;
     }
 
+    .form-note {
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      margin-bottom: 14px;
+    }
+
+    .success-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
     .success-header {
       font-size: 1.5rem;
       font-weight: 700;
@@ -629,17 +647,21 @@ import { AnalyticsService } from '../../services/analytics.service';
   `]
 })
 export class ContactComponent {
-  copiedField = signal<'email' | null>(null);
+  copiedField = signal<'email' | 'message' | null>(null);
   isFormSubmitted = signal(false);
+  readonly email = CONTACT_EMAIL;
+  readonly emailHref = mailtoHref('Project enquiry');
+  readonly segments = ENQUIRY_SEGMENTS;
+  draftText = '';
 
   formData = {
     name: '',
     email: '',
-    segment: 'Enterprise Operations',
+    segment: ENQUIRY_SEGMENTS[0] as string,
     brief: ''
   };
 
-  copyText(text: string, field: 'email'): void {
+  copyText(text: string, field: 'email' | 'message'): void {
     if (typeof navigator !== 'undefined' && navigator.clipboard) {
       navigator.clipboard.writeText(text);
       this.copiedField.set(field);
@@ -651,6 +673,14 @@ export class ContactComponent {
 
   submitForm(): void {
     if (this.formData.name && this.formData.email && this.formData.brief) {
+      const draft = enquiryEmail(
+        { name: this.formData.name, email: this.formData.email, segment: this.formData.segment, message: this.formData.brief },
+        'Project enquiry'
+      );
+      this.draftText = `To: ${this.email}\nSubject: ${draft.subject}\n\n${draft.body}`;
+      if (typeof window !== 'undefined') {
+        window.location.href = draft.href;
+      }
       this.isFormSubmitted.set(true);
       this.analyticsService.trackEvent('generate_lead', {
         event_category: 'contact_form',
@@ -664,9 +694,10 @@ export class ContactComponent {
     this.formData = {
       name: '',
       email: '',
-      segment: 'Enterprise Operations',
+      segment: ENQUIRY_SEGMENTS[0],
       brief: ''
     };
+    this.draftText = '';
     this.isFormSubmitted.set(false);
   }
 }

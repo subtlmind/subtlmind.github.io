@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { ThemeService } from '../../services/theme.service';
 import { ScrollService } from '../../services/scroll.service';
+import { COMPANY, CONTACT_EMAIL, mailtoHref } from '../../content/site';
+import { SOLUTIONS } from '../../content/solutions';
 
 @Component({
   selector: 'app-footer',
@@ -21,12 +23,8 @@ import { ScrollService } from '../../services/scroll.service';
             />
           </a>
           <p class="footer-desc">
-            Subtlmind architects and develops edge-to-cloud AI and IoT solutions that transform raw sensory data into predictive maintenance, smart operations, and effortless everyday experiences.
+            Predictive maintenance, computer vision and building automation for factories, warehouses and commercial buildings, running on your own edge hardware.
           </p>
-          <div class="system-status">
-            <span class="pulse-dot"></span>
-            <span class="status-text">AMBIENT SENSORY STREAM ACTIVE</span>
-          </div>
 
           <!-- Social Media Links (username: subtlmind) -->
           <div class="footer-social-row">
@@ -89,11 +87,9 @@ import { ScrollService } from '../../services/scroll.service';
           <div class="footer-col">
             <h4 class="col-title">SOLUTIONS</h4>
             <ul class="col-links">
-              <li><a routerLink="/solutions" fragment="iot" (click)="onNavClick('/solutions', 'iot', undefined, $event)">Sensory Data &amp; IoT</a></li>
-              <li><a routerLink="/solutions" fragment="vision" (click)="onNavClick('/solutions', 'vision', undefined, $event)">Video Inference &amp; Vision</a></li>
-              <li><a routerLink="/solutions" fragment="predictive" (click)="onNavClick('/solutions', 'predictive', undefined, $event)">Predictive Maintenance</a></li>
-              <li><a routerLink="/solutions" fragment="conversational" (click)="onNavClick('/solutions', 'conversational', undefined, $event)">Language Model Control</a></li>
-              <li><a routerLink="/solutions" fragment="automation" (click)="onNavClick('/solutions', 'automation', undefined, $event)">Smart Operations</a></li>
+              @for (sol of solutions; track sol.slug) {
+                <li><a [routerLink]="['/solutions', sol.slug]" (click)="onNavClick('/solutions/' + sol.slug, undefined, undefined, $event)">{{ sol.title }}</a></li>
+              }
             </ul>
           </div>
 
@@ -104,7 +100,7 @@ import { ScrollService } from '../../services/scroll.service';
               <li><a routerLink="/" fragment="architecture" [queryParams]="{ step: 0 }" (click)="onNavClick('/', 'architecture', { step: 0 }, $event)">1. Sense (Edge IoT)</a></li>
               <li><a routerLink="/" fragment="architecture" [queryParams]="{ step: 1 }" (click)="onNavClick('/', 'architecture', { step: 1 }, $event)">2. Process (Telemetry Stream)</a></li>
               <li><a routerLink="/" fragment="architecture" [queryParams]="{ step: 2 }" (click)="onNavClick('/', 'architecture', { step: 2 }, $event)">3. Reason (DL + LLM)</a></li>
-              <li><a routerLink="/" fragment="architecture" [queryParams]="{ step: 3 }" (click)="onNavClick('/', 'architecture', { step: 3 }, $event)">4. Act (Closed-Loop Autonomy)</a></li>
+              <li><a routerLink="/" fragment="architecture" [queryParams]="{ step: 3 }" (click)="onNavClick('/', 'architecture', { step: 3 }, $event)">4. Act (Automation)</a></li>
             </ul>
           </div>
 
@@ -112,26 +108,25 @@ import { ScrollService } from '../../services/scroll.service';
           <div class="footer-col">
             <h4 class="col-title">COMPANY</h4>
             <ul class="col-links">
-              <li><a routerLink="/about" (click)="onNavClick('/about', undefined, undefined, $event)">About Us &amp; Vision</a></li>
+              <li><a routerLink="/about" (click)="onNavClick('/about', undefined, undefined, $event)">About Us</a></li>
               <li><a routerLink="/about" fragment="team" (click)="onNavClick('/about', 'team', undefined, $event)">Leadership</a></li>
-              <li><a routerLink="/about" fragment="principles" (click)="onNavClick('/about', 'principles', undefined, $event)">How We Build</a></li>
-              <li><a routerLink="/contact" (click)="onNavClick('/contact', undefined, undefined, $event)">Solutions Desk</a></li>
+              <li><a routerLink="/about" fragment="principles" (click)="onNavClick('/about', 'principles', undefined, $event)">Our Principles</a></li>
+              <li><a routerLink="/contact" (click)="onNavClick('/contact', undefined, undefined, $event)">Contact</a></li>
             </ul>
           </div>
 
-          <!-- Direct Contact Column (WhatsApp and phone completely removed) -->
+          <!-- Direct Contact Column -->
           <div class="footer-col contact-col">
             <h4 class="col-title">DIRECT CONTACT</h4>
             <ul class="col-links">
               <li>
-                <a href="mailto:subtlmind@outlook.com?subject=Inquiry%20-%20Subtlmind" class="email-link">
-                  <span>subtlmind&#64;outlook.com</span>
+                <a [href]="emailHref" class="email-link">
+                  <span>{{ email }}</span>
                   <span class="link-arrow">&nearr;</span>
                 </a>
               </li>
               <li><span class="location-text">HYDERABAD, IN</span></li>
-              <li><span class="sla-text">SLA &lt; 1 BUSINESS DAY</span></li>
-              <li><span class="sla-text">DIRECT ARCHITECT ACCESS</span></li>
+              <li><span class="sla-text">REPLY WITHIN 1 BUSINESS DAY</span></li>
             </ul>
           </div>
         </div>
@@ -140,10 +135,15 @@ import { ScrollService } from '../../services/scroll.service';
       <!-- Bottom Bar -->
       <div class="footer-bottom">
         <div class="container bottom-container">
-          <p class="copyright">© 2026 Subtlmind Technologies. All rights reserved.</p>
+          <p class="copyright">
+            © {{ company.founded }} {{ company.legalName || company.name }}. All rights reserved.
+            @if (company.cin) {
+              <span class="company-id">CIN: {{ company.cin }}</span>
+            }
+          </p>
           <div class="legal-links">
-            <a routerLink="/about" fragment="principles" (click)="onNavClick('/about', 'principles', undefined, $event)">Privacy Architecture</a>
-            <a routerLink="/" fragment="architecture" [queryParams]="{ step: 1 }" (click)="onNavClick('/', 'architecture', { step: 1 }, $event)">Zero-Trust Edge Security</a>
+            <a routerLink="/privacy" (click)="onNavClick('/privacy', undefined, undefined, $event)">Privacy Policy</a>
+            <a routerLink="/terms" (click)="onNavClick('/terms', undefined, undefined, $event)">Terms of Use</a>
           </div>
         </div>
       </div>
@@ -198,24 +198,6 @@ import { ScrollService } from '../../services/scroll.service';
       line-height: 1.6;
       color: var(--color-text-secondary);
       margin-bottom: 24px;
-    }
-
-    .system-status {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 6px 12px;
-      background: rgba(45, 212, 191, 0.08);
-      border: 1px solid rgba(45, 212, 191, 0.25);
-      border-radius: 8px;
-    }
-
-    .status-text {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      color: var(--color-teal);
     }
 
     /* Social Media Links */
@@ -362,6 +344,10 @@ import { ScrollService } from '../../services/scroll.service';
       justify-content: space-between;
     }
 
+    .company-id {
+      margin-left: 8px;
+    }
+
     .copyright {
       font-size: 0.82rem;
       color: var(--color-text-muted);
@@ -428,6 +414,10 @@ import { ScrollService } from '../../services/scroll.service';
 export class FooterComponent {
   readonly themeService = inject(ThemeService);
   readonly scrollService = inject(ScrollService);
+  readonly company = COMPANY;
+  readonly email = CONTACT_EMAIL;
+  readonly emailHref = mailtoHref('Enquiry');
+  readonly solutions = SOLUTIONS;
 
   onNavClick(route: string, fragment?: string, queryParams?: Record<string, any>, event?: Event): void {
     if (event) {

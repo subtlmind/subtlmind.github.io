@@ -1,6 +1,21 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { BriefingService } from '../../services/briefing.service';
+import { COMPANY, TARGETS, TARGETS_FOOTNOTE } from '../../content/site';
+
+/**
+ * Leadership profiles. To complete a card, add `photo` (e.g. '/assets/team/shiva.jpg', square,
+ * at least 256px), `linkedin` (full profile URL) and `pastWork` (one line on previous roles).
+ */
+export interface TeamMember {
+  name: string;
+  initials: string;
+  role: string;
+  bio: string;
+  photo?: string;
+  linkedin?: string;
+  pastWork?: string;
+}
 
 @Component({
   selector: 'app-about',
@@ -14,8 +29,8 @@ import { BriefingService } from '../../services/briefing.service';
           <div class="hero-content">
             <div class="tag-eyebrow">ABOUT SUBTLMIND</div>
             <h1 class="hero-title">
-              Pioneering Ambient Intelligence<br />
-              <span class="text-gradient">For Intuitive Modern Living</span>
+              Engineering AI for<br />
+              <span class="text-gradient">factories, buildings and homes</span>
             </h1>
             <p class="hero-subtitle">
               We believe the most powerful technology is the kind that works quietly in the background—anticipating needs, preventing disruptions, and optimizing environments without demanding constant human intervention.
@@ -33,37 +48,38 @@ import { BriefingService } from '../../services/briefing.service';
               <div class="tag-eyebrow no-dot">— WHO WE ARE</div>
               <h2 class="story-title">Technology that Works Quietly in the Background</h2>
               <p class="story-para">
-                Subtlmind is a technology-first company pioneering the convergence of the Internet of Things (IoT), Deep Learning, and Large Language Models (LLMs). We believe the future of smart spaces shouldn't be defined by complex menus, blinking alert sirens, or constant smartphone notifications.
+                Subtlmind is a Hyderabad engineering company that combines IoT sensors, deep learning and language models. We think running a plant or a building shouldn't mean watching complicated dashboards, chasing alarms or clicking through endless menus.
               </p>
               <p class="story-para">
-                By bridging the physical and digital worlds, we capture continuous real-time sensory data from connected environments and translate it into actionable, human-centric intelligence. Whether for modern residential ecosystems or complex industrial operations, Subtlmind builds resilient architectures designed for effortless modern living.
+                We connect equipment, cameras and building systems, and turn their data into early warnings, clear answers and automatic adjustments. Most of our work is for factories, warehouses and commercial buildings, and we also take on premium residential projects.
               </p>
               <p class="story-para">
-                From micro-zone circadian lighting to sub-second chiller vibration diagnostics, every solution we engineer is designed to dissolve into the background—lowering cognitive load and elevating everyday living.
+                Whether it is a chiller vibration alert or lighting that adjusts to the time of day, we design every system to work in the background and to need as little attention from your team as possible.
               </p>
             </div>
 
             <!-- Right: 2x2 Stats Grid -->
             <div class="stats-grid">
               <div class="stat-card glass-card">
-                <div class="stat-number text-teal">2026</div>
+                <div class="stat-number text-teal">{{ company.founded }}</div>
                 <div class="stat-label">Founded</div>
               </div>
 
               <div class="stat-card glass-card">
-                <div class="stat-number text-heading">&lt; 15ms</div>
-                <div class="stat-label">Edge Telemetry Inference</div>
+                <div class="stat-number text-heading">{{ targets.edgeLatency.value }}</div>
+                <div class="stat-label">{{ targets.edgeLatency.label }} target</div>
               </div>
 
               <div class="stat-card glass-card">
-                <div class="stat-number text-amber">99.4%</div>
-                <div class="stat-label">Anomaly Detection Precision</div>
+                <div class="stat-number text-amber">{{ targets.precision.value }}</div>
+                <div class="stat-label">{{ targets.precision.label }} target</div>
               </div>
 
               <div class="stat-card glass-card">
-                <div class="stat-number text-teal">-32%</div>
-                <div class="stat-label">Downtime &amp; Energy Waste</div>
+                <div class="stat-number text-teal">{{ targets.downtime.value }}</div>
+                <div class="stat-label">{{ targets.downtime.label }} target</div>
               </div>
+              <p class="stats-footnote">{{ targetsFootnote }}</p>
             </div>
           </div>
         </div>
@@ -73,7 +89,7 @@ import { BriefingService } from '../../services/briefing.service';
       <section class="section-padding bg-alt-subtle">
         <div class="container">
           <div class="section-header text-center">
-            <div class="tag-eyebrow no-dot">— GUIDING NORTH STAR</div>
+            <div class="tag-eyebrow no-dot">— PURPOSE</div>
             <h2 class="section-title">Our Vision &amp; Mission</h2>
           </div>
 
@@ -101,7 +117,7 @@ import { BriefingService } from '../../services/briefing.service';
               </div>
               <h3 class="vm-title">Our Mission</h3>
               <p class="vm-desc">
-                To engineer innovative, reliable AI and IoT architectures that turn continuous sensory streams into clear, predictive, and conversational intelligence.
+                To build reliable AI and IoT systems that turn sensor and camera data into early warnings, clear answers and automatic actions.
               </p>
             </div>
           </div>
@@ -141,7 +157,7 @@ import { BriefingService } from '../../services/briefing.service';
             <div class="glass-card principle-card">
               <h3 class="principle-title">Built to Scale</h3>
               <p class="principle-text">
-                Modular microservices and edge orchestration engineered to grow effortlessly from a single smart room to enterprise-wide multi-property deployments with zero architectural lock-in.
+                Modular components that scale from a single machine or room to many sites, built on open protocols so you are not locked in.
               </p>
             </div>
           </div>
@@ -157,33 +173,32 @@ import { BriefingService } from '../../services/briefing.service';
           </div>
 
           <div class="grid-2 team-grid">
-            <!-- 1. SHIVA KUMAR K -->
-            <div class="team-card glass-card">
-              <div class="team-card-header">
-                <div class="avatar-badge">SK</div>
-                <div class="team-title-wrap">
-                  <h3 class="member-name">Shiva Kumar K</h3>
-                  <div class="member-role">Founder and CEO</div>
+            @for (m of team; track m.name) {
+              <div class="team-card glass-card">
+                <div class="team-card-header">
+                  @if (m.photo) {
+                    <img [src]="m.photo" [alt]="'Photo of ' + m.name" class="avatar-photo" width="52" height="52" loading="lazy" />
+                  } @else {
+                    <div class="avatar-badge" aria-hidden="true">{{ m.initials }}</div>
+                  }
+                  <div class="team-title-wrap">
+                    <h3 class="member-name">{{ m.name }}</h3>
+                    <div class="member-role">{{ m.role }}</div>
+                  </div>
+                  @if (m.linkedin) {
+                    <a [href]="m.linkedin" target="_blank" rel="noopener noreferrer" class="member-linkedin" [attr.aria-label]="m.name + ' on LinkedIn'">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                      </svg>
+                    </a>
+                  }
                 </div>
+                <p class="member-bio">{{ m.bio }}</p>
+                @if (m.pastWork) {
+                  <p class="member-past"><span class="past-label">Previously</span> {{ m.pastWork }}</p>
+                }
               </div>
-              <p class="member-bio">
-                Founder and Chief Executive Officer driving Subtlmind's vision to pioneer ambient AI, IoT sensory architectures, and predictive intelligence. Leads strategic direction, core technology roadmap, and deployment of resilient AI solutions across modern living and industrial environments.
-              </p>
-            </div>
-
-            <!-- 2. VINOD KUMAR K -->
-            <div class="team-card glass-card">
-              <div class="team-card-header">
-                <div class="avatar-badge">VK</div>
-                <div class="team-title-wrap">
-                  <h3 class="member-name">Vinod Kumar K</h3>
-                  <div class="member-role">Co-Founder and FDE</div>
-                </div>
-              </div>
-              <p class="member-bio">
-                Co-Founder and Forward Deployed Engineer (FDE) leading hands-on engineering deployments, scalable cloud platforms, distributed model inference pipelines, and edge-to-cloud telemetry systems. Drives direct architecture implementation for high-throughput sensor fusion, real-time computer vision, domain language models, and edge deployments.
-              </p>
-            </div>
+            }
           </div>
         </div>
       </section>
@@ -203,7 +218,7 @@ import { BriefingService } from '../../services/briefing.service';
                 <h3 class="philosophy-title">Measure Everything</h3>
               </div>
               <p class="philosophy-text">
-                Every layer of the stack emits structured sensory telemetry. We do not deploy a model without strict latency benchmarks, anomaly drift detectors, and automated failover paths.
+                Every part of the system reports how it is performing. We do not deploy a model without latency benchmarks, drift monitoring and an automatic fallback.
               </p>
             </div>
 
@@ -233,7 +248,7 @@ import { BriefingService } from '../../services/briefing.service';
                 <h3 class="philosophy-title">Privacy is Fundamental</h3>
               </div>
               <p class="philosophy-text">
-                Ambient spaces require absolute occupant trust. We emphasize radar and non-invasive sensors over invasive cameras, sanitize telemetry on-edge, and enforce hardware-backed mTLS encryption.
+                People need to trust the systems around them. Where we can, we use radar and other non-camera sensors, strip personal data on site before anything is sent, and encrypt every connection. See our <a routerLink="/privacy" class="inline-link">privacy policy</a>.
               </p>
             </div>
           </div>
@@ -246,20 +261,20 @@ import { BriefingService } from '../../services/briefing.service';
           <div class="glass-card cta-banner-card">
             <div class="cta-inner-grid">
               <div class="cta-text-col">
-                <h2 class="cta-banner-title">Collaborate with Our Architecture Team</h2>
+                <h2 class="cta-banner-title">Work With Us</h2>
                 <p class="cta-banner-desc">
-                  Whether exploring an ambient living ecosystem or upgrading an industrial facility with predictive intelligence, our engineering team is ready to assist.
+                  Whether you are adding predictive maintenance to a plant or automating a building, talk to the engineers who will build it.
                 </p>
               </div>
               <div class="cta-action-col">
                 <button (click)="briefingService.open()" class="btn-primary w-full">
-                  <span>Schedule a Consultation</span>
+                  <span>Request a Consultation</span>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
                     <path d="M5 12h14M12 5l7 7-7 7"/>
                   </svg>
                 </button>
                 <a routerLink="/contact" class="btn-secondary w-full">
-                  <span>Contact Solutions Desk</span>
+                  <span>Contact Us</span>
                 </a>
               </div>
             </div>
@@ -440,6 +455,51 @@ import { BriefingService } from '../../services/briefing.service';
       margin-bottom: 20px;
     }
 
+    .avatar-photo {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      object-fit: cover;
+      border: 1px solid var(--color-border);
+    }
+
+    .member-linkedin {
+      margin-left: auto;
+      color: var(--color-text-muted);
+      transition: color 0.2s ease;
+    }
+
+    .member-linkedin:hover {
+      color: var(--color-teal);
+    }
+
+    .member-past {
+      margin-top: 12px;
+      font-size: 0.9rem;
+      color: var(--color-text-secondary);
+    }
+
+    .past-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-teal);
+      margin-right: 6px;
+    }
+
+    .stats-footnote {
+      grid-column: 1 / -1;
+      font-size: 0.78rem;
+      color: var(--color-text-muted);
+      text-align: center;
+    }
+
+    .inline-link {
+      color: var(--color-teal);
+    }
+
     .avatar-badge {
       width: 52px;
       height: 52px;
@@ -565,4 +625,22 @@ import { BriefingService } from '../../services/briefing.service';
 })
 export class AboutComponent {
   readonly briefingService = inject(BriefingService);
+  readonly company = COMPANY;
+  readonly targets = TARGETS;
+  readonly targetsFootnote = TARGETS_FOOTNOTE;
+
+  readonly team: TeamMember[] = [
+    {
+      name: 'Shiva Kumar K',
+      initials: 'SK',
+      role: 'Founder & CEO',
+      bio: "Sets Subtlmind's direction and technology roadmap, and leads client relationships and the delivery of AI and IoT systems for industrial, commercial and residential sites."
+    },
+    {
+      name: 'Vinod Kumar K',
+      initials: 'VK',
+      role: 'Co-Founder & Forward Deployed Engineer',
+      bio: 'Leads hands-on engineering at client sites: edge-to-cloud data pipelines, model deployment, real-time computer vision and language-model integrations.'
+    }
+  ];
 }

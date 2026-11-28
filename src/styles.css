@@ -477,11 +477,11 @@ html.light-theme .glass-card:hover {
 
 .form-input, .form-select, .form-textarea {
   width: 100%;
-  background: rgba(8, 12, 19, 0.95);
+  background: var(--color-input-bg);
   border: 1px solid var(--color-border);
   border-radius: 3px;
   padding: 12px 14px;
-  color: #ffffff;
+  color: var(--color-text-heading);
   font-family: var(--font-sans);
   font-size: 0.9rem;
   outline: none;
@@ -489,13 +489,13 @@ html.light-theme .glass-card:hover {
 }
 
 .form-input::placeholder, .form-textarea::placeholder {
-  color: #94A3B8;
+  color: var(--color-text-muted);
   opacity: 0.9;
 }
 
 .form-input:focus, .form-select:focus, .form-textarea:focus {
-  border-color: var(--color-cyan);
-  box-shadow: 0 0 10px rgba(0, 194, 255, 0.2);
+  border-color: var(--color-teal);
+  box-shadow: 0 0 10px rgba(45, 212, 191, 0.2);
 }
 
 .form-textarea {
@@ -628,9 +628,7 @@ html.light-theme .cta-banner {
 html.light-theme .form-input,
 html.light-theme .form-select,
 html.light-theme .form-textarea {
-  background: #ffffff;
-  color: #0f172a;
-  border-color: #cbd5e1;
+  border-color: var(--color-hud-box-border);
 }
 
 [data-theme="light"] .form-input:focus,

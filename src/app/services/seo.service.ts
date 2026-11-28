@@ -10,6 +10,8 @@ export interface PageSeoConfig {
   keywords?: string;
   path?: string;
   ogImage?: string;
+  /** Page-specific JSON-LD, written to <script id="page-jsonld">. */
+  jsonLd?: Record<string, unknown>;
 }
 
 @Injectable({
@@ -23,9 +25,9 @@ export class SeoService {
   private readonly document = inject(DOCUMENT);
 
   private readonly siteBaseUrl = 'https://subtlmind.in';
-  private readonly defaultTitle = 'Subtlmind | Ambient Intelligence for Intuitive Modern Living';
-  private readonly defaultDescription = 'Subtlmind architects and develops edge-to-cloud AI and IoT solutions that transform raw sensory data into predictive maintenance, smart operations, and effortless everyday experiences.';
-  private readonly defaultKeywords = 'ambient intelligence, edge AI, computer vision, video inference, IoT architecture, predictive maintenance, conversational RAG, industrial automation, RT-DETR, NVIDIA Jetson, sensory telemetry, smart spaces';
+  private readonly defaultTitle = 'Subtlmind | Predictive Maintenance & Vision AI for Factories and Buildings';
+  private readonly defaultDescription = 'Subtlmind builds predictive maintenance, computer vision and building automation systems for factories, warehouses and commercial buildings, running on your own edge hardware.';
+  private readonly defaultKeywords = 'predictive maintenance, computer vision, industrial IoT, edge AI, building automation, video analytics, NVIDIA Jetson, Hyderabad AI company';
   private readonly defaultOgImage = 'https://subtlmind.in/assets/og-image-dark-1200x630.png';
 
   init(): void {
@@ -37,7 +39,10 @@ export class SeoService {
         route = route.firstChild;
       }
 
-      const data = route.snapshot.data as PageSeoConfig;
+      const data = {
+        ...(route.snapshot.data as PageSeoConfig),
+        ...((route.snapshot.data['seo'] as PageSeoConfig | undefined) ?? {})
+      };
       const title = route.snapshot.title || data?.title || this.defaultTitle;
       const description = data?.description || this.defaultDescription;
       const keywords = data?.keywords || this.defaultKeywords;
@@ -49,7 +54,8 @@ export class SeoService {
         description,
         keywords,
         path,
-        ogImage
+        ogImage,
+        jsonLd: data?.jsonLd
       });
     });
   }
@@ -69,7 +75,7 @@ export class SeoService {
     this.metaService.updateTag({ name: 'description', content: description });
     this.metaService.updateTag({ name: 'keywords', content: keywords });
     this.metaService.updateTag({ name: 'robots', content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' });
-    this.metaService.updateTag({ name: 'author', content: 'Subtlmind Technologies' });
+    this.metaService.updateTag({ name: 'author', content: 'Subtlmind' });
 
     // OpenGraph Tags
     this.metaService.updateTag({ property: 'og:site_name', content: 'Subtlmind' });
@@ -89,6 +95,26 @@ export class SeoService {
 
     // Canonical Link
     this.updateCanonicalLink(canonicalUrl);
+
+    // Page-specific structured data
+    this.updateJsonLd(config.jsonLd);
+  }
+
+  private updateJsonLd(jsonLd?: Record<string, unknown>): void {
+    if (!this.document) return;
+
+    let script = this.document.getElementById('page-jsonld');
+    if (!jsonLd) {
+      script?.remove();
+      return;
+    }
+    if (!script) {
+      script = this.document.createElement('script');
+      script.setAttribute('type', 'application/ld+json');
+      script.setAttribute('id', 'page-jsonld');
+      this.document.head.appendChild(script);
+    }
+    script.textContent = JSON.stringify(jsonLd);
   }
 
   private updateCanonicalLink(url: string): void {

@@ -19,10 +19,10 @@ export interface TechItem {
       <div class="container">
         <!-- Section Header if grid mode -->
         <div class="ecosystem-header" *ngIf="mode === 'grid'">
-          <div class="tag-eyebrow no-dot">— CERTIFIED RUNTIMES &amp; INFRASTRUCTURE</div>
-          <h2 class="section-title">Engineered for Connected Ecosystems</h2>
+          <div class="tag-eyebrow no-dot">— PLATFORMS WE DEPLOY ON</div>
+          <h2 class="section-title">Works With the Hardware and Cloud You Already Use</h2>
           <p class="section-subtitle">
-            Subtlmind deploys natively across leading IoT sensor networks, industrial edge runtimes, MQTT telemetry brokers, and cloud AI infrastructure.
+            We build on standard edge hardware, IoT protocols and cloud platforms, so you are not locked into one vendor.
           </p>
         </div>
 
@@ -30,7 +30,7 @@ export interface TechItem {
         <div class="ribbon-bar-header" *ngIf="mode === 'ribbon'">
           <div class="ribbon-pill">
             <span class="live-dot"></span>
-            SUPPORTED RUNTIMES &amp; INFRASTRUCTURE ECOSYSTEM
+            PLATFORMS WE DEPLOY ON
           </div>
           <span class="ribbon-caption">Containerised &bull; GPU-Accelerated &bull; Cloud &bull; Edge</span>
         </div>
@@ -225,10 +225,20 @@ export interface TechItem {
             </div>
           </div>
         </div>
+        <p class="trademark-note" *ngIf="mode === 'grid'">
+          Product names and logos are trademarks of their respective owners. Showing them means we build on these platforms; it does not imply partnership or endorsement.
+        </p>
       </div>
     </section>
   `,
   styles: [`
+    .trademark-note {
+      margin-top: 28px;
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+    }
+
     .tech-ecosystem-section {
       width: 100%;
       position: relative;

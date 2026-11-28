@@ -3,13 +3,33 @@
 Angular 22 standalone-component marketing site, deployed to GitHub Pages.
 
 - `npm start`: dev server
-- `npm run build`: production build (also copies `index.html` to `404.html` for SPA routing)
+- `npm run build`: production build with static pre-rendering, then `scripts/postbuild.mjs` (404 page, route copies, sitemap)
 - `npm test`: Vitest
 
 ## Code conventions
 - Standalone components with inline `template` and `styles` in a single `.ts` file (see `src/app/pages/*`, `src/app/components/*`).
 - Prettier: 100-char lines, single quotes, Angular parser for HTML. 2-space indent (`.editorconfig`).
 - Shared state lives in `src/app/services/` (theme, SEO, analytics, scroll, briefing).
+
+## Content and facts (single source of truth)
+- `src/app/content/site.ts`: contact email, company identity (legal name/CIN once incorporated), social links,
+  and `TARGETS`, the performance figures we quote. Never hardcode an email, a company detail or a performance
+  number in a page; import it from here.
+- Performance figures are **design targets**, not measured results. Show `TARGETS_FOOTNOTE` wherever they
+  appear. Only call something a result when there is a named or anonymised pilot/case study behind it.
+- `src/app/content/solutions.ts`: one entry per solution. Adding an entry creates `/solutions/<slug>`, its
+  pre-rendered page, its footer link and its sitemap entry.
+- The homepage demo is a scripted example and must stay labelled as such.
+- The architecture SVGs in `public/assets/solutions/` contain numbers too; keep them consistent with `TARGETS`.
+
+## Rendering and SEO
+- Every route is pre-rendered to static HTML at build time (`outputMode: "static"`, `src/app/app.routes.server.ts`).
+  Code that runs during rendering must not touch `window`, `document` or `localStorage` without a guard.
+- New routes need a `title` and `data.description`/`data.path` (or a `seo` resolver) so `SeoService` can set
+  meta tags, canonical URL and optional JSON-LD.
+- `scripts/postbuild.mjs` writes `404.html`, `<route>.html` copies and `sitemap.xml`; don't hand-edit those in `dist/`.
+- Plain, concrete wording for operations and facility managers. Avoid invented jargon ("sensory objectives",
+  "ecosystem segment", "ambient sensory stream").
 
 ## Visual consistency (mandatory)
 Every UI change must keep the existing theme, colors, fonts and spacing. The full rules are in

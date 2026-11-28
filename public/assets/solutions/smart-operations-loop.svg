@@ -45,7 +45,7 @@
   <text x="124" y="25" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="11" letter-spacing="1">// PILLAR 05: CLOSED-LOOP AUTONOMY &amp; SMART OPERATIONS</text>
   
   <rect x="660" y="11" width="118" height="20" rx="4" fill="rgba(45, 212, 191, 0.12)" stroke="rgba(45, 212, 191, 0.3)" stroke-width="1"/>
-  <text x="719" y="25" fill="#2DD4BF" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" text-anchor="middle">-35% UTILITY SPEND</text>
+  <text x="719" y="25" fill="#2DD4BF" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" text-anchor="middle">TARGET ≤30% ENERGY</text>
 
   <!-- SECTION 1: CONTINUOUS SENSORY PERCEPTION (SENSE) -->
   <rect x="24" y="62" width="210" height="355" rx="10" fill="url(#cardGrad4)" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
@@ -158,15 +158,15 @@
   <!-- Outcome 1: Utility Spend -->
   <g transform="translate(553, 246)">
     <rect width="209" height="48" rx="6" fill="#090E1A" stroke="rgba(45, 212, 191, 0.3)"/>
-    <text x="12" y="22" fill="#2DD4BF" font-family="'JetBrains Mono', monospace" font-size="15" font-weight="800">-35%</text>
-    <text x="12" y="38" fill="#CBD5E1" font-family="'Plus Jakarta Sans', sans-serif" font-size="9">HVAC &amp; Lighting Utility Reduction</text>
+    <text x="12" y="22" fill="#2DD4BF" font-family="'JetBrains Mono', monospace" font-size="15" font-weight="800">≤ 30%</text>
+    <text x="12" y="38" fill="#CBD5E1" font-family="'Plus Jakarta Sans', sans-serif" font-size="9">HVAC &amp; lighting energy (target)</text>
   </g>
 
   <!-- Outcome 2: Comfort Score -->
   <g transform="translate(553, 302)">
     <rect width="209" height="48" rx="6" fill="#090E1A" stroke="rgba(245, 158, 11, 0.3)"/>
     <text x="12" y="22" fill="#F59E0B" font-family="'JetBrains Mono', monospace" font-size="15" font-weight="800">98.6%</text>
-    <text x="12" y="38" fill="#CBD5E1" font-family="'Plus Jakarta Sans', sans-serif" font-size="9">Occupant Comfort &amp; Air Index Score</text>
+    <text x="12" y="38" fill="#CBD5E1" font-family="'Plus Jakarta Sans', sans-serif" font-size="9">Comfort index (example reading)</text>
   </g>
 
   <!-- Feedback Loop Closed Pill -->
@@ -183,7 +183,7 @@
   <text x="125" y="464" fill="#2DD4BF" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">SUBTLMIND AUTONOMY</text>
   <text x="290" y="464" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="10">BMS INTERFACE: </text>
   <text x="385" y="464" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="10">BACnet IP &amp; Modbus</text>
-  <text x="560" y="464" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="10">SAVINGS: </text>
-  <text x="618" y="464" fill="#10B981" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">-35% kWh</text>
+  <text x="560" y="464" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="10">TARGET: </text>
+  <text x="618" y="464" fill="#10B981" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">≤30% kWh</text>
   <text x="705" y="464" fill="#F59E0B" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">98.6%</text>
 </svg>

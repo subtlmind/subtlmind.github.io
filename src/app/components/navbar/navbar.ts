@@ -22,7 +22,7 @@ import { ThemeService } from '../../services/theme.service';
 
         <!-- Desktop Navigation Links -->
         <nav class="desktop-nav">
-          <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link">Platform</a>
+          <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link">Home</a>
           <a routerLink="/solutions" routerLinkActive="active" class="nav-link">Solutions</a>
           <a routerLink="/about" routerLinkActive="active" class="nav-link">About</a>
           <a routerLink="/contact" routerLinkActive="active" class="nav-link">Contact</a>
@@ -55,7 +55,7 @@ import { ThemeService } from '../../services/theme.service';
             </svg>
           </button>
 
-          <button (click)="briefingService.open()" class="btn-nav-briefing">Schedule Consultation</button>
+          <button (click)="briefingService.open()" class="btn-nav-briefing">Request Consultation</button>
 
           <!-- Mobile Hamburger -->
           <button (click)="toggleMobileMenu()" class="mobile-toggle" aria-label="Toggle menu">
@@ -74,7 +74,7 @@ import { ThemeService } from '../../services/theme.service';
 
       <!-- Mobile Dropdown Menu -->
       <div *ngIf="isMobileMenuOpen()" class="mobile-menu">
-        <a routerLink="/" (click)="closeMobileMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="mobile-link">Platform</a>
+        <a routerLink="/" (click)="closeMobileMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="mobile-link">Home</a>
         <a routerLink="/solutions" (click)="closeMobileMenu()" routerLinkActive="active" class="mobile-link">Solutions</a>
         <a routerLink="/about" (click)="closeMobileMenu()" routerLinkActive="active" class="mobile-link">About</a>
         <a routerLink="/contact" (click)="closeMobileMenu()" routerLinkActive="active" class="mobile-link">Contact</a>
@@ -92,7 +92,7 @@ import { ThemeService } from '../../services/theme.service';
             {{ themeService.isLight() ? 'LIGHT' : 'DARK' }}
           </span>
         </button>
-        <button (click)="onMobileBriefing()" class="btn-nav-briefing w-full" style="justify-content: center; margin-top: 12px;">Schedule Consultation</button>
+        <button (click)="onMobileBriefing()" class="btn-nav-briefing w-full" style="justify-content: center; margin-top: 12px;">Request Consultation</button>
       </div>
     </header>
   `,

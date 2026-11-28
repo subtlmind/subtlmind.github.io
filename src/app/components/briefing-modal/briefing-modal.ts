@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output, signal, inject } from '@angular
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AnalyticsService } from '../../services/analytics.service';
+import { CONTACT_EMAIL, ENQUIRY_SEGMENTS, enquiryEmail, mailtoHref } from '../../content/site';
 
 @Component({
   selector: 'app-briefing-modal',
@@ -9,7 +10,7 @@ import { AnalyticsService } from '../../services/analytics.service';
   imports: [CommonModule, FormsModule],
   template: `
     <div *ngIf="isOpen" class="modal-overlay" (click)="onBackdropClick($event)">
-      <div class="modal-card">
+      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="briefing-title">
         <!-- Close Button -->
         <button class="modal-close" (click)="closeModal()" aria-label="Close modal">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -18,21 +19,21 @@ import { AnalyticsService } from '../../services/analytics.service';
           </svg>
         </button>
 
-        <div class="tag-eyebrow">SUBTLMIND SOLUTIONS DESK</div>
-        <h2 class="modal-title">Schedule an Architecture Consultation</h2>
+        <div class="tag-eyebrow">SUBTLMIND</div>
+        <h2 class="modal-title" id="briefing-title">Request a Consultation</h2>
         <p class="modal-desc">
-          Discuss your smart living, predictive maintenance, or conversational AI deployment directly with our solutions architects.
+          Tell us briefly about your site and goals. We will reply by email within one business day to arrange a call.
         </p>
 
         <!-- Direct Email Card -->
         <div class="direct-email-strip">
           <div class="email-info">
-            <span class="email-badge">OFFICIAL INQUIRY DESK</span>
-            <span class="email-address">subtlmind&#64;outlook.com</span>
+            <span class="email-badge">EMAIL US DIRECTLY</span>
+            <span class="email-address">{{ email }}</span>
           </div>
           <div class="email-actions">
             <a 
-              href="mailto:subtlmind@outlook.com?subject=Consultation%20Inquiry%20-%20Subtlmind" 
+              [href]="emailHref" 
               class="btn-email-direct">
               Send Email ↗
             </a>
@@ -47,10 +48,10 @@ import { AnalyticsService } from '../../services/analytics.service';
           <form (ngSubmit)="onSubmit()" class="consultation-form">
             <div class="form-row-2">
               <div class="form-field">
-                <label class="field-label">Full Name *</label>
+                <label class="field-label" for="bm-name">Full Name *</label>
                 <input 
                   type="text" 
-                  name="fullName" 
+                  name="fullName" id="bm-name" 
                   [(ngModel)]="formData.fullName" 
                   required 
                   placeholder="Alex Rivera"
@@ -58,10 +59,10 @@ import { AnalyticsService } from '../../services/analytics.service';
                 />
               </div>
               <div class="form-field">
-                <label class="field-label">Work Email *</label>
+                <label class="field-label" for="bm-email">Work Email *</label>
                 <input 
                   type="email" 
-                  name="workEmail" 
+                  name="workEmail" id="bm-email" 
                   [(ngModel)]="formData.workEmail" 
                   required 
                   placeholder="alex@company.com"
@@ -71,33 +72,34 @@ import { AnalyticsService } from '../../services/analytics.service';
             </div>
 
             <div class="form-field">
-              <label class="field-label">Ecosystem Segment *</label>
+              <label class="field-label" for="bm-segment">Industry *</label>
               <select 
+                id="bm-segment"
                 name="segment" 
                 [(ngModel)]="formData.segment" 
                 required 
                 class="field-select">
-                <option value="Enterprise Operations">Enterprise Operations &amp; Light Industrial</option>
-                <option value="Commercial Real Estate">Commercial Buildings &amp; Smart Workspaces</option>
-                <option value="Smart Residential">Smart Living &amp; Residential Ecosystems</option>
-                <option value="Custom AI/IoT">Custom AI / IoT Product Partnership</option>
+                @for (seg of segments; track seg) {
+                  <option [value]="seg">{{ seg }}</option>
+                }
               </select>
             </div>
 
             <div class="form-field">
-              <label class="field-label">Project Brief &amp; Sensory Objectives *</label>
+              <label class="field-label" for="bm-brief">What would you like to achieve? *</label>
               <textarea 
-                name="brief" 
+                name="brief" id="bm-brief" 
                 [(ngModel)]="formData.brief" 
                 required 
                 rows="3"
-                placeholder="Tell us about the spaces, telemetry, or intelligent workflows you want to build..."
+                placeholder="E.g. we want early warning on chiller failures across three buildings..."
                 class="field-textarea">
               </textarea>
             </div>
 
+            <p class="form-note">This opens your email app with the message ready to send to {{ email }}.</p>
             <button type="submit" class="btn-submit">
-              <span>Confirm Consultation Request</span>
+              <span>Write Email</span>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
@@ -112,12 +114,15 @@ import { AnalyticsService } from '../../services/analytics.service';
               <path d="M5 13l4 4L19 7"/>
             </svg>
           </div>
-          <h3 class="success-title">Consultation Requested!</h3>
+          <h3 class="success-title">Almost there: press Send in your email app</h3>
           <p class="success-desc">
-            Thank you, {{ formData.fullName || 'there' }}. Our architecture team has received your brief and will email calendar availability to <strong>{{ formData.workEmail || 'your email' }}</strong> within 1 business day.
+            Thanks, {{ formData.fullName || 'there' }}. We opened a draft to <strong>{{ email }}</strong> in your email app. Once it is sent, we will reply to <strong>{{ formData.workEmail || 'your email' }}</strong> within one business day with times for a call.
+          </p>
+          <p class="success-desc">
+            Email app didn't open? Copy the message and send it from any email account.
           </p>
           <div class="success-actions">
-            <button (click)="resetForm()" class="btn-secondary">Submit Another Brief</button>
+            <button (click)="copyDraft()" class="btn-secondary">{{ isDraftCopied() ? 'Copied!' : 'Copy Message' }}</button>
             <button (click)="closeModal()" class="btn-primary">Done</button>
           </div>
         </div>
@@ -125,22 +130,28 @@ import { AnalyticsService } from '../../services/analytics.service';
         <!-- Footer Meta Info -->
         <div class="modal-footer-info">
           <div class="footer-meta-item">
-            <span class="meta-label">HEADQUARTERS</span>
+            <span class="meta-label">BASED IN</span>
             <span class="meta-value">HYDERABAD, IN</span>
           </div>
           <div class="footer-meta-item">
-            <span class="meta-label">RESPONSE SLA</span>
+            <span class="meta-label">REPLY TIME</span>
             <span class="meta-value">UNDER 1 BUSINESS DAY</span>
           </div>
           <div class="footer-meta-item">
-            <span class="meta-label">ENGAGEMENT MODEL</span>
-            <span class="meta-value">DIRECT ARCHITECT ACCESS</span>
+            <span class="meta-label">YOU TALK TO</span>
+            <span class="meta-value">THE ENGINEERS WHO BUILD IT</span>
           </div>
         </div>
       </div>
     </div>
   `,
   styles: [`
+    .form-note {
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      margin-bottom: 12px;
+    }
+
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -463,11 +474,16 @@ export class BriefingModalComponent {
 
   isSubmitted = signal(false);
   isCopied = signal(false);
+  isDraftCopied = signal(false);
+  readonly email = CONTACT_EMAIL;
+  readonly emailHref = mailtoHref('Consultation request');
+  readonly segments = ENQUIRY_SEGMENTS;
+  private draftText = '';
 
   formData = {
     fullName: '',
     workEmail: '',
-    segment: 'Enterprise Operations',
+    segment: ENQUIRY_SEGMENTS[0] as string,
     brief: ''
   };
 
@@ -485,6 +501,14 @@ export class BriefingModalComponent {
 
   onSubmit(): void {
     if (this.formData.fullName && this.formData.workEmail && this.formData.brief) {
+      const draft = enquiryEmail(
+        { name: this.formData.fullName, email: this.formData.workEmail, segment: this.formData.segment, message: this.formData.brief },
+        'Consultation request'
+      );
+      this.draftText = `To: ${this.email}\nSubject: ${draft.subject}\n\n${draft.body}`;
+      if (typeof window !== 'undefined') {
+        window.location.href = draft.href;
+      }
       this.isSubmitted.set(true);
       this.analyticsService.trackEvent('generate_lead', {
         event_category: 'consultation',
@@ -498,15 +522,24 @@ export class BriefingModalComponent {
     this.formData = {
       fullName: '',
       workEmail: '',
-      segment: 'Enterprise Operations',
+      segment: ENQUIRY_SEGMENTS[0],
       brief: ''
     };
+    this.draftText = '';
     this.isSubmitted.set(false);
+  }
+
+  copyDraft(): void {
+    if (typeof navigator !== 'undefined' && navigator.clipboard) {
+      navigator.clipboard.writeText(this.draftText);
+      this.isDraftCopied.set(true);
+      setTimeout(() => this.isDraftCopied.set(false), 2000);
+    }
   }
 
   copyEmail(): void {
     if (typeof navigator !== 'undefined' && navigator.clipboard) {
-      navigator.clipboard.writeText('subtlmind@outlook.com');
+      navigator.clipboard.writeText(this.email);
       this.isCopied.set(true);
       setTimeout(() => this.isCopied.set(false), 2000);
     }

@@ -209,7 +209,7 @@
   <g transform="translate(638, 354)">
     <rect width="128" height="42" rx="6" fill="rgba(16, 185, 129, 0.08)" stroke="rgba(16, 185, 129, 0.3)"/>
     <circle cx="20" cy="21" r="4" fill="#10B981"/>
-    <text x="32" y="18" fill="#10B981" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="700">99.999% SLA</text>
+    <text x="32" y="18" fill="#10B981" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="700">STORE &amp; FORWARD</text>
     <text x="32" y="30" fill="#CBD5E1" font-family="'JetBrains Mono', monospace" font-size="8">Zero Ingestion Loss</text>
   </g>
 

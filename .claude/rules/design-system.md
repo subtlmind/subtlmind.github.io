@@ -77,7 +77,7 @@ reasoning, but where its hex values differ from `styles.css`, `styles.css` wins.
 - Buttons: `.btn-primary` for the single main CTA in a view, `.btn-secondary` for everything else.
   Radius 12px, font-weight 600. Do not invent new button styles.
 - Forms: `.form-group`, `.form-label`, `.form-input` / `.form-select` / `.form-textarea`. Placeholders
-  use `--color-text-muted`. Inputs have a 3px radius; focus shows a cyan border with a soft glow.
+  use `--color-text-muted`. Inputs have a 3px radius; focus shows a teal border with a soft teal glow.
 - Lists: `.bullet-list`. Status: `.pulse-dot`.
 - Radii: 12px (buttons, HUD cards), 16px (cards, media frames), 9999px (pills), 50% (dots).
 - Motion is calm and subtle: 0.2–0.25s `ease` (or `cubic-bezier(0.16, 1, 0.3, 1)`), hover lift of at most

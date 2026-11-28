@@ -6,9 +6,9 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, ActivatedRoute } from '@angular/router';
-import { FormsModule } from '@angular/forms';
 import { BriefingService } from '../../services/briefing.service';
 import { TechLogosComponent } from '../../components/tech-logos/tech-logos';
+import { CONTACT_EMAIL, TARGETS, TARGETS_FOOTNOTE, mailtoHref } from '../../content/site';
 
 export interface DemoScenario {
   userQuery: string;
@@ -36,7 +36,7 @@ export interface IndustryInfo {
 @Component({
   selector: 'app-platform',
   standalone: true,
-  imports: [CommonModule, RouterLink, FormsModule, TechLogosComponent],
+  imports: [CommonModule, RouterLink, TechLogosComponent],
   template: `
     <div class="page-wrapper">
       <!-- HERO SECTION -->
@@ -46,16 +46,16 @@ export interface IndustryInfo {
             <!-- Eyebrow Pill -->
             <div class="hero-pill">
               <span class="live-pulse-dot"></span>
-              <span>Edge-to-Cloud IoT &bull; Deep Learning &bull; Conversational LLMs</span>
+              <span>Industrial IoT &bull; Computer Vision &bull; Edge AI</span>
             </div>
 
             <h1 class="hero-title">
-              Ambient Intelligence for<br />
-              <span class="text-gradient">Intuitive Modern Living.</span>
+              Predictive maintenance and vision AI<br />
+              <span class="text-gradient">for factories and buildings.</span>
             </h1>
 
             <p class="hero-subtitle">
-              Subtlmind architects and develops edge-to-cloud AI and IoT solutions that transform raw sensory data into predictive maintenance, smart operations, and effortless everyday experiences.
+              We connect your machines, cameras and building systems, then run AI on your own edge hardware to warn you before equipment fails, spot safety and quality issues on camera, and cut energy waste.
             </p>
 
             <div class="hero-cta-group">
@@ -66,7 +66,7 @@ export interface IndustryInfo {
                 </svg>
               </a>
               <button (click)="briefingService.open()" class="btn-secondary">
-                <span>Schedule a Consultation</span>
+                <span>Request a Consultation</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-amber">
                   <path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                 </svg>
@@ -76,22 +76,23 @@ export interface IndustryInfo {
             <!-- Telemetry Micro-Metrics Strip -->
             <div class="telemetry-strip">
               <div class="metric-card">
-                <div class="metric-val text-teal">&lt; 15ms</div>
-                <div class="metric-lbl">Edge Telemetry Inference</div>
+                <div class="metric-val text-teal">{{ targets.edgeLatency.value }}</div>
+                <div class="metric-lbl">{{ targets.edgeLatency.label }}</div>
               </div>
               <div class="metric-card">
-                <div class="metric-val text-heading">99.4%</div>
-                <div class="metric-lbl">Anomaly Detection Precision</div>
+                <div class="metric-val text-heading">{{ targets.precision.value }}</div>
+                <div class="metric-lbl">{{ targets.precision.label }}</div>
               </div>
               <div class="metric-card">
-                <div class="metric-val text-amber">-32%</div>
-                <div class="metric-lbl">Unplanned Downtime &amp; Waste</div>
+                <div class="metric-val text-amber">{{ targets.downtime.value }}</div>
+                <div class="metric-lbl">{{ targets.downtime.label }}</div>
               </div>
               <div class="metric-card">
-                <div class="metric-val text-teal">Natural NLP</div>
-                <div class="metric-lbl">Zero-Dashboard Control</div>
+                <div class="metric-val text-teal">On-site</div>
+                <div class="metric-lbl">Your data stays on your premises</div>
               </div>
             </div>
+            <p class="targets-footnote">{{ targetsFootnote }}</p>
           </div>
         </div>
       </section>
@@ -105,17 +106,17 @@ export interface IndustryInfo {
               <div class="tag-eyebrow no-dot">— WHO WE ARE</div>
               <h2 class="section-heading">Technology that works quietly in the background.</h2>
               <p class="story-lead">
-                <strong class="text-heading">Subtlmind</strong> is a technology-first company pioneering the convergence of the Internet of Things (IoT), Deep Learning, and Large Language Models (LLMs). We believe the most powerful technology is the kind that dissolves into the environment—anticipating needs, preventing disruptions, and optimizing spaces without demanding constant human intervention.
+                <strong class="text-heading">Subtlmind</strong> is an engineering company that brings together IoT sensors, deep learning and language models. We believe the best technology works quietly in the background: it warns you before something breaks and handles routine adjustments, so your team doesn't have to watch screens all day.
               </p>
               <p class="story-body">
-                By bridging the physical and digital worlds, we capture continuous sensory streams from connected environments and translate them into actionable, human-centric intelligence. From intuitive residential ecosystems to complex commercial and industrial operations, Subtlmind engineers resilient architectures built for modern living.
+                We collect data from your equipment, cameras and building systems and turn it into clear alerts, answers and automatic actions. Our main focus is factories, warehouses and commercial buildings, and we also work on premium residential projects.
               </p>
 
               <!-- Philosophy Pill Tags -->
               <div class="philosophy-tags">
-                <span class="ph-tag">Multi-Modal Sensory Fusion</span>
-                <span class="ph-tag">Privacy-First Edge Processing</span>
-                <span class="ph-tag">Conversational System Reasoning</span>
+                <span class="ph-tag">Sensor &amp; camera data combined</span>
+                <span class="ph-tag">Processed on site, privacy first</span>
+                <span class="ph-tag">Plain-English answers</span>
               </div>
             </div>
 
@@ -144,7 +145,7 @@ export interface IndustryInfo {
                 </div>
                 <h3 class="vm-title">Our Mission</h3>
                 <p class="vm-text">
-                  To engineer innovative, reliable AI and IoT architectures that turn continuous sensory streams into clear, predictive, and conversational intelligence.
+                  To build reliable AI and IoT systems that turn sensor and camera data into early warnings, clear answers and automatic actions.
                 </p>
               </div>
             </div>
@@ -157,9 +158,9 @@ export interface IndustryInfo {
         <div class="container">
           <div class="section-header">
             <div class="tag-eyebrow no-dot">— CORE CAPABILITIES</div>
-            <h2 class="section-title">Four Pillars of Ambient Intelligence</h2>
+            <h2 class="section-title">What We Build</h2>
             <p class="section-subtitle">
-              We architect full-stack intelligence from physical sensor nodes up to natural-language reasoning interfaces.
+              Everything from the sensors on your machines to the AI that explains what they are telling you. <a routerLink="/solutions" class="inline-link">See all solutions &rarr;</a>
             </p>
           </div>
 
@@ -172,11 +173,11 @@ export interface IndustryInfo {
                     <path d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/>
                   </svg>
                 </div>
-                <span class="pillar-step-badge">01 / SENSORY TELEMETRY</span>
+                <span class="pillar-step-badge">01 / SENSORS &amp; EDGE</span>
               </div>
-              <h3 class="pillar-title">Sensory Data &amp; IoT Architecture</h3>
+              <h3 class="pillar-title"><a routerLink="/solutions/iot-sensor-networks">IoT Sensor Networks &amp; Edge Gateways</a></h3>
               <p class="pillar-desc">
-                End-to-end sensor networks, ruggedized edge gateways, and real-time telemetry pipelines for continuous environmental and equipment monitoring with 24/7 ultra-low latency visibility.
+                Sensors and rugged edge gateways that monitor your equipment and spaces around the clock, and keep working when the internet drops.
               </p>
               <div class="pillar-tags">
                 <span class="tech-tag">Edge Computing</span>
@@ -195,9 +196,9 @@ export interface IndustryInfo {
                 </div>
                 <span class="pillar-step-badge">02 / VISION &amp; PREDICTIVE AI</span>
               </div>
-              <h3 class="pillar-title">Computer Vision &amp; Predictive Maintenance</h3>
+              <h3 class="pillar-title"><a routerLink="/solutions/computer-vision">Computer Vision</a> &amp; <a routerLink="/solutions/predictive-maintenance">Predictive Maintenance</a></h3>
               <p class="pillar-desc">
-                Real-time video inference deployed on IP cameras, machine vision, and thermal cameras using object detection, segmentation, and classification—alongside time-series sensor forecasting.
+                AI on your IP, machine-vision and thermal cameras for safety, quality and hotspot detection, plus models that spot machine wear weeks before a breakdown.
               </p>
               <div class="pillar-tags">
                 <span class="tech-tag">Object Detection</span>
@@ -214,11 +215,11 @@ export interface IndustryInfo {
                     <path d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
                   </svg>
                 </div>
-                <span class="pillar-step-badge">03 / CONVERSATIONAL REASONING</span>
+                <span class="pillar-step-badge">03 / OPERATIONS ASSISTANT</span>
               </div>
-              <h3 class="pillar-title">Language Models &amp; Conversational Control</h3>
+              <h3 class="pillar-title"><a routerLink="/solutions/conversational-ai">AI Operations Assistant</a></h3>
               <p class="pillar-desc">
-                Natural-language interfaces replacing complex dashboards. Operators and residents query live telemetry, automate workflows, and receive plain-English diagnostics through effortless dialogue.
+                Ask questions about your equipment and building in plain English and get answers grounded in live data and your own manuals.
               </p>
               <div class="pillar-tags">
                 <span class="tech-tag">Large Language Models</span>
@@ -235,11 +236,11 @@ export interface IndustryInfo {
                     <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
                   </svg>
                 </div>
-                <span class="pillar-step-badge">04 / CLOSED-LOOP AUTONOMY</span>
+                <span class="pillar-step-badge">04 / AUTOMATION</span>
               </div>
-              <h3 class="pillar-title">Smart Operations &amp; Automation</h3>
+              <h3 class="pillar-title"><a routerLink="/solutions/building-automation">Smart Building &amp; Energy Automation</a></h3>
               <p class="pillar-desc">
-                Self-optimizing closed-loop controls for energy orchestration, occupancy comfort, asset tracking, and automated facility workflows that reduce waste and elevate everyday living.
+                Automatic control of HVAC, lighting and equipment loads based on real occupancy, cutting energy use without affecting comfort.
               </p>
               <div class="pillar-tags">
                 <span class="tech-tag">Autonomous Decision Engines</span>
@@ -256,11 +257,10 @@ export interface IndustryInfo {
                 <span class="dot"></span>
                 <span class="dot"></span>
                 <span class="dot dot-active"></span>
-                <span class="widget-title-text">Subtlmind Ambient Copilot &mdash; Live Telemetry Synthesis</span>
+                <span class="widget-title-text">Subtlmind Operations Assistant &mdash; Scripted Demo</span>
               </div>
               <div class="status-indicator-pill">
-                <span class="live-pulse-dot"></span>
-                <span>48 Active Edge Nodes Connected</span>
+                <span>Sample data &middot; not live</span>
               </div>
             </div>
 
@@ -268,10 +268,10 @@ export interface IndustryInfo {
               <!-- Left: Scenario Buttons & Custom Input -->
               <div class="widget-sidebar">
                 <div>
-                  <span class="scenario-eyebrow">INTERACTIVE SIMULATION</span>
-                  <h4 class="sidebar-title">Talk to Your Connected Environment</h4>
+                  <span class="scenario-eyebrow">SCRIPTED DEMO</span>
+                  <h4 class="sidebar-title">See what the assistant can do</h4>
                   <p class="sidebar-desc">
-                    Select a prompt below or type your own to see how Subtlmind fuses raw MQTT streams, deep learning anomaly scores, and LLM reasoning into clear action.
+                    Pick an example question. The answers are pre-written to show the kind of response a deployed system gives using your sensor data, anomaly models and manuals.
                   </p>
 
                   <div class="scenario-buttons">
@@ -305,7 +305,7 @@ export interface IndustryInfo {
                       [class.active-scenario]="activeScenarioKey() === 'living'"
                       class="scenario-btn">
                       <div class="scenario-meta">
-                        <span class="scenario-tag tag-living">Intuitive Living</span>
+                        <span class="scenario-tag tag-living">Smart Spaces</span>
                         <span class="scenario-arrow">&rarr;</span>
                       </div>
                       <p class="scenario-prompt">"Optimize evening lighting &amp; climate for Zone A"</p>
@@ -325,23 +325,6 @@ export interface IndustryInfo {
                   </div>
                 </div>
 
-                <!-- Custom Query Input -->
-                <form (ngSubmit)="handleCustomQuery()" class="custom-query-form">
-                  <div class="input-wrap">
-                    <input 
-                      type="text" 
-                      [(ngModel)]="customQuery" 
-                      name="customQuery"
-                      placeholder="Or type a custom environment query..." 
-                      class="custom-input" 
-                    />
-                    <button type="submit" aria-label="Submit query" class="btn-query-send">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                      </svg>
-                    </button>
-                  </div>
-                </form>
               </div>
 
               <!-- Right: AI Synthesis & Diagnostic Output -->
@@ -355,7 +338,7 @@ export interface IndustryInfo {
 
                 <!-- Typing indicator when switching -->
                 <div *ngIf="isSynthesizing()" class="synthesis-loading">
-                  <span>Synthesizing sensory telemetry</span>
+                  <span>Preparing example answer</span>
                   <span class="dot-bounce"></span>
                   <span class="dot-bounce"></span>
                   <span class="dot-bounce"></span>
@@ -380,7 +363,7 @@ export interface IndustryInfo {
                   </p>
 
                   <div class="actions-section">
-                    <div class="actions-heading">Autonomous Actions &amp; Diagnostics:</div>
+                    <div class="actions-heading">What the system did:</div>
                     <ul class="actions-list">
                       <li *ngFor="let act of currentScenario().actions" class="action-item">
                         <span class="check-icon">&#10003;</span>
@@ -393,7 +376,7 @@ export interface IndustryInfo {
                 <!-- Telemetry Bar -->
                 <div class="telemetry-bar">
                   <span class="telemetry-data">{{ currentScenario().telemetry }}</span>
-                  <span class="telemetry-status">STATUS: OPTIMAL</span>
+                  <span class="telemetry-status">SAMPLE DATA</span>
                 </div>
               </div>
             </div>
@@ -408,7 +391,7 @@ export interface IndustryInfo {
             <div class="tag-eyebrow no-dot">— SYSTEM BLUEPRINT</div>
             <h2 class="section-title">The Subtlmind Architecture</h2>
             <p class="section-subtitle max-w-2xl mx-auto">
-              A continuous closed-loop pipeline turning physical world signals into effortless outcomes. Click any stage to inspect specifications.
+              Four stages, from collecting data on site to acting on it. Select a stage to see the details.
             </p>
           </div>
 
@@ -454,7 +437,7 @@ export interface IndustryInfo {
         <div class="container">
           <div class="industries-top">
             <div>
-              <div class="tag-eyebrow no-dot">— APPLIED ECOSYSTEMS</div>
+              <div class="tag-eyebrow no-dot">— INDUSTRIES</div>
               <h2 class="section-title">Industries &amp; Use Cases</h2>
             </div>
 
@@ -462,10 +445,10 @@ export interface IndustryInfo {
             <div class="industry-tabs">
               <button 
                 type="button" 
-                (click)="activeIndustryKey.set('residential')"
-                [class.tab-active]="activeIndustryKey() === 'residential'"
+                (click)="activeIndustryKey.set('industrial')"
+                [class.tab-active]="activeIndustryKey() === 'industrial'"
                 class="ind-tab-btn">
-                Smart Living &amp; Residential
+                Manufacturing &amp; Warehousing
               </button>
               <button 
                 type="button" 
@@ -476,10 +459,10 @@ export interface IndustryInfo {
               </button>
               <button 
                 type="button" 
-                (click)="activeIndustryKey.set('industrial')"
-                [class.tab-active]="activeIndustryKey() === 'industrial'"
+                (click)="activeIndustryKey.set('residential')"
+                [class.tab-active]="activeIndustryKey() === 'residential'"
                 class="ind-tab-btn">
-                Light Industrial &amp; Ops
+                Premium Residential
               </button>
             </div>
           </div>
@@ -502,10 +485,10 @@ export interface IndustryInfo {
 
               <div class="industry-stat-col">
                 <div class="stat-impact-box">
-                  <div class="stat-eyebrow">MEASURED ECOSYSTEM IMPACT</div>
+                  <div class="stat-eyebrow">DESIGN TARGET</div>
                   <div class="stat-big-metric text-gradient">{{ currentIndustry().metric }}</div>
                   <p class="stat-footnote">
-                    Engineered with modular Subtlmind edge gateways and custom domain language models.
+                    {{ targetsFootnote }}
                   </p>
                   <button (click)="briefingService.open()" class="btn-discuss-usecase">
                     Discuss This Use Case &rarr;
@@ -518,8 +501,8 @@ export interface IndustryInfo {
           <!-- WHY FORWARD-THINKING TEAMS CHOOSE SUBTLMIND -->
           <div class="why-us-wrap">
             <div class="section-header">
-              <div class="tag-eyebrow no-dot">— THE SUBTLMIND ADVANTAGE</div>
-              <h2 class="section-title">Why Forward-Thinking Teams Choose Subtlmind</h2>
+              <div class="tag-eyebrow no-dot">— WHY SUBTLMIND</div>
+              <h2 class="section-title">How We Are Different</h2>
             </div>
 
             <div class="grid-4 why-grid">
@@ -551,7 +534,7 @@ export interface IndustryInfo {
         </div>
       </section>
 
-      <!-- CERTIFIED RUNTIMES & INFRASTRUCTURE LOGOS -->
+      <!-- PLATFORMS WE DEPLOY ON -->
       <app-tech-logos [mode]="'grid'"></app-tech-logos>
 
       <!-- FOOTER ARCHITECTURE DISCOVERY CTA BANNER -->
@@ -560,25 +543,25 @@ export interface IndustryInfo {
           <div class="glass-card cta-banner-card">
             <div class="cta-inner-grid">
               <div class="cta-text-col">
-                <div class="tag-eyebrow no-dot">— START AN ARCHITECTURE DISCOVERY</div>
+                <div class="tag-eyebrow no-dot">— GET STARTED</div>
                 <h2 class="cta-banner-title">
-                  Ready to make your spaces and operations truly intelligent?
+                  Have a site or a problem in mind?
                 </h2>
                 <p class="cta-banner-desc">
-                  Partner with Subtlmind to design, build, and deploy custom AI and IoT solutions tailored to your physical ecosystem.
+                  Tell us what you want to monitor, inspect or automate. We will tell you honestly what is feasible and what a pilot would involve.
                 </p>
                 <div class="cta-perks">
                   <div class="perk-item">
                     <span class="perk-icon">&#10003;</span>
-                    <span>Complimentary 45-minute IoT &amp; AI Architecture Review</span>
+                    <span>Free 45-minute review of your site and goals</span>
                   </div>
                   <div class="perk-item">
                     <span class="perk-icon">&#10003;</span>
-                    <span>Custom Sensor-to-LLM Proof-of-Concept Roadmap</span>
+                    <span>A written pilot plan with scope, timeline and success metrics</span>
                   </div>
                   <div class="perk-item">
                     <span class="perk-icon">&#10003;</span>
-                    <span>Direct access to Principal Solution Architects</span>
+                    <span>You talk directly to the engineers who will build it</span>
                   </div>
                 </div>
               </div>
@@ -586,15 +569,15 @@ export interface IndustryInfo {
               <div class="cta-action-col">
                 <div class="cta-button-box">
                   <button (click)="briefingService.open()" class="btn-primary w-full">
-                    <span>Schedule an Architecture Consultation</span>
+                    <span>Request a Consultation</span>
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
                       <path d="M5 12h14M12 5l7 7-7 7"/>
                     </svg>
                   </button>
-                  <a href="mailto:subtlmind@outlook.com?subject=Architecture%20Inquiry%20-%20Subtlmind" class="btn-secondary w-full">
-                    <span>Email subtlmind&#64;outlook.com</span>
+                  <a [href]="emailHref" class="btn-secondary w-full">
+                    <span>Email {{ contactEmail }}</span>
                   </a>
-                  <p class="cta-sla-note">Response guaranteed within 1 business day.</p>
+                  <p class="cta-sla-note">We reply within one business day.</p>
                 </div>
               </div>
             </div>
@@ -865,6 +848,29 @@ export interface IndustryInfo {
       letter-spacing: 0.08em;
     }
 
+    .targets-footnote {
+      margin-top: 14px;
+      font-size: 0.78rem;
+      color: var(--color-text-muted);
+    }
+
+    .inline-link {
+      color: var(--color-teal);
+      font-weight: 600;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .inline-link:hover,
+    .pillar-title a:hover {
+      text-decoration: underline;
+    }
+
+    .pillar-title a {
+      color: inherit;
+      text-decoration: none;
+    }
+
     .pillar-title {
       font-size: 1.35rem;
       font-weight: 700;
@@ -1050,52 +1056,6 @@ export interface IndustryInfo {
       font-size: 0.86rem;
       font-weight: 500;
       color: var(--color-text-body);
-    }
-
-    .custom-query-form {
-      padding-top: 16px;
-      border-top: 1px solid var(--color-border);
-    }
-
-    .input-wrap {
-      position: relative;
-      display: flex;
-      align-items: center;
-    }
-
-    .custom-input {
-      width: 100%;
-      padding: 11px 42px 11px 14px;
-      border-radius: 10px;
-      background: var(--color-input-bg);
-      border: 1px solid var(--color-border);
-      color: var(--color-text-heading);
-      font-size: 0.88rem;
-      outline: none;
-    }
-
-    .custom-input::placeholder {
-      color: var(--color-text-muted);
-      opacity: 0.9;
-    }
-
-    .custom-input:focus {
-      border-color: var(--color-teal);
-    }
-
-    .btn-query-send {
-      position: absolute;
-      right: 6px;
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      background: var(--color-btn-primary-bg);
-      color: var(--color-btn-primary-text);
-      border: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
     }
 
     /* Output Stream */
@@ -1679,6 +1639,10 @@ export interface IndustryInfo {
 export class PlatformComponent {
   readonly briefingService = inject(BriefingService);
   private readonly route = inject(ActivatedRoute);
+  readonly targets = TARGETS;
+  readonly targetsFootnote = TARGETS_FOOTNOTE;
+  readonly contactEmail = CONTACT_EMAIL;
+  readonly emailHref = mailtoHref('Consultation enquiry');
 
   constructor() {
     this.route.queryParams.subscribe(params => {
@@ -1702,12 +1666,11 @@ export class PlatformComponent {
   // Active Interactive Demo state
   activeScenarioKey = signal<'hvac' | 'vision' | 'living' | 'industrial'>('hvac');
   isSynthesizing = signal(false);
-  customQuery = '';
 
   demoScenarios: Record<string, DemoScenario> = {
     hvac: {
       userQuery: 'Check HVAC vibration & energy status on Floor 3',
-      synthesisBadge: 'DL Anomaly Model + MQTT Stream',
+      synthesisBadge: 'Example · Anomaly model + sensor data',
       summary: 'Floor 3 Chiller Unit B is exhibiting a subtle harmonic vibration shift (+14% above baseline at 120Hz), indicating early bearing wear—while energy draw remains within normal bounds at 18.4 kW.',
       actions: [
         'Predicted remaining optimal bearing life: ~240 operating hours.',
@@ -1718,7 +1681,7 @@ export class PlatformComponent {
     },
     vision: {
       userQuery: 'Inspect loading bay thermal cameras & perimeter IP feeds',
-      synthesisBadge: 'RT-DETR + Radiometric Thermal Segmentation',
+      synthesisBadge: 'Example · Object detection + thermal',
       summary: 'Edge video inference processed 4 high-speed IP feeds & 2 radiometric thermal streams at 60 FPS. Detected 1 minor thermal surface anomaly (+9.2°C above ambient) on conveyor drive motor #2; perimeter is clear with 100% PPE compliance.',
       actions: [
         'Isolated thermal anomaly bounding box with pixel-accurate instance mask.',
@@ -1729,7 +1692,7 @@ export class PlatformComponent {
     },
     living: {
       userQuery: 'Optimize evening lighting & climate for Zone A',
-      synthesisBadge: 'Ambient Comfort Engine + Occupancy Radar',
+      synthesisBadge: 'Example · Occupancy radar + comfort control',
       summary: 'Detected 3 occupants in Zone A with ambient sunset lux dropping below 180 lx. Transitioning environment into circadian evening mode without manual wall-switch input.',
       actions: [
         'Dimmed overhead architectural cove lighting to 35% warm 2700K amber tone.',
@@ -1740,7 +1703,7 @@ export class PlatformComponent {
     },
     industrial: {
       userQuery: 'Summarize overnight compressor anomalies & schedule maintenance',
-      synthesisBadge: 'Time-Series Forecasting + RAG Agent',
+      synthesisBadge: 'Example · Forecasting + manual lookup',
       summary: 'Across 12 rotary compressors overnight, 11 operated at 99.8% efficiency. Compressor #04 experienced two brief pressure micro-drops (02:14 & 04:40 UTC) correlated with intake valve seating lag.',
       actions: [
         'Cross-referenced OEM manual via RAG: confirmed intake gasket seal service interval.',
@@ -1762,33 +1725,12 @@ export class PlatformComponent {
     }, 280);
   }
 
-  handleCustomQuery(): void {
-    const q = this.customQuery.trim();
-    if (!q) return;
-    this.isSynthesizing.set(true);
-    this.customQuery = '';
-    setTimeout(() => {
-      this.currentScenario.set({
-        userQuery: q,
-        synthesisBadge: 'Live Multi-Modal LLM Reasoning',
-        summary: `Analyzed real-time sensory telemetry across connected zones for "${q}". Environmental air quality, thermal balance, and equipment load harmonics are operating within target thresholds.`,
-        actions: [
-          'Correlated 14 edge sensor streams with historical occupancy & energy baselines.',
-          'Applied micro-adjustments to maintain peak comfort while saving 12.4% energy.',
-          'Continuous anomaly guard active—no manual intervention required.'
-        ],
-        telemetry: 'STREAM: MULTI-ZONE | INFERENCE: 13ms | CONFIDENCE: 99.1%'
-      });
-      this.isSynthesizing.set(false);
-    }, 320);
-  }
-
   // 4-Step Architecture Steps
   activeStepIndex = signal(0);
   archSteps: ArchStep[] = [
     {
       step: '01 / SENSE',
-      title: 'High-Frequency Sensory Capture at the Edge',
+      title: 'Collect Data from Machines and Spaces',
       desc: 'Connected IoT sensors continuously capture environmental, operational, and behavioral signals—temperature, vibration, acoustics, occupancy radar, and power harmonics—directly from physical spaces.',
       specs: [
         { label: 'Protocols', val: 'MQTT, Matter, Zigbee, Modbus, BLE Mesh' },
@@ -1829,10 +1771,10 @@ export class PlatformComponent {
   ];
 
   // Industry Showcase Data
-  activeIndustryKey = signal<'residential' | 'commercial' | 'industrial'>('residential');
+  activeIndustryKey = signal<'residential' | 'commercial' | 'industrial'>('industrial');
   industryData: Record<string, IndustryInfo> = {
     residential: {
-      tag: 'Smart Living & Residential Ecosystems',
+      tag: 'Premium Residential',
       title: 'Homes That Sense, Learn, and Adapt Naturally',
       desc: 'Move beyond rigid schedules and fragmented apps. Subtlmind orchestrates circadian lighting, micro-zone climate, air purity, and perimeter security that quietly adapts to household rhythms.',
       highlights: [
@@ -1840,10 +1782,10 @@ export class PlatformComponent {
         'Natural-language home assistant: control scenes and energy budgets conversationally',
         'Predictive leak, HVAC, and appliance health alerts before costly damage occurs'
       ],
-      metric: 'Up to 28% Residential Energy Reduction'
+      metric: `${TARGETS.residentialEnergy.value} ${TARGETS.residentialEnergy.label.toLowerCase()}`
     },
     commercial: {
-      tag: 'Commercial Buildings & Smart Workspaces',
+      tag: 'Commercial Buildings',
       title: 'Autonomous Facility Intelligence & Tenant Comfort',
       desc: 'Transform multi-floor offices and hospitality properties into self-optimizing assets. Subtlmind links real-time occupancy patterns with predictive HVAC and utility management.',
       highlights: [
@@ -1851,10 +1793,10 @@ export class PlatformComponent {
         'Conversational facility copilot for building engineers—zero complex BMS training',
         'Automated ESG & carbon intensity reporting synthesized from sub-meter telemetry'
       ],
-      metric: '35% Lower HVAC & Lighting Operational Spend'
+      metric: `${TARGETS.commercialEnergy.value} ${TARGETS.commercialEnergy.label.toLowerCase()}`
     },
     industrial: {
-      tag: 'Smart Operations & Light Industrial',
+      tag: 'Manufacturing & Warehousing',
       title: 'Zero-Surprise Equipment Health & Floor Visibility',
       desc: 'Protect critical motors, chillers, cold-chain storage, and production lines with continuous multi-modal anomaly detection and automated maintenance workflows.',
       highlights: [
@@ -1862,7 +1804,7 @@ export class PlatformComponent {
         'RAG-powered troubleshooting guides technicians with exact repair procedures',
         'Unified API integration with existing ERP, CMMS, and SCADA infrastructure'
       ],
-      metric: '40% Reduction in Unplanned Asset Downtime'
+      metric: `${TARGETS.downtime.value} ${TARGETS.downtime.label.toLowerCase()}`
     }
   };
 

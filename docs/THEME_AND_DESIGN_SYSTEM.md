@@ -11,7 +11,7 @@ This document specifies the official design system, typography, color palette, f
 
 ## 1. Brand Philosophy & Aesthetic
 
-Subtlmind pioneers **Ambient Intelligence for Intuitive Modern Living** across the Internet of Things (IoT), Edge Computing, Deep Learning, and Large Language Models.
+Subtlmind builds **predictive maintenance and vision AI for factories and buildings**, running on edge hardware, across the Internet of Things (IoT), Edge Computing, Deep Learning, and Large Language Models.
 
 The visual identity embodies:
 - **Calm & Invisible**: Technology that works quietly in the background without intrusive, blinking sirens or noisy dashboards.
@@ -95,11 +95,11 @@ The visual identity embodies:
 
 ### 3.3 Form Inputs & Placeholders
 Use the global `.form-group`, `.form-label`, `.form-input`, `.form-select` and `.form-textarea` classes.
-- **Background**: `rgba(8, 12, 19, 0.95)` in dark mode, `#FFFFFF` in light mode (`--color-input-bg` holds the equivalent token for custom inputs).
-- **Text Color**: `#FFFFFF` in dark mode, `#0F172A` in light mode (matches `var(--color-text-heading)`).
-- **Border**: `1px solid var(--color-border)` (`#1E293B`) in dark mode, `#CBD5E1` in light mode. Radius `3px`.
-- **Placeholder Text**: `#94A3B8` (matches `var(--color-text-muted)`); never use lower-contrast values.
-- **Focus Ring**: `border-color: var(--color-cyan); box-shadow: 0 0 10px rgba(0, 194, 255, 0.2);`.
+- **Background**: `var(--color-input-bg)` (`#0A0F1C` in dark mode, `#FFFFFF` in light mode).
+- **Text Color**: `var(--color-text-heading)` (`#FFFFFF` in dark mode, `#0F172A` in light mode).
+- **Border**: `1px solid var(--color-border)` (`#1E293B`) in dark mode; `var(--color-hud-box-border)` (`#CBD5E1`) in light mode. Radius `3px`.
+- **Placeholder Text**: `var(--color-text-muted)`; never use lower-contrast values.
+- **Focus Ring**: `border-color: var(--color-teal); box-shadow: 0 0 10px rgba(45, 212, 191, 0.2);` (light mode: `0 0 0 3px rgba(15, 118, 110, 0.15)`).
 
 ---
 
